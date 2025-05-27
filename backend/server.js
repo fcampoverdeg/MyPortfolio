@@ -1,35 +1,22 @@
+// This file is the main server file that sets up the Express application and connection to MongoDB
+// backend/server.js
+
 import express from "express";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
-import Model from "./models/model.js";
+import productionRoutes from "./routes/data.js";
 
-dotenv.config();
+dotenv.config(); // Load environment variables from .env file
 
-const app = express();
+const app = express(); // Create an Express application
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json()); // Middleware to parse JSON bodies
 
-app.get("/api/Home", async (req, res) => {
-  const data = req.body; // user's sent data
+app.use("/api/Home", productionRoutes); // Use the production routes for API requests
 
-  if (!data.name || !data.price) {
-    return res
-      .status(400)
-      .json({ success: false, message: "Please provide all required fields." });
-  }
-
-  const newModel = new Model(data);
-
-  try {
-    await newModel.save();
-    res.status(201).json({ success: true, data: newModel });
-  } catch (error) {
-    console.error("Error in create data:", error.message);
-    res.status(500).json({ success: false, message: error.message });
-  }
-});
-
+// Start the server and connect to MongoDB
 app.listen(5000, () => {
   connectDB();
-  console.log("Server started at http://localhost:5000");
+  console.log("Server started at http://localhost:" + PORT);
 });
