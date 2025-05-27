@@ -1,0 +1,19 @@
+/* Ensure the page uses the full height and width */
+html, body {
+    margin: 0;
+    padding: 0;
+    height:100%;
+    width:100%;
+    font-family:'Courier New', Courier, monospace;
+    background-color: black;
+    overflow: hidden;
+}
+
+/* Main app layout */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width:100%;
+}
+
