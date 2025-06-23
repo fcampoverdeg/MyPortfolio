@@ -13,10 +13,14 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json()); // Middleware to parse JSON bodies
 
+app.get("/", (req, res) => {
+  res.send("Backend is running!");
+});
+
 app.use("/api/Home", productionRoutes); // Use the production routes for API requests
 
 // Start the server and connect to MongoDB
-app.listen(5000, () => {
+app.listen(PORT, () => {
   connectDB();
   console.log("Server started at http://localhost:" + PORT);
 });

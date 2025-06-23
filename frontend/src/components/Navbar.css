@@ -1,0 +1,123 @@
+/* src/components/Navbar.css */
+
+/* Styles for the Navbar Menu component */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
+
+
+/* ======== Sidebar Design ======== */
+.profile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100vh;
+  background-color: #000; /* Black */
+  color: #FFD700; /* Gold */
+  padding: 2rem 1rem;
+  z-index: 999;
+  transition: transform 0.4s ease;
+  font-family: 'Playfair Display', cursive;
+}
+
+/* Sidebar hidden on mobile unless active */
+@media screen and (max-width: 768px) {
+  .profile {
+    transform: translateX(-100%);
+  }
+
+  .profile.active {
+    transform: translateX(0);
+  }
+}
+
+/* Full nav on desktop */
+@media screen and (min-width: 769px) {
+  .profile {
+    transform: translateX(0);
+  }
+}
+
+/* ======== Nav Menu ======== */
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: #FFD700;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  color: #fff8dc;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0;
+  background: #FFD700;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ========== Hamburger Toggle Styles ========== */
+.mobile-nav-toggle {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem; /* Place on the right side */
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.mobile-nav-toggle .bar {
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background: #FFD700;
+  transition: all 0.4s ease-in-out;
+}
+
+/* ========== Animation When Active ========== */
+.mobile-nav-toggle.is-active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-nav-toggle.is-active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-nav-toggle.is-active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Show hamburger only on small screens */
+@media screen and (max-width: 768px) {
+  .mobile-nav-toggle {
+    display: block;
+  }
+}
+
+/* Content offset for sidebar on large screens */
+@media screen and (min-width: 769px) {
+  .app-container {
+    padding-left: 250px;
+  }
+}
+
+

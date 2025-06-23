@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-// import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar";
 // import Footer from "./components/Footer";
 import Home from "./components/Home";
 // import Projects from "./components/Projects";
@@ -18,13 +18,23 @@ const App = () => {
 
   return (
     <div className="app-container">
-      {/* <Navbar /> */}
+      {/* ======= Navbar ======= */}
+      <Navbar />
       <main>
-        <Home />
-        {/* <Projects />
-        <Contact /> */}
+        {/* Section Components */}
+        <section id="home" style={{ height: "100vh" }}>
+          <Home />
+        </section>
+        <section id="about" style={{ height: "100vh" }}>
+          {/* <About /> */}
+        </section>
+        <section id="resume" style={{ height: "100vh" }}>
+          {/* <Resume /> */}
+        </section>
+        <section id="contact" style={{ height: "100vh" }}>
+          {/* <Contact /> */}
+        </section>
       </main>
-      {/* <Footer /> */}
     </div>
   );
 };
