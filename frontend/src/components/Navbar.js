@@ -10,7 +10,12 @@ import {
   //   faProjectDiagram,
   faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGithub,
+  faLinkedin,
+  faPaypal,
+  faWhatsapp,
+} from "@fortawesome/free-brands-svg-icons";
 
 import "./Navbar.css";
 
@@ -18,7 +23,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuBtnRef = useRef(null);
 
-  // Hide sidebar automatically when window resizes to desktop
+  // Hide sidebar automatically when window rsesizes to desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -57,6 +62,46 @@ const Navbar = () => {
 
       {/*======= Side Bar Menu =======*/}
       <div className={`profile ${menuOpen ? "active" : "hidden"}`}>
+        {/*======= Profile Picture =======*/}
+        <div className="profile-header">
+          <img
+            src={require("../images/Logo.png")}
+            alt="Profile"
+            className="profile-image"
+          />
+
+          {/* ===== Social Icons Block ===== */}
+          <div className="social-icons">
+            {/*------- PayPal -------*/}
+            <a
+              href="https://paypal.me/fcampoverdegdev"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faPaypal} />
+            </a>
+            {/*------- Linkedin -------*/}
+            <a
+              href="https://www.linkedin.com/in/fcampoverdeg/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+            {/*------- WhatsApp -------*/}
+            <a
+              href="https://wa.me/8043565749"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faWhatsapp} />
+            </a>
+          </div>
+          {/* ============================= */}
+
+          <h2 className="profile-name">Felipe S. Campoverde</h2>
+        </div>
+
         {/*======= Nav Menu =======*/}
         <ul className="nav-menu">
           {/*------- Home -------*/}
@@ -101,42 +146,40 @@ const Navbar = () => {
               <span> &nbsp;Resume</span>
             </Link>
           </li>
-          {/*------- Linkedin -------*/}
-          <li>
-            <a
-              className="nav-link"
-              href="https://www.linkedin.com/in/fcampoverdeg/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon icon={faLinkedin} />
-              <span> &nbsp;LinkedIn</span>
-            </a>
+          {/*------- GitHub Hover Toggle -------*/}
+          <li className="github-toggle">
+            <div className="nav-link">
+              <span>
+                <FontAwesomeIcon icon={faGithub} />
+                &nbsp;GitHub
+              </span>
+              <span className="arrow"> ▼</span>
+            </div>
+
+            <ul className="github-submenu">
+              <li>
+                <a
+                  className="nav-link"
+                  href="https://github.com/fcampoverdeg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  &nbsp;🔹 Personal
+                </a>
+              </li>
+              <li>
+                <a
+                  className="nav-link"
+                  href="https://github.com/fcampoverdeg-dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  &nbsp;🎓 University
+                </a>
+              </li>
+            </ul>
           </li>
-          {/*------- GitHub fcampoverdeg -------*/}
-          <li>
-            <a
-              className="nav-link"
-              href="https://github.com/fcampoverdeg"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon icon={faGithub} />
-              <span> &nbsp;GitHub</span>
-            </a>
-          </li>
-          {/*------- GitHub fcampoverdeg-dev -------*/}
-          <li>
-            <a
-              className="nav-link"
-              href="https://github.com/fcampoverdeg-dev"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon icon={faGithub} />
-              <span> &nbsp;GitHub</span>
-            </a>
-          </li>
+
           {/*------- Contact -------*/}
           <li>
             <Link

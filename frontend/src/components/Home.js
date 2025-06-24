@@ -1,24 +1,28 @@
+import React, { useState, useEffect } from "react";
+import TypewriterEffect from "./TypewriterEffect";
+import coverImage from "../images/cover.jpg";
 import "./Home.css";
 
 const Home = () => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
-    <div className="home-container">
-      <h1>Welcome to My Portfolio</h1>
-      <h2>Felipe S. Campoverde</h2>
-
-      <div className="animeted-text">
-        {" "}
-        I'm a&nbsp;
-        <span
-          className="txt-rotate"
-          data-period="2000"
-          data-rotate='[ "Software Engineer", "Web Developer", "Tech Enthusiast" ]'
-        ></span>
+    <section className="home-container">
+      <div className="overlay">
+        <div className="home-content">
+          <h1 className="home-title">Felipe S. Campoverde</h1>
+          {mounted && (
+            <h2 className="home-subtitle">
+              I’m a <TypewriterEffect />
+            </h2>
+          )}
+        </div>
       </div>
-
-      <p>This is a brief introduction about myself and my work.</p>
-      <p>Feel free to explore my projects and get in touch!</p>
-    </div>
+    </section>
   );
 };
 

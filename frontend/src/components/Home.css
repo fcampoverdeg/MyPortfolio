@@ -1,25 +1,62 @@
+/* src/components/Home.css */
+
 .home-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    color: white;
-    background-color: rgba(128, 128, 128, 0.9); /* <- better */
-    font-family: 'Courier New', Courier, monospace;
-    overflow: hidden;
-    transition: background-color 0.3s ease;
-  }
+  height: 100vh;
+  width: 100%;
+  background-image: url("../images/cover.jpg"); /* update path if needed */
+  background-size: cover 100%;
+  background-position: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .home-container {
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-  }
 
-  .home-container:hover {
-    background-color: rgba(128, 128, 128, 0.7);
-  }
-  
-  
-  
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 105%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* covers entire image */
+
+  display: flex;
+  align-items: center;      /* Vertical centering */
+  justify-content: center;  /* Horizontal centering */
+}
+
+.home-content {
+  position: absolute;
+  top: 50%;
+  left: 43%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+}
+
+.home-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #FFD700;
+  font-family: 'Playfair Display', cursive;
+}
+
+/* ======== Animation I'm a ======== */
+.home-subtitle {
+  color: #fff8dc;
+  font-size: 1.9rem;
+  margin-top: 0rem;;
+  font-family: 'Playfair Display', cursive;
+}
+
+.blinking-cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
