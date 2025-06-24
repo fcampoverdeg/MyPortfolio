@@ -10,7 +10,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100px;
+  width: 250px;
   height: 100vh;
   background-color: #000; /* Black */
   color: #FFD700; /* Gold */
@@ -18,6 +18,9 @@
   z-index: 999;
   transition: transform 0.4s ease;
   font-family: 'Playfair Display', cursive;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Sidebar hidden on mobile unless active */
@@ -38,18 +41,67 @@
   }
 }
 
+/* ======== Profile Picture ======== */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.profile-image {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #FFD700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+.profile-name {
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 0.5rem;
+  color: #FFD700;
+    padding: 0rem 1rem;
+  font-family: 'Playfair Display', cursive;
+  text-align: center;
+}
+
+/* ======== Social Icons ======== */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 0.9rem;
+  margin: 1rem 0;
+}
+
+.social-icons a {
+  color: #FFD700;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: white;
+  transform: scale(1.2);
+}
+
 /* ======== Nav Menu ======== */
 .nav-menu {
   list-style: none;
-  padding: 0;
   display: flex;
+  padding: 0rem 1rem 2rem;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
 .nav-link {
   color: #FFD700;
   text-decoration: none;
+  z-index: 1;
   font-size: 1.1rem;
   transition: all 0.3s ease;
   position: relative;
@@ -74,6 +126,75 @@
 .nav-link:hover::after {
   width: 100%;
 }
+
+/* ======== GitHub SubMenu ======== */
+.github-toggle {
+  position: relative;
+}
+
+/* Submenu default (collapsed) */
+.github-submenu {
+  list-style: none;
+  padding-left: 0.3rem;
+  margin: 0;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+/* Show submenu on hover */
+.github-toggle:hover .github-submenu {
+  max-height: 80px; /* Enough for two items */
+  opacity: 1;
+  pointer-events: auto;
+  padding-bottom: 0.4rem;
+}
+
+/* Submenu list items */
+.github-submenu li {
+  margin-top: 1rem;
+}
+
+/* Submenu links */
+.github-submenu .nav-link {
+  color: #FFD700;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding-left: 1.2rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.2rem;
+  transition: all 0.3s ease;
+}
+
+/* Underline effect on hover */
+.github-submenu .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0;
+  background: #FFD700;
+  transition: width 0.3s ease;
+}
+
+.github-submenu .nav-link:hover::after {
+  width: 100%;
+}
+
+/* Arrow animation */
+.github-toggle .arrow {
+  transition: transform 0.3s ease;
+}
+
+.github-toggle:hover .arrow {
+  transform: rotate(180deg);
+}
+
+
 
 /* ========== Hamburger Toggle Styles ========== */
 .mobile-nav-toggle {

@@ -44,10 +44,13 @@ main {
 }
 
 section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     min-height: 100vh;
-    padding: 3rem 2rem;
+    padding: 3rem 3rem 3rem 2rem;
     border-bottom: 1px solid #FFD70010; /* subtle gold line */
-    scroll-snap-align: start; /* ensures sections snap to the top */;
+    scroll-snap-align: start; /* ensures sections snap to the top */
 }
 
 
