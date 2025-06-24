@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TypewriterEffect from "./TypewriterEffect";
-import coverImage from "../images/cover.jpg";
+
 import "./Home.css";
 
 const Home = () => {
