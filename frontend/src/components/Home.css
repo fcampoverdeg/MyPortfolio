@@ -3,17 +3,17 @@
 .home-container {
   height: 100vh;
   width: 100vw;
-  background-image: url("../images/cover.jpg"); /* update path if needed */
-  background-size: cover 100%;
-  background-position: cover;
+  background-image: url("../images/cover.jpg");
+  background-size: cover;
+  background-position: left center;;
   background-repeat: no-repeat;
   position: relative;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  overflow: hidden;
+}
 
 .overlay {
   position: absolute;
@@ -22,10 +22,10 @@
   height: 105%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.6); /* covers entire image */
-
   display: flex;
   align-items: center;      /* Vertical centering */
   justify-content: center;  /* Horizontal centering */
+  z-index: 1;
 }
 
 .home-content {
@@ -75,21 +75,35 @@
 @media screen and (max-width: 768px) {
 
   .home-container {
-    background-size: cover;
-    background-position: center;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-48%, -50%); /* truly centers the block */
+    width: 100%;
+    text-align: center;               /* centers text inside */
   }
 
   .home-content {
-    width: cover;
+    display: block;
+    width: 60%;
+    left: 50%;
+    right: 50%;
+    position: absolute;
     font-size: 90%;
   }
 
   .home-title {
+    display: block;
     font-size: 2.2rem;
+    margin-bottom: 0.5rem;   /* space between lines */
   }
 
   .home-subtitle {
+    display: block;
     font-size: 1.4rem;
+    margin-top: 0.5rem;
+    position: center;
+    white-space: normal;
   }
 }
 
