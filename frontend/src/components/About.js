@@ -23,9 +23,15 @@ const About = () => {
       observer.observe(sectionRef.current);
     }
 
+    const currentRef = sectionRef.current; // 🔒 capture stable ref
+
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
