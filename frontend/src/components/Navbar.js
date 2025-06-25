@@ -22,6 +22,7 @@ import "./Navbar.css";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuBtnRef = useRef(null);
+  const sidebarRef = useRef(null);
 
   // Hide sidebar automatically when window rsesizes to desktop
   useEffect(() => {
@@ -46,6 +47,23 @@ const Navbar = () => {
     }
   }, [menuOpen]);
 
+  // Detect outside click on mobile
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        menuOpen &&
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target) &&
+        window.innerWidth < 769
+      ) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [menuOpen]);
+
   return (
     <>
       {/* ====== Hamburger Toggle Button ====== */}
@@ -59,9 +77,8 @@ const Navbar = () => {
         <div className="bar"></div>
         <div className="bar"></div>
       </div>
-
       {/*======= Side Bar Menu =======*/}
-      <div className={`profile ${menuOpen ? "active" : "hidden"}`}>
+      <div className={`profile ${menuOpen ? "active" : ""}`} ref={sidebarRef}>
         {/*======= Profile Picture =======*/}
         <div className="profile-header">
           <img

@@ -14,10 +14,11 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 250px;
   height: 100vh;
-  background-color: #000; /* Black */
-  color: #FFD700; /* Gold */
+  width: 250px;
+  overflow-y: auto;;
+  background-color: #000;
+  color: #FFD700;
   padding: 2rem 1rem;
   z-index: 999;
   transition: transform 0.4s ease;
@@ -25,7 +26,118 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
 }
+
+/* #################################################################################################### */
+/* Phone Setup */
+/* #################################################################################################### */
+
+/* Sidebar hidden on mobile unless active */
+@media screen and (max-width: 768px) {
+  .profile {
+    transform: translateX(-100%);
+    width: 150px;
+    transition: transform 0.4s ease;
+    overflow-y: auto;
+    max-height: 100vh;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .profile.active {
+    transform: translateX(0);
+  }
+  
+  /* Profile image size adjustment for mobile */
+  .profile-image {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+  }
+  
+  /* Show hamburger only on small screens */
+  .mobile-nav-toggle {
+    display: block;
+  }
+}
+
+/* ####################################################################################################
+Desktop Setup
+################################################################################################### */
+
+/* Always visible on desktop */
+@media screen and (min-width: 769px) {
+  .profile {
+    transform: translateX(0);
+    width: 250px;
+  }
+
+  .mobile-nav-toggle {
+    display: none !important;/* Hide hamburger on desktop */
+  }
+}
+
+/* ###################################################################################################
+Sidebar Overlay For Mobile
+#################################################################################################### */
+
+.sidebar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-wrapper.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+/* #################################################################################################### */
+/* HAMBURGER ICON */
+/* #################################################################################################### */
+
+/* ========== Hamburger Toggle Styles ========== */
+.mobile-nav-toggle {
+  display: block;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.mobile-nav-toggle .bar {
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background: #FFD700;
+  transition: all 0.4s ease-in-out;
+}
+
+.mobile-nav-toggle.is-active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-nav-toggle.is-active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-nav-toggle.is-active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* #################################################################################################### */
+/* Nav Links, Socials, Styling */
+/* #################################################################################################### */
 
 /* ======== Profile Header ======== */
 .profile-header {
@@ -121,6 +233,10 @@
   width: 100%;
 }
 
+/* #################################################################################################### */
+/* GitHub */
+/* #################################################################################################### */
+
 /* ======== GitHub SubMenu ======== */
 .github-toggle {
   position: relative;
@@ -189,94 +305,4 @@
 .github-toggle:hover .arrow {
   transform: rotate(180deg);
 }
-
-/* #################################################################################################### */
-/* Phone Setup */
-/* #################################################################################################### */
-
-/* ========== Hamburger Toggle Styles ========== */
-.mobile-nav-toggle {
-  display: none;
-  position: absolute;
-  top: 1rem;
-  right: 1rem; /* Place on the right side */
-  cursor: pointer;
-  z-index: 1000;
-}
-
-/* Hamburger bars */
-.mobile-nav-toggle .bar {
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  background: #FFD700;
-  transition: all 0.4s ease-in-out;
-}
-
-/* Sidebar hidden on mobile unless active */
-@media screen and (max-width: 768px) {
-  .profile {
-    transform: translateX(-100%);
-  }
-
-  /* Show sidebar when active */
-  .profile.active {
-    transform: translateX(0);
-    width: 150px;
-    overflow-y: auto;
-    max-height: 100vh;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
-/* Full nav on desktop */
-@media screen and (min-width: 769px) {
-  .profile {
-    transform: translateX(0);
-  }
-}
-
-/* Profile image size adjustment for mobile */
-@media screen and (max-width: 769px) {
-.profile-image {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;}
-} 
-
-/* Show hamburger only on small screens */
-@media screen and (max-width: 768px) {
-  .mobile-nav-toggle {
-    display: block;
-  }
-}
-
-/* Content offset for sidebar on large screens */
-@media screen and (min-width: 769px) {
-  .app-container {
-    padding-left: 250px;
-  }
-}
-
-/* Hide sidebar on small screens */
-@media screen and (max-width: 768px) {
-  .nav-menu {
-    padding: 0;
-    margin: 0;
-  }
-}
-
-/* ========== Phone Preview ========== */
-.mobile-nav-toggle.is-active .bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.mobile-nav-toggle.is-active .bar:nth-child(2) {
-  opacity: 0;
-}
-
-.mobile-nav-toggle.is-active .bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
 
