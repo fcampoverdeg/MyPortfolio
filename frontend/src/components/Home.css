@@ -9,15 +9,14 @@
   height: 100vh;
   width: 100vw;
   background-image: url("../images/cover.jpg");
-  background-size: cover 30%;
+  background-size: cover;
   background-position: left center;
   background-repeat: no-repeat;
   position: relative;
 
   display: flex;
-  align-items: left;
+  align-items: flex-start;
   justify-content: center;
-  overflow: hidden;
 }
 
 /* ======== Overlay ======== */
@@ -37,7 +36,7 @@
 .home-content {
   position: absolute;
   top: 50%;
-  left: 43%;
+  left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 2;
@@ -77,6 +76,17 @@
 }
 
 /* #################################################################################################### */
+/* Desktop Setup */
+/* #################################################################################################### */
+
+@media screen and (min-width: 769px) {
+  .home-container {
+    background-attachment: fixed;
+  }
+}
+
+
+/* #################################################################################################### */
 /* Phone Setup */
 /* #################################################################################################### */
 
@@ -91,8 +101,9 @@
     transform: translate(-48%, -50%); /* truly centers the block */
     width: 100%;
     text-align: center;               /* centers text inside */
+    background-attachment: scroll;
   }
-
+  
   /* ======== Overlay Phone ======== */
   .home-content {
     display: block;
