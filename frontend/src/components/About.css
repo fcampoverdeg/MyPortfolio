@@ -1,0 +1,161 @@
+/* src/components/Home.css */
+
+/* #################################################################################################### */
+/* About Page Design */
+/* #################################################################################################### */
+
+/* ======= About Container ======== */
+.about-container {
+  min-height: 60vh;
+  width: 100vw;
+  background-color: #111;
+  color: #FFD700;
+  padding: 4rem 2rem;
+  font-family: 'Playfair Display', cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+  margin: 0;
+  scroll-margin-top: 80px;
+}
+
+.about-inner {
+  display: flex;
+  max-width: 1000px;
+  gap: 3rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1.2s ease;
+}
+
+.about-inner.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-image img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #FFD700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.about-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.impact-line {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  color: #FFD700; /* same gold color */
+  font-weight: bold;
+  text-align: center;
+}
+
+
+.about-title {
+  font-size: 2.8rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+  display: inline-block;
+}
+
+.about-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  height: 3px;
+  width: 60%;
+  background: #FFD700;
+}
+
+.about-description p {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  margin-bottom: 0.7rem;
+  color: #e8e8e8;
+}
+
+.highlight {
+  color: #FFD700;
+  font-weight: bold;
+}
+
+
+/* #################################################################################################### */
+/* Phone Setup */
+/* #################################################################################################### */
+
+@media screen and (max-width: 768px) {
+.about-container {
+  min-height: 150vh;
+  width: 100vw;
+  padding: 25rem 2rem 0rem 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+  margin: 0;
+  scroll-margin-top: 80px;
+}
+
+.about-inner {
+  flex-direction: column;   
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  transition: all 1.2s ease;
+}
+
+.about-inner.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+  .about-text {
+    text-align: center;
+  }
+
+  .about-title {
+    font-size: 2.2rem;
+    margin: 0;
+  }
+
+  .about-description p {
+    font-size: 1.1rem;
+  }
+
+  .about-image {
+    margin-bottom: 1.5rem;
+  }
+}
