@@ -5,7 +5,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
 
 
-/* ======== Sidebar Design ======== */
+/* #################################################################################################### */
+/* Sidebar Design */
+/* #################################################################################################### */
+
+/* ======== Profile Sidebar ======== */
 .profile {
   position: fixed;
   top: 0;
@@ -23,7 +27,7 @@
   justify-content: center;
 }
 
-/* ======== Profile Picture ======== */
+/* ======== Profile Header ======== */
 .profile-header {
   display: flex;
   flex-direction: column;
@@ -32,6 +36,7 @@
   margin-bottom: 2rem;
 }
 
+/* ======== Profile Image ======== */
 .profile-image {
   width: 130px;
   height: 130px;
@@ -42,6 +47,7 @@
   margin-bottom: 1rem;
 }
 
+/* ======== Profile Name ======== */
 .profile-name {
   font-size: 1.3rem;
   font-weight: bold;
@@ -60,12 +66,14 @@
   margin: 1rem 0;
 }
 
+/* Social icons styles */
 .social-icons a {
   color: #FFD700;
   font-size: 1.2rem;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
+/* Social icons hover effect */
 .social-icons a:hover {
   color: white;
   transform: scale(1.2);
@@ -80,6 +88,7 @@
   gap: 1.75rem;
 }
 
+/* Nav menu items */
 .nav-link {
   color: #FFD700;
   text-decoration: none;
@@ -90,10 +99,12 @@
   cursor: pointer;
 }
 
+/* Hover effect for nav links */
 .nav-link:hover {
   color: #fff8dc;
 }
 
+/* Underline effect for nav links */
 .nav-link::after {
   content: "";
   position: absolute;
@@ -105,6 +116,7 @@
   transition: width 0.3s ease;
 }
 
+/* Underline effect on hover */
 .nav-link:hover::after {
   width: 100%;
 }
@@ -163,6 +175,7 @@
   transition: width 0.3s ease;
 }
 
+/* Hover effect for submenu links */
 .github-submenu .nav-link:hover::after {
   width: 100%;
 }
@@ -172,11 +185,14 @@
   transition: transform 0.3s ease;
 }
 
+/* Rotate arrow on hover */
 .github-toggle:hover .arrow {
   transform: rotate(180deg);
 }
 
-
+/* #################################################################################################### */
+/* Phone Setup */
+/* #################################################################################################### */
 
 /* ========== Hamburger Toggle Styles ========== */
 .mobile-nav-toggle {
@@ -188,6 +204,7 @@
   z-index: 1000;
 }
 
+/* Hamburger bars */
 .mobile-nav-toggle .bar {
   width: 25px;
   height: 3px;
@@ -196,28 +213,19 @@
   transition: all 0.4s ease-in-out;
 }
 
-/* ========== Phone Preview ========== */
-.mobile-nav-toggle.is-active .bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.mobile-nav-toggle.is-active .bar:nth-child(2) {
-  opacity: 0;
-}
-
-.mobile-nav-toggle.is-active .bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
 /* Sidebar hidden on mobile unless active */
 @media screen and (max-width: 768px) {
   .profile {
     transform: translateX(-100%);
   }
 
+  /* Show sidebar when active */
   .profile.active {
     transform: translateX(0);
     width: 150px;
+    overflow-y: auto;
+    max-height: 100vh;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -228,6 +236,7 @@
   }
 }
 
+/* Profile image size adjustment for mobile */
 @media screen and (max-width: 769px) {
 .profile-image {
   width: 110px;
@@ -249,11 +258,25 @@
   }
 }
 
+/* Hide sidebar on small screens */
 @media screen and (max-width: 768px) {
   .nav-menu {
     padding: 0;
     margin: 0;
   }
+}
+
+/* ========== Phone Preview ========== */
+.mobile-nav-toggle.is-active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-nav-toggle.is-active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-nav-toggle.is-active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 
