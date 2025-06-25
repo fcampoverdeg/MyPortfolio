@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Navbar from "./components/Navbar";
 // import Footer from "./components/Footer";
 import Home from "./components/Home";
+import About from "./components/About";
 // import Projects from "./components/Projects";
 // import Contact from "./components/Contact";
 
@@ -25,8 +26,8 @@ const App = () => {
         <section id="home" style={{ height: "100vh" }}>
           <Home />
         </section>
-        <section id="about" style={{ height: "100vh" }}>
-          {/* <About /> */}
+        <section id="about" style={{ height: "60vh" }}>
+          <About />
         </section>
         <section id="resume" style={{ height: "100vh" }}>
           {/* <Resume /> */}

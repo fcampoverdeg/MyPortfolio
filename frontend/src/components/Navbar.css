@@ -161,7 +161,7 @@ Sidebar Overlay For Mobile
 
 /* ======== Profile Name ======== */
 .profile-name {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: bold;
   padding: 0.5rem;
   color: #FFD700;
@@ -174,14 +174,14 @@ Sidebar Overlay For Mobile
 .social-icons {
   display: flex;
   justify-content: center;
-  gap: 0.9rem;
+  gap: 1.5rem;
   margin: 1rem 0;
 }
 
 /* Social icons styles */
 .social-icons a {
   color: #FFD700;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
@@ -205,7 +205,7 @@ Sidebar Overlay For Mobile
   color: #FFD700;
   text-decoration: none;
   z-index: 1;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   transition: all 0.3s ease;
   position: relative;
   cursor: pointer;

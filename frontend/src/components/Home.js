@@ -11,7 +11,7 @@ const Home = () => {
   }, []);
 
   return (
-    <section className="home-container">
+    <section id="home" className="home-container">
       <div className="overlay">
         <div className="home-content">
           <h1 className="home-title">Felipe S. Campoverde</h1>
