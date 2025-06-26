@@ -5,9 +5,8 @@
 /* #################################################################################################### */
 
 .resume-container {
-  /* min-height: 100vh; */
+  min-height: 100vh;
   width: 100vw;
-  background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
   font-family: 'Playfair Display', cursive;
   scroll-snap-align: start;
   scroll-margin-top: 120px;
@@ -19,7 +18,7 @@
   font-family: 'Playfair Display', cursive;
   position: relative;
   text-align: left;
-  padding: 1rem 0 0 19rem;
+  padding: 5rem 0 0 18rem;
   color: #FFD700;
   margin-bottom: 0.5rem;
 }
@@ -37,6 +36,7 @@
 
 .resume-wrapper {
   display: flex;
+  background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
   width: calc(100vw - 250px);
   margin-left: 230px;
   min-height: 100vh;
@@ -64,10 +64,11 @@
 
 /* Section Titles: Education, Skills, etc. */
 .resume-project {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   color: #FFD700;
   text-align: left;
   margin-bottom: 2rem;
+  margin-left: -1rem;
   position: relative;
 }
 
@@ -142,13 +143,13 @@
 
 @media (max-width: 768px) {
   .resume-container {
-    height: 90vh;
+    height: 100vh;
     padding: 0rem 2rem 2rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     scroll-snap-align: start;
-    scroll-margin-top: 120px; 
+    scroll-margin-top: 110px; 
     box-sizing: border-box;
   }
 
@@ -168,16 +169,19 @@
   }
 
   .resume-divider {
-    display: none;
+    min-width: 350px;
+    background-color: #FFD700;
+    border-radius: 1px;
+    opacity: 0.8;
+    margin-top: 0rem;
+    min-height: 3px;
   }
 
-.resume-title {
-  font-size: 2.2rem;
-  text-align: center;
-  padding: 1rem 0;
-  margin-bottom: 1rem;
-}
-
+  .resume-title {
+    font-size: 2.2rem;
+    text-align: center;
+    padding: 3rem 0rem 0rem 0rem;
+  }
 
   .resume-title::after {
     margin-left: auto;
@@ -204,6 +208,7 @@
 
   .project-title {
     font-size: 1.4rem;
+    font-family: 'Ubuntu', sans-serif;
   }
 
   .project-tech,

@@ -30,7 +30,11 @@ const App = () => {
         <section id="about" style={{ height: "70vh" }}>
           <About />
         </section>
-        <section id="resume" style={{ height: "148vh" }}>
+        <section
+          id="resume"
+          className="resume-section"
+          style={{ height: "148vh" }}
+        >
           <Resume />
         </section>
         <section id="contact" style={{ height: "100vh" }}>
