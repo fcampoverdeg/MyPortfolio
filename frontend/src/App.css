@@ -5,8 +5,6 @@
 /* Smooth scroll for anchor links */
 html {
     scroll-behavior: smooth;
-    overflow-y: auto;
-    /* scroll-snap-type: mandatory; */
 }
 
 /* Ensure the page uses the full height and width */
@@ -31,6 +29,8 @@ html, body {
 }
 
 main {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
     flex-grow: 1;
     margin: 0;
 }
@@ -42,7 +42,6 @@ section {
     margin: 0;
     padding: 0rem 3rem 0rem 2rem;
     border-bottom: 1px solid #FFD70010; /* subtle gold line */
-    scroll-snap-align: start; /* ensures sections snap to the top */
 }
 
 
