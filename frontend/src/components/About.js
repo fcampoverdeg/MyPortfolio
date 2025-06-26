@@ -39,7 +39,7 @@ const About = () => {
           <img src={profileImg} alt="Felipe S. Campoverde" />
         </div>
         <div className="about-text">
-          <h2 className="about-title">About Me</h2>
+          <h2 className="about-title">About</h2>
           <div className="about-description">
             <p>Welcome!</p>
             <p>

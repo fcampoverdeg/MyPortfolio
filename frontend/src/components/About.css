@@ -1,14 +1,12 @@
 /* src/components/Home.css */
 
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
-
 /* #################################################################################################### */
 /* About Page Design */
 /* #################################################################################################### */
 
 /* ======= About Container ======== */
 .about-container {
-  min-height: 60vh;
+  min-height: 70vh;
   width: 100vw;
   background-color: #111;
   color: #FFD700;
@@ -24,6 +22,8 @@
 
 .about-inner {
   display: flex;
+  left: 50%;
+  right: 50%;
   max-width: 1000px;
   gap: 3rem;
   flex-wrap: wrap;
@@ -61,8 +61,7 @@
 }
 
 .about-text {
-font-family: 'Ubuntu', sans-serif;
-
+  font-family: 'Ubuntu', sans-serif;
   flex: 1;
   min-width: 300px;
 }
@@ -73,7 +72,7 @@ font-family: 'Ubuntu', sans-serif;
 
 .impact-line {
   margin-top: 1.5rem;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: #FFD700; /* same gold color */
   font-weight: bold;
   text-align: center;
@@ -81,7 +80,7 @@ font-family: 'Ubuntu', sans-serif;
 
 
 .about-title {
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   margin-bottom: 1.2rem;
   position: relative;
   display: inline-block;
@@ -98,7 +97,7 @@ font-family: 'Ubuntu', sans-serif;
 }
 
 .about-description p {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   line-height: 1.8;
   margin-bottom: 0.7rem;
   color: #e8e8e8;
@@ -115,10 +114,11 @@ font-family: 'Ubuntu', sans-serif;
 /* #################################################################################################### */
 
 @media screen and (max-width: 768px) {
+  
 .about-container {
   min-height: 150vh;
   width: 100vw;
-  padding: 25rem 2rem 0rem 2rem;
+  padding: 16rem 2rem 0rem 2rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -133,6 +133,7 @@ font-family: 'Ubuntu', sans-serif;
   flex-direction: column;   
   text-align: center;
   justify-content: center;
+  gap: 1rem;
   align-items: center;
   height: auto;
   transition: all 1.2s ease;

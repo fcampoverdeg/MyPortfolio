@@ -2,6 +2,11 @@
 
 /* General styles for the application */
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+
+
 /* Smooth scroll for anchor links */
 html {
     scroll-behavior: smooth;
