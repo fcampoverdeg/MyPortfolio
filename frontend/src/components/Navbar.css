@@ -121,7 +121,7 @@ Sidebar Overlay For Mobile
 .mobile-nav-toggle {
   display: block;
   position: absolute;
-  top: 1rem;
+  top: 2rem;
   right: 1rem;
   cursor: pointer;
   z-index: 1000;

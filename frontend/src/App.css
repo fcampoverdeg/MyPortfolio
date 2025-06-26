@@ -26,11 +26,8 @@ html, body {
 
 /* Main app layout */
 .app-container {
-    display: flex;
-    flex-direction: column;
+    height: 100%;
     width: 100%;
-    background-color: black;
-    color: #FFD700; /* optional: gold text as default */
 }
 
 main {
@@ -47,6 +44,11 @@ section {
     margin: 0;
     padding: 0rem 3rem 0rem 2rem;
     border-bottom: 1px solid #FFD70010; /* subtle gold line */
+}
+
+
+.resume-section {
+    background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
 }
 
 
