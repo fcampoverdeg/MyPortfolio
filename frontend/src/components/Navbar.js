@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-scroll";
 import {
   faHome,
   faUser,
@@ -23,6 +22,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuBtnRef = useRef(null);
   const sidebarRef = useRef(null);
+  const [animateSidebar, setAnimateSidebar] = useState(false);
 
   // Hide sidebar automatically when window rsesizes to desktop
   useEffect(() => {
@@ -35,18 +35,6 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Toggle hamburger menu on click
-  useEffect(() => {
-    const menuBtn = menuBtnRef.current;
-    if (menuBtn) {
-      if (menuOpen) {
-        menuBtn.classList.add("is-active");
-      } else {
-        menuBtn.classList.remove("is-active");
-      }
-    }
-  }, [menuOpen]);
-
   // Detect outside click on mobile
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -54,6 +42,8 @@ const Navbar = () => {
         menuOpen &&
         sidebarRef.current &&
         !sidebarRef.current.contains(event.target) &&
+        menuBtnRef.current &&
+        !menuBtnRef.current.contains(event.target) &&
         window.innerWidth < 769
       ) {
         setMenuOpen(false);
@@ -64,21 +54,36 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [menuOpen]);
 
+  // Starting Animation Side Bar
+  useEffect(() => {
+    if (window.innerWidth >= 768) {
+      setAnimateSidebar(true);
+    }
+  }, []);
+
   return (
     <>
       {/* ====== Hamburger Toggle Button ====== */}
       <div
-        className={`mobile-nav-toggle`}
+        className={`mobile-nav-toggle ${menuOpen ? "is-active" : ""}`}
         id="mobile-menu"
         ref={menuBtnRef}
-        onClick={() => setMenuOpen(!menuOpen)}
+        onClick={(e) => {
+          e.stopPropagation(); // Prevent click bubbling
+          setMenuOpen((prev) => !prev);
+        }}
       >
         <div className="bar"></div>
         <div className="bar"></div>
         <div className="bar"></div>
       </div>
       {/*======= Side Bar Menu =======*/}
-      <div className={`profile ${menuOpen ? "active" : ""}`} ref={sidebarRef}>
+      <div
+        className={`profile ${menuOpen ? "active" : ""} ${
+          animateSidebar ? "sidebar-animate-in" : ""
+        }`}
+        ref={sidebarRef}
+      >
         {/*======= Profile Picture =======*/}
         <div className="profile-header">
           <img
@@ -94,6 +99,11 @@ const Navbar = () => {
               href="https://paypal.me/fcampoverdegdev"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => {
+                if (window.innerWidth < 768) {
+                  setMenuOpen(false);
+                }
+              }}
             >
               <FontAwesomeIcon icon={faPaypal} />
             </a>
@@ -102,6 +112,11 @@ const Navbar = () => {
               href="https://www.linkedin.com/in/fcampoverdeg/"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => {
+                if (window.innerWidth < 768) {
+                  setMenuOpen(false);
+                }
+              }}
             >
               <FontAwesomeIcon icon={faLinkedin} />
             </a>
@@ -110,6 +125,11 @@ const Navbar = () => {
               href="https://wa.me/8043565749"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => {
+                if (window.innerWidth < 768) {
+                  setMenuOpen(false);
+                }
+              }}
             >
               <FontAwesomeIcon icon={faWhatsapp} />
             </a>
@@ -122,47 +142,59 @@ const Navbar = () => {
         {/*======= Nav Menu =======*/}
         <ul className="nav-menu">
           {/*------- Home -------*/}
-          <li>
-            <Link
-              className="nav-link"
-              to="home"
-              smooth={true}
-              duration={500}
-              spy={true}
-              activeClass="active"
-            >
-              <FontAwesomeIcon icon={faHome} />
-              <span> &nbsp;Home</span>
-            </Link>
-          </li>
+          <a
+            className="nav-link"
+            href="#home"
+            onClick={(e) => {
+              e.preventDefault(); // prevent default jump
+              if (window.innerWidth < 768) setMenuOpen(false);
+
+              // Scroll to the section manually
+              const section = document.getElementById("home");
+              if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
+            <FontAwesomeIcon icon={faHome} />
+            <span> &nbsp;Home</span>
+          </a>
           {/*------- About -------*/}
-          <li>
-            <Link
-              className="nav-link"
-              to="about"
-              smooth={true}
-              duration={500}
-              spy={true}
-              activeClass="active"
-            >
-              <FontAwesomeIcon icon={faUser} />
-              <span> &nbsp;About</span>
-            </Link>
-          </li>
+          <a
+            className="nav-link"
+            href="#about"
+            onClick={(e) => {
+              e.preventDefault(); // prevent default jump
+              if (window.innerWidth < 768) setMenuOpen(false);
+
+              // Scroll to the section manually
+              const section = document.getElementById("about");
+              if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
+            <FontAwesomeIcon icon={faUser} />
+            <span> &nbsp;About</span>
+          </a>
           {/*------- Resume -------*/}
-          <li>
-            <Link
-              className="nav-link"
-              to="resume"
-              smooth={true}
-              duration={500}
-              spy={true}
-              activeClass="active"
-            >
-              <FontAwesomeIcon icon={faFile} />
-              <span> &nbsp;Resume</span>
-            </Link>
-          </li>
+          <a
+            className="nav-link"
+            href="#resume"
+            onClick={(e) => {
+              e.preventDefault(); // prevent default jump
+              if (window.innerWidth < 768) setMenuOpen(false);
+
+              // Scroll to the section manually
+              const section = document.getElementById("resume");
+              if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
+            <FontAwesomeIcon icon={faFile} />
+            <span> &nbsp;Resume</span>
+          </a>
           {/*------- GitHub Hover Toggle -------*/}
           <li className="github-toggle">
             <div className="nav-link">
@@ -198,19 +230,23 @@ const Navbar = () => {
           </li>
 
           {/*------- Contact -------*/}
-          <li>
-            <Link
-              className="nav-link"
-              to="contact"
-              smooth={true}
-              duration={500}
-              spy={true}
-              activeClass="active"
-            >
-              <FontAwesomeIcon icon={faEnvelope} />
-              <span> &nbsp;Contact</span>
-            </Link>
-          </li>
+          <a
+            className="nav-link"
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault(); // prevent default jump
+              if (window.innerWidth < 768) setMenuOpen(false);
+
+              // Scroll to the section manually
+              const section = document.getElementById("contact");
+              if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
+            <FontAwesomeIcon icon={faEnvelope} />
+            <span> &nbsp;Contact</span>
+          </a>
         </ul>
         {/*======= Nav Menu Ends =======*/}
       </div>

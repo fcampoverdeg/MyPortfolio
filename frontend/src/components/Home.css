@@ -12,11 +12,22 @@
   background-size: cover;
   background-position: left center;
   background-repeat: no-repeat;
+  background-attachment: fixed !important;
   position: relative;
 
   display: flex;
   align-items: flex-start;
   justify-content: center;
+}
+
+/* New inner wrapper for animated content only */
+.home-content-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* ======== Overlay ======== */
@@ -76,6 +87,43 @@
 }
 
 /* #################################################################################################### */
+/* Start up Animation */
+/* #################################################################################################### */
+
+/* === Fancy fade-in animation === */
+@keyframes fancyAppearDesktop {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    filter: blur(3px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(15px) scale(1.01);
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes fancyAppearMobile {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Base fade-in class */
+.fancy-fade-in {
+  animation: fancyAppearMobile 1s ease-out both;
+}
+
+/* #################################################################################################### */
 /* Desktop Setup */
 /* #################################################################################################### */
 
@@ -83,6 +131,11 @@
   .home-container {
     background-attachment: fixed;
   }
+
+  .fancy-fade-in {
+    animation: fancyAppearDesktop 1.8s ease-out both;
+  }
+
 }
 
 
