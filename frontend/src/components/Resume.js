@@ -15,6 +15,8 @@ const Resume = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const node = containerRef.current; // Store current value
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) setIsVisible(true);
@@ -22,10 +24,10 @@ const Resume = () => {
       { threshold: 0.3 }
     );
 
-    if (containerRef.current) observer.observe(containerRef.current);
+    if (node) observer.observe(node);
 
     return () => {
-      if (containerRef.current) observer.unobserve(containerRef.current);
+      if (node) observer.unobserve(node); // Use stored reference
     };
   }, []);
 
