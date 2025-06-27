@@ -31,10 +31,10 @@ html, body {
 }
 
 main {
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-    flex-grow: 1;
-    margin: 0;
+  scroll-snap-type: y proximity; /* still snappy but not locked */
+  overflow-y: visible; /* allow full page scrolling */
+  flex-grow: 1;
+  margin: 0;
 }
 
 section {
@@ -43,12 +43,21 @@ section {
     justify-content: center;
     margin: 0;
     padding: 0rem 3rem 0rem 2rem;
-    border-bottom: 1px solid #FFD70010; /* subtle gold line */
+    background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
 }
 
+.about-section{
+  scroll-margin-top: 80px;
+}
 
 .resume-section {
-    background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+    background: #0a0a0a;
+    scroll-margin-top: -65px;
+}
+
+.contact-section {
+    background: #000;
+    scroll-margin-top: -160px;
 }
 
 
@@ -79,5 +88,21 @@ section {
     padding: 0rem 1rem 1rem 0rem; /* Reduced padding for smaller screens */
     margin: 0; /* Remove margin for better fit */
   }
+
+  .about-section{
+  scroll-margin-top: 30px;
+}
+
+.resume-section {
+    min-height: 170vh;
+    background: #0a0a0a;
+    scroll-margin-top: -280px;
+}
+
+.contact-section {
+    background: #000;
+    scroll-margin-top: -10px;
+}
+
 }
 

@@ -1,0 +1,65 @@
+﻿Felipe Campoverde
+Blacksburg Virginia | (804) 356-5749 | fcampoverdeg@vt.edu | in/fcampoverdeg | fcampoverdeg.dev/
+EDUCATION        
+Virginia Tech, College of Engineering, Blacksburg, VA                                                            2024 - 2026 
+Bachelor of Science in Computer Science                                                                              GPA: 3.0
+
+
+________________
+
+
+WORK EXPERIENCE
+Chief Engineer & Software Engineer: CroQuest | VT CRO| Blacksburg, VA                                                 March 2025 - Present
+
+
+* Developed an educational game console using ESP32-WROOM, Bluetooth, SD. Wrote 5000+ lines of code.
+* Programmed 8 games like Snake, Pong, Tetris, Breakout, TicTacToe using C/C++, use of assets
+* Programmed Bluetooth (BLE) connectivity to develop multiplayer logic in games.
+
+
+Cyber Security Instructor| Virginia Tech| Blacksburg, VA                                                       May 2024 - August 2024
+
+
+*  Taught core cybersecurity concepts such as encryption, network security, and ethical hacking to school students
+*   Explained security topics into accessible lessons, fostering early interest in cyber defense and ethical computing
+
+
+Student Assistant Manager| Virginia Tech| Blacksburg, VA                                                       January 2024 - Present 
+
+
+* Supervise student coworkers, ensure food safety protocols, and manage customer-facing service stations
+* Provide bilingual support (English/Spanish) and ensure smooth daily operations across various roles
+
+
+________________
+
+
+PROJECTS 
+
+
+Multithreaded Fork/Join Threadpool with Work Stealing ( C )
+* Developed a threadpool system in C supporting dynamic task scheduling and load balancing
+* Implemented a custom queue structure and used condition variables and mutexes for thread-safe operation
+RC Car - VT CRO ( C++, Python, XML, Git )
+* Contributed to the development of an autonomous RC car using ROS 2, RViz, Nav2, URDF, and Gazebo
+* Integrated hardware including LiDAR, RealSense camera, Arduino, and Raspberry Pi for SLAM and navigation,
+Interactive Bar Chart Web App ( JavaScript, HTML, CSS )
+* Created a React-based web app that allows users to enter, edit, and visualize data using bar charts
+* Implemented coordinated multiple views, file saving/loading, and dynamic axis label configuration
+________________
+
+
+EXTRACURRICULARS
+Software Engineer, VT CRO                                                                            September 2024 - Present
+* Support robotics projects in a student-led team by developing software and preparing for competitions
+Peer Mentor, Ceed | Virginia Tech                                                                                September 2024 - Present
+* Supported first-year engineering students through mentorship, workshops, and study sessions
+
+
+________________
+
+
+SKILLS
+* Programming languages: C, C++, Python, Java, JavaScript, HTML/CSS, 
+* Technologies/Tools: Linux, React.js, Platform/IO, Arduino, ROS2, Rviz, Gazebo, Git, 
+* Other: Bilingual (English / Spanish), Team Leadership, Quick Learner, Curious

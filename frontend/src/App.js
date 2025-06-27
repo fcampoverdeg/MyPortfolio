@@ -4,8 +4,8 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
 import Resume from "./components/Resume";
+import Contact from "./components/Contact";
 // import Projects from "./components/Projects";
-// import Contact from "./components/Contact";
 
 import "./App.css";
 
@@ -23,13 +23,23 @@ const App = () => {
       {/* ======= Navbar ======= */}
       <Navbar />
       <main>
-        {/* Section Components */}
+        {/* ======= Section Components ======= */}
+
+        {/* Home */}
         <section id="home" style={{ height: "100vh" }}>
           <Home />
         </section>
-        <section id="about" style={{ height: "70vh" }}>
+
+        {/* About */}
+        <section
+          id="about"
+          className="about-section"
+          style={{ height: "70vh" }}
+        >
           <About />
         </section>
+
+        {/* Resume */}
         <section
           id="resume"
           className="resume-section"
@@ -37,8 +47,14 @@ const App = () => {
         >
           <Resume />
         </section>
-        <section id="contact" style={{ height: "100vh" }}>
-          {/* <Contact /> */}
+
+        {/* Contact */}
+        <section
+          id="contact"
+          className="contact-section"
+          style={{ height: "100vh" }}
+        >
+          <Contact />
         </section>
       </main>
     </div>

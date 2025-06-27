@@ -116,7 +116,7 @@
 @media screen and (max-width: 768px) {
   
 .about-container {
-  min-height: 130vh;
+  min-height: 135vh;
   width: 100vw;
   padding: 18rem 2rem 0rem 2rem;
   box-sizing: border-box;
