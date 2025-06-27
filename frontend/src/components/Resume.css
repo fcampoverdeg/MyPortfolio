@@ -4,6 +4,7 @@
 /* Resume Page Design */
 /* #################################################################################################### */
 
+/* ======== Resume Container ======== */
 .resume-container {
   min-height: 100vh;
   width: 100vw;
@@ -11,8 +12,20 @@
   scroll-snap-align: start;
   scroll-margin-top: 120px;
   box-sizing: border-box;
+
+  /* Animation */
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
+/* ======== Resume Container Animation ======== */
+.resume-container.animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ======== Main Title ======== */
 .resume-title {
   font-size: 3rem;
   font-family: 'Playfair Display', cursive;
@@ -34,13 +47,50 @@
   margin-left: 0;
 }
 
+/* ======== Download Icon ======== */
+.resume-download-icons {
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+  padding-left: 10rem;
+}
+
+.download-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #FFD700;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.download-icon {
+  font-size: 2rem;
+  color: #FFD700;
+  transition: transform 0.2s ease, color 0.2s ease;
+  margin-bottom: 0.3rem;
+}
+
+.download-icon:hover {
+  transform: scale(1.2);
+  color: #ffffff;
+}
+
+.download-block span {
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
 .resume-wrapper {
   display: flex;
   background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
   width: calc(100vw - 250px);
   margin-left: 230px;
   min-height: 100vh;
-  margin-top: 0.5rem; /* aligns with title bottom */
   /* align-items: flex-start; makes divider align with section tops */
 }
 
@@ -51,8 +101,40 @@
   overflow-y: auto;
 }
 
+/* ========= Split Entry Animation ========= */
+.slide-in-left {
+  animation: slideFromLeft 1s ease forwards;
+}
+
+.slide-in-right {
+  animation: slideFromRight 1s ease forwards;
+}
+
+@keyframes slideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
 .resume-divider {
-    min-height: 100%;
+  min-height: 100%;
   height: auto;
   width: 2px;
   background-color: #FFD700;
@@ -144,15 +226,28 @@
 @media (max-width: 768px) {
   .resume-container {
     height: 100vh;
+    margin-top: -200px;
     padding: 0rem 2rem 2rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     scroll-snap-align: start;
-    scroll-margin-top: 110px; 
     box-sizing: border-box;
   }
 
+  .resume-download-icons {
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding: 0rem;
+  }
+
+  .download-icon {
+    font-size: 1.6rem;
+  }
+
+  .download-block span {
+    font-size: 0.8rem;
+  }
 
   .resume-wrapper {
     display: flex;
@@ -168,8 +263,14 @@
     box-sizing: border-box;
   }
 
+  .resume-spacer {
+    height: 5rem;
+    width: 100%;
+    background: #0a0a0a; /* or #000 or whatever your page bg is */
+  }
+
   .resume-divider {
-    min-width: 350px;
+    min-width: 360px;
     background-color: #FFD700;
     border-radius: 1px;
     opacity: 0.8;
@@ -180,7 +281,7 @@
   .resume-title {
     font-size: 2.2rem;
     text-align: center;
-    padding: 3rem 0rem 0rem 0rem;
+    padding: 5rem 0rem 2rem 0rem;
   }
 
   .resume-title::after {
@@ -191,6 +292,7 @@
   .resume-project {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
     text-align: center;
   }
 
