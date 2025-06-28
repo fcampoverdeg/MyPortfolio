@@ -106,7 +106,7 @@
 @media (max-width: 768px) {
 
   .footer-container {
-    height: 30vh;      /* Let the height grow naturally */
+    height: 35vh;      /* Let the height grow naturally */
     margin-top: 2rem;
     margin-left: -1rem;
     width: 100vw;
