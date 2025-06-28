@@ -1,0 +1,191 @@
+/* src/components/Footer.css */
+
+/* #################################################################################################### */
+/* Footer Page Design */
+/* #################################################################################################### */
+
+
+.footer-container {
+  height: 100%;
+  width: 100%;
+  background-color: #111;
+  color: #FFD700;
+  padding: 3rem 7rem;
+  font-family: 'Playfair Display', cursive;
+  border-top: 1px solid #333;
+}
+
+.footer-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Base link style */
+.footer-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #222;
+  padding: 0.6rem 1rem;
+  border-radius: 40px;
+  text-decoration: none;
+  color: #FFD700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+  background-color: #333;
+  color: #fff8dc;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.footer-icon {
+  font-size: 1.2rem;
+}
+
+.footer-dropdown {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px; /* Buffer zone BELOW the trigger */
+}
+
+/* Hide menu by default */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 140px;
+  background-color: #222;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+  margin-top: 0px; /* tightly attach to button */
+  z-index: 10;
+}
+
+.dropdown-menu a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: #FFD700;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.3s;
+}
+
+.dropdown-menu a:hover {
+  background-color: #333;
+  color: #fff8dc;
+}
+
+.footer-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.footer-copy {
+  font-size: 1rem;
+  opacity: 0.6;
+}
+
+/* #################################################################################################### */
+/* Phone Setup */
+/* #################################################################################################### */
+
+@media (max-width: 768px) {
+
+  .footer-container {
+    height: 30vh;      /* Let the height grow naturally */
+    margin-top: 2rem;
+    margin-left: -1rem;
+    width: 100vw;
+    padding: 0rem 0rem;    /* Restore padding if needed */
+    text-align: center;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1.3rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 80%;
+  }
+
+  .footer-link {
+    width: 100%;
+    justify-content: center;
+    font-size: 1rem;
+    padding: 0rem;
+    border-radius: 30px;
+  }
+
+  .footer-dropdown {
+    width: 100%;
+    position: relative;
+  }
+
+  .footer-link.nav-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.6rem;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .dropdown-menu {
+    background-color: #222;
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 0.5rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+  }
+
+  .dropdown-menu.open {
+    max-height: 200px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 0.7rem 1rem;
+    text-align: center;
+    color: #FFD700;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+
+  .dropdown-menu a:hover {
+    background-color: #333;
+    color: #fff8dc;
+  }
+
+  .footer-copy {
+    font-size: 0.9rem;
+    padding-top: 0rem;
+    opacity: 0.6;
+  }
+}

@@ -1,0 +1,169 @@
+.portfolio-container {
+  min-height: 215vh;
+  width: 100%;
+  padding: 1rem 6rem;
+  color: #FFD700;
+  transition: all 1s ease;
+  opacity: 1;
+  transform: translateY(40px);
+  scroll-margin-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.portfolio-container.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+  font-family: 'Playfair Display', cursive;
+}
+
+.portfolio-title::after {
+  content: "";
+  display: block;
+  width: 125px;
+  height: 4px;
+  background-color: #FFD700;
+  margin: 0.5rem 45% 0;
+  border-radius: 2px;
+}
+
+/* This works with ProjectCard's layout */
+.portfolio-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* === Particle Background === */
+.background-particles {
+  position: fixed;
+  background-color: #0a0a0a;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 200vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  background-color: #ffd700;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: moveInDirection var(--duration, 20s) linear infinite;
+  transform: rotate(var(--angle));
+}
+
+@keyframes moveInDirection {
+  0% {
+    transform: rotate(var(--angle)) translate(0, 0);
+  }
+  100% {
+    transform: rotate(var(--angle)) translate(100px, 0);
+  }
+}
+
+.grid-pulse-background {
+  z-index: 0;
+}
+
+.background-particles {
+  z-index: 1;
+}
+
+.portfolio-container {
+  position: relative;
+  z-index: 2;
+}
+
+.footer-section {
+  min-height: 20vh;
+  background-color: #111; /* dark, but distinguishable */
+  position: relative;
+  height: 1vh;
+  z-index: 1;
+}
+
+
+
+/* #################################################################################################### */
+/* Phone Setup */
+/* #################################################################################################### */
+
+@media (max-width: 768px) {
+  .portfolio-container {
+    height: 298vh;
+    width: 100%;
+    padding: 1rem 0rem;
+  }
+
+  .portfolio-title {
+    font-size: 2.2rem;
+    margin-top: 2rem;
+  }
+
+  .portfolio-title::after {
+    margin: 0.5rem auto 0;
+  }
+
+  .portfolio-grid {
+    gap: 25rem;
+  }
+
+  .particle {
+    width: 8px !important;
+    height: 8px !important;
+    opacity: 0.4;
+  }
+
+  .flip-card-wrapper {
+    width: 100%;
+    perspective: 1000px;
+    margin-bottom: 4rem;
+  }
+
+  .flip-card {
+    width: 90vw;
+    transition: transform 0.8s ease;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+
+  .flip-card.flipped {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-face {
+    backface-visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .flip-card-front {
+    z-index: 2;
+    transform: rotateY(0deg);
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+
+  .footer-section {
+    padding: 2rem 1rem;
+  }
+}
+
+

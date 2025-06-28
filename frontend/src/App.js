@@ -1,11 +1,19 @@
 import React, { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+
+/* Components */
 import Navbar from "./components/Navbar";
-// import Footer from "./components/Footer";
 import Home from "./components/Home";
 import About from "./components/About";
 import Resume from "./components/Resume";
 import Contact from "./components/Contact";
-// import Projects from "./components/Projects";
+import Footer from "./components/Footer";
+
+/* Pages */
+import Portfolio from "./components/Portfolio";
+import CroQuestPage from "./components/projects/CroQuest";
+import MyPortfolioPage from "./components/projects/MyPortfolio";
+import AutonomousCarPage from "./components/projects/AutonomousCar";
 
 import "./App.css";
 
@@ -23,39 +31,78 @@ const App = () => {
       {/* ======= Navbar ======= */}
       <Navbar />
       <main>
-        {/* ======= Section Components ======= */}
+        <Routes>
+          {/* Home route with all sections */}
+          <Route
+            path="/"
+            element={
+              <>
+                {/* ======= Section Components ======= */}
 
-        {/* Home */}
-        <section id="home" style={{ height: "100vh" }}>
-          <Home />
-        </section>
+                {/* Home */}
+                <section id="home" style={{ height: "100vh" }}>
+                  <Home />
+                </section>
 
-        {/* About */}
-        <section
-          id="about"
-          className="about-section"
-          style={{ height: "70vh" }}
-        >
-          <About />
-        </section>
+                {/* About */}
+                <section
+                  id="about"
+                  className="about-section"
+                  style={{ height: "70vh" }}
+                >
+                  <About />
+                </section>
 
-        {/* Resume */}
-        <section
-          id="resume"
-          className="resume-section"
-          style={{ height: "148vh" }}
-        >
-          <Resume />
-        </section>
+                {/* Resume */}
+                <section
+                  id="resume"
+                  className="resume-section"
+                  style={{ height: "148vh" }}
+                >
+                  <Resume />
+                </section>
 
-        {/* Contact */}
-        <section
-          id="contact"
-          className="contact-section"
-          style={{ height: "100vh" }}
-        >
-          <Contact />
-        </section>
+                {/* Contact */}
+                <section
+                  id="contact"
+                  className="contact-section"
+                  style={{ height: "100vh" }}
+                >
+                  <Contact />
+                </section>
+
+                <section
+                  id="footer"
+                  className="footer-section"
+                  style={{ height: "20vh" }}
+                >
+                  <Footer />
+                </section>
+              </>
+            }
+          />
+
+          {/* Routes (dedicated pages) */}
+
+          {/* Portfolio Page */}
+          <Route
+            path="/portfolio"
+            element={<Portfolio />}
+            style={{ height: "250vh" }}
+          />
+
+          {/* CroQuest Page */}
+          <Route path="/projects/croquest" element={<CroQuestPage />} />
+
+          {/* My Portfolio Page */}
+          <Route path="/projects/myportfolio" element={<MyPortfolioPage />} />
+
+          {/* Autonomous Car Page */}
+          <Route
+            path="/projects/autonomouscar"
+            element={<AutonomousCarPage />}
+          />
+        </Routes>
       </main>
     </div>
   );

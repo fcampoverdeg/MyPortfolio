@@ -1,12 +1,16 @@
 // src/components/Navbar.js
 
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 import {
   faHome,
   faUser,
   faFile,
-  //   faProjectDiagram,
+  faCode,
   faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -23,6 +27,11 @@ const Navbar = () => {
   const menuBtnRef = useRef(null);
   const sidebarRef = useRef(null);
   const [animateSidebar, setAnimateSidebar] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const location = useLocation(); // Extra Pages
+
+  // Router to go back to main Page
+  const navigate = useNavigate();
 
   // Hide sidebar automatically when window rsesizes to desktop
   useEffect(() => {
@@ -60,6 +69,38 @@ const Navbar = () => {
       setAnimateSidebar(true);
     }
   }, []);
+
+  // Highlight the section where the user is at
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    if (location.pathname === "/") {
+      sections.forEach((section) => observer.observe(section));
+
+      // Immediately check which section is already visible
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const inView = rect.top >= 0 && rect.top < window.innerHeight * 0.6;
+        if (inView) {
+          setActiveSection(section.id);
+        }
+      });
+    }
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, [location.pathname]); // Re-run on route change
 
   return (
     <>
@@ -142,59 +183,93 @@ const Navbar = () => {
         {/*======= Nav Menu =======*/}
         <ul className="nav-menu">
           {/*------- Home -------*/}
-          <a
-            className="nav-link"
-            href="#home"
-            onClick={(e) => {
-              e.preventDefault(); // prevent default jump
+          <div
+            className={`nav-link ${
+              location.pathname === "/" && activeSection === "home"
+                ? "active"
+                : ""
+            }`}
+            onClick={() => {
               if (window.innerWidth < 768) setMenuOpen(false);
-
-              // Scroll to the section manually
-              const section = document.getElementById("home");
-              if (section) {
-                section.scrollIntoView({ behavior: "smooth" });
-              }
+              navigate("/");
+              setTimeout(() => {
+                const section = document.getElementById("home");
+                if (section) section.scrollIntoView({ behavior: "smooth" });
+              }, 100);
             }}
           >
             <FontAwesomeIcon icon={faHome} />
             <span> &nbsp;Home</span>
-          </a>
+          </div>
+
           {/*------- About -------*/}
-          <a
-            className="nav-link"
+          <div
+            className={`nav-link ${
+              location.pathname === "/" && activeSection === "about"
+                ? "active"
+                : ""
+            }`}
             href="#about"
             onClick={(e) => {
               e.preventDefault(); // prevent default jump
               if (window.innerWidth < 768) setMenuOpen(false);
 
-              // Scroll to the section manually
-              const section = document.getElementById("about");
-              if (section) {
-                section.scrollIntoView({ behavior: "smooth" });
-              }
+              // Navigate to about route and then scroll
+              navigate("/");
+              setTimeout(() => {
+                // Scroll to the section manually
+                const section = document.getElementById("about");
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth" });
+                }
+              }, 100);
             }}
           >
             <FontAwesomeIcon icon={faUser} />
             <span> &nbsp;About</span>
-          </a>
+          </div>
+
           {/*------- Resume -------*/}
-          <a
-            className="nav-link"
+          <div
+            className={`nav-link ${
+              location.pathname === "/" && activeSection === "resume"
+                ? "active"
+                : ""
+            }`}
             href="#resume"
             onClick={(e) => {
               e.preventDefault(); // prevent default jump
               if (window.innerWidth < 768) setMenuOpen(false);
 
-              // Scroll to the section manually
-              const section = document.getElementById("resume");
-              if (section) {
-                section.scrollIntoView({ behavior: "smooth" });
-              }
+              // Navigate to resume route and then scroll
+              navigate("/");
+              setTimeout(() => {
+                // Scroll to the section manually
+                const section = document.getElementById("resume");
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth" });
+                }
+              }, 200);
             }}
           >
             <FontAwesomeIcon icon={faFile} />
             <span> &nbsp;Resume</span>
-          </a>
+          </div>
+
+          {/*------- Portfolio -------*/}
+          <Link
+            to="/portfolio"
+            className={`nav-link ${
+              location.pathname === "/portfolio" ? "active" : ""
+            }`}
+            onClick={() => {
+              if (window.innerWidth < 768) setMenuOpen(false);
+            }}
+          >
+            <FontAwesomeIcon icon={faCode} />
+            <span> &nbsp;Portfolio</span>
+          </Link>
+
           {/*------- GitHub Hover Toggle -------*/}
           <li className="github-toggle">
             <div className="nav-link">
@@ -231,17 +306,25 @@ const Navbar = () => {
 
           {/*------- Contact -------*/}
           <a
-            className="nav-link"
+            className={`nav-link ${
+              location.pathname === "/" && activeSection === "contact"
+                ? "active"
+                : ""
+            }`}
             href="#contact"
             onClick={(e) => {
               e.preventDefault(); // prevent default jump
               if (window.innerWidth < 768) setMenuOpen(false);
 
-              // Scroll to the section manually
-              const section = document.getElementById("contact");
-              if (section) {
-                section.scrollIntoView({ behavior: "smooth" });
-              }
+              // Navigate to contact route and then scroll
+              navigate("/");
+              setTimeout(() => {
+                // Scroll to the section manually
+                const section = document.getElementById("contact");
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth" });
+                }
+              }, 100);
             }}
           >
             <FontAwesomeIcon icon={faEnvelope} />
