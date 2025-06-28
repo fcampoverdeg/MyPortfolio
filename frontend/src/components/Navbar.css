@@ -229,6 +229,17 @@ Sidebar Overlay For Mobile
   color: #fff8dc;
 }
 
+/* Hightlight Section */
+.nav-link.active {
+  background: radial-gradient(circle, #FFD70044, transparent);
+  color: #FFD700;
+  border: 1px solid #FFD70055;
+  border-radius: 12px;
+  padding: 0.4rem 0.8rem;
+  box-shadow: 0 0 12px #ffd70088;
+  transition: all 0.3s ease;
+}
+
 /* Underline effect for nav links */
 .nav-link::after {
   content: "";

@@ -10,6 +10,7 @@
     "animejs": "^4.0.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.3",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.9.3",
     "three": "^0.177.0",

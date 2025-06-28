@@ -10,7 +10,7 @@
   padding-bottom: 5rem;
   scroll-snap-align: start;
   scroll-margin-top: 80px;
-  padding: 10rem 3rem;
+  padding: 2rem 4rem;
   background: #000;
   color: #FFD700;
   font-family: 'Playfair Display', cursive;
@@ -218,6 +218,7 @@
 
 @media (max-width: 768px) {
   .contact-section {
+    min-height: 128vh;
     padding: 2rem 0rem 4rem;
   }
 

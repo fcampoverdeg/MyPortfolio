@@ -51,13 +51,17 @@ section {
 }
 
 .resume-section {
-    background: #0a0a0a;
-    scroll-margin-top: -65px;
+  background: #0a0a0a;
+  scroll-margin-top: -65px;
 }
 
 .contact-section {
-    background: #000;
-    scroll-margin-top: -160px;
+  background: #000;
+  scroll-margin-top: -40px;
+}
+
+.portfolio-route {
+  scroll-margin-top: -160px;
 }
 
 
@@ -91,18 +95,18 @@ section {
 
   .about-section{
   scroll-margin-top: 30px;
-}
+  }
 
-.resume-section {
-    min-height: 170vh;
-    background: #0a0a0a;
-    scroll-margin-top: -280px;
-}
+  .resume-section {
+      min-height: 170vh;
+      background: #0a0a0a;
+      scroll-margin-top: -280px;
+  }
 
-.contact-section {
-    background: #000;
-    scroll-margin-top: -10px;
-}
+  .contact-section {
+      background: #000;
+      scroll-margin-top: -10px;
+  }
 
 }
 
