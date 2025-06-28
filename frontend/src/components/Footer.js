@@ -80,17 +80,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/*------- LinkedIn -------*/}
-          <a
-            href="https://www.linkedin.com/in/fcampoverdeg/"
-            className="footer-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon icon={faLinkedin} className="footer-icon" />
-            <span className="footer-text">LinkedIn</span>
-          </a>
-
           {/*------- Email Dropdown -------*/}
           <div
             className="footer-dropdown"
@@ -135,6 +124,17 @@ const Footer = () => {
               </a>
             </div>
           </div>
+
+          {/*------- LinkedIn -------*/}
+          <a
+            href="https://www.linkedin.com/in/fcampoverdeg/"
+            className="footer-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon icon={faLinkedin} className="footer-icon" />
+            <span className="footer-text">LinkedIn</span>
+          </a>
         </div>
         <p className="footer-copy">
           © {new Date().getFullYear()} Felipe Campoverde. All rights reserved.
