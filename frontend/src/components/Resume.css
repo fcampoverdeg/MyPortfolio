@@ -6,7 +6,7 @@
 
 /* ======== Resume Container ======== */
 .resume-container {
-  min-height: 100vh;
+  height: 170vh;
   width: 100vw;
   font-family: 'Playfair Display', cursive;
   scroll-snap-align: start;
@@ -31,7 +31,7 @@
   font-family: 'Playfair Display', cursive;
   position: relative;
   text-align: left;
-  padding: 5rem 0 0 18rem;
+  padding: 9rem 0 0 18rem;
   color: #FFD700;
   margin-bottom: 0.5rem;
 }
