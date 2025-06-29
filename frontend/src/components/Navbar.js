@@ -163,7 +163,7 @@ const Navbar = () => {
             </a>
             {/*------- WhatsApp -------*/}
             <a
-              href="https://wa.me/8043565749"
+              href="https://wa.me/+18043565749"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {

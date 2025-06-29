@@ -210,6 +210,7 @@
     transform-style: preserve-3d;
     transition: transform 0.8s ease;
     position: relative;
+    height: auto;
   }
   
 
@@ -220,18 +221,21 @@
   .flip-card-face {
     backface-visibility: hidden;
     position: relative;
+    height: auto;
   }
 
   .flip-card-front {
     transform: rotateY(0deg);
     z-index: 2;
     position: relative;
+    height: auto;
   }
 
   .flip-card-back {
     transform: rotateY(180deg);
     z-index: 1;
     position: relative;
+    height: auto;
   }
 
 
