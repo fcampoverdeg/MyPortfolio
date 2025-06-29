@@ -11,9 +11,9 @@ import Footer from "./components/Footer";
 
 /* Pages */
 import Portfolio from "./components/Portfolio";
-import CroQuestPage from "./components/projects/CroQuest";
-import MyPortfolioPage from "./components/projects/MyPortfolio";
-import AutonomousCarPage from "./components/projects/AutonomousCar";
+import CroQuestPage from "./components/projects/CroQuest/CroQuest";
+import MyPortfolioPage from "./components/projects/MyPortfolio/MyPortfolio";
+import AutonomousCarPage from "./components/projects/AutonomousCar/AutonomousCar";
 
 import "./App.css";
 
