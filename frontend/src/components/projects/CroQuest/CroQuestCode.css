@@ -1,0 +1,185 @@
+/* #################################################################################################### */
+/* Code + Lessons Section */
+/* #################################################################################################### */
+
+.code-section {
+  width: 77vw;
+  padding: 2rem;
+  background-color: #111;
+  border-radius: 16px;
+  box-shadow: 0 0 25px #ffd70033;
+  color: #fff8dc;
+  font-family: 'Ubuntu', sans-serif;
+  margin: 2rem 15rem 5rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: #ffd700;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 0%;
+  bottom: -8px;
+  height: 3px;
+  width: 10%;
+  background: #FFD700;
+}
+
+.code-intro,
+.code-usecase,
+.code-tech-stack {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.code-features {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+.code-features li {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.code-features li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #ffd700;
+}
+.code-credit {
+  font-size: 1.3rem;
+  font-family: 'Ubuntu', sans-serif;
+  line-height: 1.6;
+  max-width: 73vw;
+}
+
+.code-credit strong {
+  color: #ffd700;
+}
+
+/* GitHub Button */
+.github-link-button {
+  display: inline-block;
+  margin: 1.5rem 0;
+  background-color: #ffd700;
+  color: #111;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  align-content: center;
+  transition: transform 0.2s ease;
+}
+
+.github-link-button:hover {
+  transform: scale(1.05);
+  background-color: #e6c200;
+}
+
+/* Tree Structure from GitHub */
+.repo-tree-preview {
+  background-color: #1a1a1a;
+  margin-top: 2rem;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 0 12px #ffd70055;
+  color: #fff8dc;
+  overflow-x: auto;
+}
+
+.tree-heading {
+  color: #ffd700;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.tree-code {
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* #################################################################################################### */
+/* Phone Setup */
+/* #################################################################################################### */
+
+@media (max-width: 768px) {
+  .code-section {
+    width: 85%;
+    margin: 2rem 1rem;
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .section-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+  }
+
+  .code-intro,
+  .code-usecase,
+  .code-tech-stack,
+  .code-credit {
+    font-size: 1rem;
+    text-align: left;
+    padding: 0 0.5rem;
+  }
+
+  .code-credit {
+    max-width: 100%;
+  }
+
+  .code-features {
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .code-features li {
+    padding-left: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .github-link-button {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+    margin: 1rem auto;
+    display: block;
+    text-align: center;
+  }
+
+  .repo-tree-preview {
+    padding: 1rem;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .tree-heading {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .tree-code {
+    font-size: 0.9rem;
+    word-break: break-word;
+  }
+}
+
+

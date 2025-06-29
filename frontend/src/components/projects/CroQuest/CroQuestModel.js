@@ -53,8 +53,8 @@ const CroQuestModelViewer = () => {
       {
         name: "Switch",
         url: "/images/CroQuest/3Dmodel/SWITCH SLIDER.stl",
-        color: "#ffffff",
-        assembled: [0.0, 0.0, 0],
+        color: "#000000",
+        assembled: [-0.2, 0.0, 0.0],
         disassembled: [0.2, 0.05, 1],
       },
     ],

@@ -4,9 +4,9 @@
 
 /* Container for the 3D viewer */
 .model-viewer-container {
-  width: 162vh;
+  width: 155vh;
   height: 700px;
-  margin-left: 15rem;
+  margin-left: 1.9rem;
   position: relative;
   border-radius: 16px;
   box-shadow: 0 0 25px #ffd70055;
@@ -26,7 +26,8 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1rem;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
@@ -40,14 +41,11 @@
 /* Phone Setup */
 /* #################################################################################################### */
 
-/* ============================== */
-/* Mobile Responsiveness */
-/* ============================== */
 @media (max-width: 768px) {
   .model-viewer-container {
-    width: 95vw;
+    width: 80vw;
     height: 400px;
-    margin: 1rem auto;
+    margin: 2rem auto;
     border-radius: 12px;
     box-shadow: 0 0 15px #ffd70033;
   }

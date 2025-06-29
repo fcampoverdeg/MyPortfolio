@@ -8,7 +8,7 @@
   font-family: 'Playfair Display', cursive;
   color: #FFD700;
   background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
-  padding: 5rem 5rem;
+  padding: 1rem 5rem;
 }
 
 /* ---------- Hero Section ---------- */
@@ -24,7 +24,8 @@
 }
 
 .subtitle {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  font-family: 'Ubuntu', sans-serif;
   color: #ccc;
 }
 
@@ -32,75 +33,172 @@
 /* #################################################################################################### */
 /* Overview Split Layout */
 /* #################################################################################################### */
-.overview-split {
+.overview-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
-  max-width: 1000px;
-  margin: auto;
-  padding: 2rem 0;
+  gap: 5rem;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 70vw;
+  margin: 3rem auto;
+  padding: 0 1rem;
 }
 
 .overview-left {
-  flex: 1 1 50%;
-}
-
-.overview-left h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.overview-left p {
-  line-height: 1.6;
-  color: #ccc;
-}
-
-.overview-right {
-  flex: 1 1 40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.tags {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.tags li {
-  background: #FFD700;
-  color: black;
-  padding: 0.3rem 0.8rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
+  flex: 1 1 400px;
+  text-align: center;
 }
 
 .overview-image {
-  max-width: 100%;
-  border-radius: 12px;
-  margin-top: 1.2rem;
-  box-shadow: 0 0 8px #ffd70055;
+  height: 85vh;
+  max-width: 579px;
+  border-radius: 16px;
+  margin-top: 8rem;
+  margin-left: 2rem;
+  box-shadow: 0 0 15px #ffd70055;
 }
+
+.overview-right {
+  flex: 1 1 530px;
+}
+
+.overview-title {
+  font-size: 2.3rem;
+  margin-bottom: 1rem;
+  color: #ffd700;
+  font-family: 'Playfair Display', cursive;
+}
+
+.overview-description {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: #ccc;
+  font-size: 1.3rem;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.overview-role {
+  margin-top: 1rem;
+  line-height: 1.6;
+  color: #ccc;
+  font-size: 1.3rem;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.overview-role strong {
+  color: #ffd700;
+}
+.overview-role role {
+  color: #ccc;
+  font-weight: 1000;
+}
+
+
+.overview-credit {
+  color: #ccc;
+  font-size: 1.3rem;
+  font-family: 'Ubuntu', sans-serif;
+  line-height: 1.6;
+  max-width: 73vw;
+}
+
+.overview-credit strong {
+  color: #ffd700;
+}
+
+.overview-video iframe {
+  width: 67vh;
+  height: 40vh;
+  margin-top: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 12px #ffd70033;
+}
+
+/* Lesson Learned Section */
+.lessons-side h2 {
+  font-size: 2.3rem;
+  color: #ffd700;
+  font-family: 'Playfair Display', cursive;
+}
+
+.lessons-side {
+  width: 77vw;
+  height: 25vh;
+  color: #fff8dc;
+  background-color: #111;
+  border-radius: 16px;
+  box-shadow: 0 0 25px #ffd70033;
+  font-size: 1.3rem;
+  font-family: 'Ubuntu', sans-serif;
+  line-height: 1.6;
+  padding: 2rem 2rem 2rem 2rem;
+  margin: 5rem 15rem;
+}
+
+/* #################################################################################################### */
+/* Gallery Section */
+/* #################################################################################################### */
+
+.gallery-section {
+  width: 80vw;
+  height: 105vh;
+  background-color: #111;
+  border-radius: 16px;
+  box-shadow: 0 0 25px #ffd70033;
+  color: #fff8dc;
+  font-family: 'Ubuntu', sans-serif;
+  margin: 5rem 15rem;
+}
+
+.gallery-main-title {
+  font-size: 3rem;
+  font-family: 'Playfair Display', cursive;
+  color: #FFD700;
+  text-align: left;
+  margin-top: 3rem;
+  margin-left: 2rem;
+  margin-bottom: 4rem;
+  animation: fadeInTitle 1s ease;
+  position: relative;
+  display: inline-block; 
+}
+
+.gallery-main-title::after {
+  content: "";
+  position: absolute;
+  left: 0%;
+  bottom: -8px;
+  height: 3px;
+  width: 60%;
+  background: #FFD700;
+}
+
+.gallery-description {
+  color: #ccc;
+  font-size: 1.3rem;
+  font-family: 'Ubuntu', sans-serif;
+  line-height: 1.6;
+  max-width: 73vw;
+  margin: 0 3rem 3rem;
+}
+
+
 
 /* #################################################################################################### */
 /* 3D Model Section */
 /* #################################################################################################### */
 
-
 .model-title  {
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-family: 'Playfair Display', cursive;
   color: #FFD700;
   text-align: left;
-  margin-left: 18rem;
+  margin-top: 3rem;
+  margin-left: 2rem;
   margin-bottom: 4rem;
   animation: fadeInTitle 1s ease;
-  position: relative; /* ✅ Required for ::after to align properly */
-  display: inline-block; /* Optional: keeps the underline from stretching across the full container */
+  position: relative;
+  display: inline-block; 
 }
 
 .model-title::after {
@@ -113,91 +211,158 @@
   background: #FFD700;
 }
 
-
-/* #################################################################################################### */
-/* Code + Lessons Section */
-/* #################################################################################################### */
-
-.code-lessons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  max-width: 1000px;
-  margin: auto;
-  padding: 3rem 0;
+.model-section {
+  width: 80vw;
+  height: 118vh;
+  background-color: #111;
+  border-radius: 16px;
+  box-shadow: 0 0 25px #ffd70033;
+  color: #fff8dc;
+  font-family: 'Ubuntu', sans-serif;
+  margin: 2rem 15rem;
 }
 
-.code-side,
-.lessons-side {
-  flex: 1 1 45%;
-}
-
-.code {
-  max-width: 800px;
-  margin: auto;
-  padding: 2rem 0;
-  text-align: center;
-}
-
-.github-link {
-  display: inline-block;
-  margin-top: 1rem;
-  background-color: #ffd700;
-  color: #000;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: transform 0.2s ease;
-}
-
-.github-link:hover {
-  transform: scale(1.05);
-  background-color: #ffea00;
-}
-
-.lessons-side h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: #FFD700;
-}
-
-.lessons-side p {
+.model-description,
+.model-credit {
   color: #ccc;
+  font-size: 1.3rem;
+  font-family: 'Ubuntu', sans-serif;
   line-height: 1.6;
+  max-width: 73vw;
+  margin: 0 3rem 3rem;
+}
+
+.model-credit strong {
+  color: #ffd700;
 }
 
 
 /* #################################################################################################### */
-/* Responsive Tweaks */
+/* Phone Setup */
 /* #################################################################################################### */
-@media (max-width: 768px) {
-  .croquest-page {
-    padding: 2rem;
+
+@media screen and (max-width: 768px) {
+ .croquest-page {
+    padding: 1.5rem 0rem;
   }
 
-  .overview-split,
-  .code-lessons {
+  /* ---------- Hero ---------- */
+  .hero {
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    font-size: 2.1rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  /* ---------- Overview ---------- */
+  .overview-container {
     flex-direction: column;
-    padding: 1.5rem 0;
-  }
-
-  .overview-left,
-  .overview-right,
-  .code-side,
-  .lessons-side {
-    flex: 1 1 100%;
+    align-items: center;
+    max-width: 100%;
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 0 1rem;
   }
 
   .overview-image {
-    margin-top: 1rem;
+    width: 100%;
+    height: auto;
+    margin: 1rem 0;
   }
 
-  .hero .title {
-    font-size: 2.3rem;
+  .overview-title {
+    font-size: 1.8rem;
+    text-align: center;
   }
 
-  .hero .subtitle {
-    font-size: 1rem;
+  .overview-description,
+  .overview-role,
+  .overview-credit {
+    font-size: 1.1rem;
+    max-width: 100%;
+    text-align: left;
+    padding: 0 1rem;
+  }
+
+  .overview-video iframe {
+    width: 100%;
+    height: 200px;
+    margin: 1rem 0;
+  }
+
+  /* ---------- Lessons Section ---------- */
+  .lessons-side {
+    width: 100%;
+    height: auto;
+    font-size: 1.1rem;
+    margin: 2rem 0;
+    padding: 1.5rem;
+  }
+
+  .lessons-side h2 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  /* ---------- Gallery Section ---------- */
+  .gallery-section {
+    width: 85%;
+    height: auto;
+    margin: 2rem 1rem;
+    padding: 1rem;
+  }
+
+  .gallery-main-title {
+    font-size: 2rem;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .gallery-main-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+  }
+
+  .gallery-description {
+    font-size: 1.1rem;
+    margin: 1rem;
+    max-width: 100%;
+  }
+
+  /* ---------- 3D Model Section ---------- */
+  .model-section {
+    width: 85%;
+    height: auto;
+    margin: 2rem 1rem;
+    padding: 1rem;
+  }
+
+  .model-title {
+    font-size: 2rem;
+    margin-left: 0.5rem;
+    text-align: center;
+  }
+
+  .model-description,
+  .model-credit {
+    font-size: 1.1rem;
+    margin: 1rem;
+    max-width: 100%;
+    text-align: left;
+  }
+
+    /* ---------- Lessons Section ---------- */
+  .lessons-side {
+    width: 85%;
+    margin: 2rem 1rem;
+    padding: 1rem;
   }
 }
