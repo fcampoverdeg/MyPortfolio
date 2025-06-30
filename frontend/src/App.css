@@ -90,13 +90,13 @@ section {
   }
 
   .about-section{
-  scroll-margin-top: 30px;
+  scroll-margin-top: 15px;
   }
 
   .resume-section {
       min-height: 170vh;
       background: #0a0a0a;
-      scroll-margin-top: -280px;
+      scroll-margin-top: -300px;
   }
 
   .contact-section {
