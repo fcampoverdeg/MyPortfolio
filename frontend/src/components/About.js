@@ -41,25 +41,21 @@ const About = () => {
         <div className="about-text">
           <h2 className="about-title">About</h2>
           <div className="about-description">
-            <p>Welcome!</p>
             <p>
-              Currently, I am a Senior at{" "}
-              <span className="highlight">Virginia Tech</span> — a curious mind,
-              relentless builder, and visionary technologist.
+              I am a senior undergraduate majoring in Computer Science at
+              Virginia Tech. Currently I serve as Chief and Software Engineer on
+              the CroQuest team at VT CRO, the largest robotics organization on
+              campus.
             </p>
             <p>
-              Driven by a passion for learning and a purpose to create, I turn
-              ideas into reality through embedded systems, full-stack
-              applications, and immersive interfaces. My commitment lies in{" "}
-              <span className="highlight">Determination</span>,
-              <span className="highlight"> Growth</span>, and
-              <span className="highlight"> Progress</span>.
+              My professional background includes working as a Software Engineer
+              intern at the university developing a gaming console and teaching
+              as a Cybersecurity Instructor to students.
             </p>
-            <p className="about-vision">
-              <strong>
-                "I code, not just to solve problems, but to shape experiences
-                that resonate, empower, and move people forward."
-              </strong>
+            <p>
+              I enjoy learning new things, reading about technology, going for
+              long drives, collecting cars, playing guitar, and taking care of
+              my plant Benny.
             </p>
           </div>
         </div>

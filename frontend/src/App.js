@@ -57,7 +57,7 @@ const App = () => {
                 <section
                   id="resume"
                   className="resume-section"
-                  style={{ height: "148vh" }}
+                  style={{ height: "160vh" }}
                 >
                   <Resume />
                 </section>
