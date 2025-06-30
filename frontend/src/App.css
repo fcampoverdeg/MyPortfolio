@@ -60,10 +60,6 @@ section {
   scroll-margin-top: -40px;
 }
 
-.portfolio-route {
-  scroll-margin-top: -160px;
-}
-
 
 /* ======== Scroll Bar ======== */
 ::-webkit-scrollbar {

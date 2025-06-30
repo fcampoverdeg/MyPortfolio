@@ -85,11 +85,7 @@ const App = () => {
           {/* Routes (dedicated pages) */}
 
           {/* Portfolio Page */}
-          <Route
-            path="/portfolio"
-            element={<Portfolio />}
-            style={{ height: "250vh" }}
-          />
+          <Route path="/portfolio" element={<Portfolio />} />
 
           {/* CroQuest Page */}
           <Route path="/projects/croquest" element={<CroQuestPage />} />

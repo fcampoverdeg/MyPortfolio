@@ -1,0 +1,390 @@
+/* =================== General Layout =================== */
+.myportfolio-page {
+  height: 100%;
+  width: 100%;
+  font-family: 'Playfair Display', cursive;
+  color: #FFD700;
+  background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+  padding: 1rem 5rem;
+}
+
+/* =================== Reveal Animations =================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  transform: translateX(-40px);
+}
+
+.reveal-left.visible {
+  transform: translateX(0);
+}
+
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.reveal-fade.visible {
+  opacity: 1;
+}
+
+/* =================== Hero =================== */
+.hero-section {
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+
+.hero .title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #FFD700;
+  margin-bottom: 1rem;
+}
+
+.hero .subtitle {
+  font-size: 1.4rem;
+  color: #fff8dc;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+/* =================== Section Titles =================== */
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 3px solid #FFD700;
+  display: inline-block;
+  padding-bottom: 0.4rem;
+}
+
+/* =================== Shared Section Styles =================== */
+.overview-section,
+.goals-section,
+.tech-section,
+.design-section,
+.dev-section,
+.code-snippet-section,
+.workflow-section,
+.lessons-section,
+.structure-section {
+  width: 77vw;
+  margin: 3rem 14rem;
+  padding: 2rem;
+  background-color: #111;
+  border-radius: 16px;
+  box-shadow: 0 0 25px #ffd70033;
+  color: #fff8dc;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
+/* =================== Goals Section =================== */
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.goal-card {
+  background-color: #1a1a1a;
+  padding: 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #ffd70022;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.goal-card:hover {
+  transform: translateY(-5px);
+}
+
+.goal-card h3 {
+  color: #FFD700;
+  margin-bottom: 0.5rem;
+}
+
+.goal-card p {
+  font-size: 0.95rem;
+}
+
+  /* Goals Section */
+  .goals-carousel-wrapper {
+    display: none; /* hide original grid on mobile */  
+}
+
+
+/* =================== Tech Stack Icons =================== */
+.tech-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.tech-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+  color: #FFD700;
+  font-family: 'Ubuntu', sans-serif;
+  text-align: center;
+}
+
+.tech-icon .icon {
+  font-size: 3.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.tech-icon:hover .icon {
+  transform: scale(1.15);
+  color: #fff8dc;
+}
+
+.tech-icon .label {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* =================== File Structure =================== */
+.structure-grid {
+  display: grid;
+  flex-direction: row-reverse;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.structure-left, .structure-right {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+/* =================== Major Section Titles (Frontend, Backend) =================== */
+.major-section-title {
+  font-size: 2.7rem;
+  color: #FFD700;
+  font-family: 'Playfair Display', cursive;
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.major-section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background-color: #FFD700;
+  margin: 0.5rem auto 0;
+}
+
+.code-block {
+  background-color: #1a1a1a;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #ffd70022;
+  color: #FFD700;
+  font-family: 'Courier New', monospace;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  white-space: pre;
+}
+
+/* Staggered animation for second code block */
+.code-container.reveal-stair {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s ease;
+  transition-delay: 0.3s;
+}
+
+.code-container.reveal-stair.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =================== Code Snippet Section =================== */
+.code-snippet-inner pre.code-block {
+  background-color: #000;
+  color: #fff8dc;
+  padding: 1rem;
+  border-radius: 10px;
+  overflow-x: auto;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* =================== Workflow =================== */
+.workflow-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.workflow-step {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #ffd70033;
+  padding: 1.5rem;
+  width: 260px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.workflow-step:hover {
+  transform: translateY(-5px);
+}
+
+.workflow-step h3 {
+  color: #fff8dc;
+  margin-bottom: 0.5rem;
+}
+
+.workflow-step p {
+  font-size: 0.95rem;
+}
+
+/* #################################################################################################### */
+/* Phone Setup */
+/* #################################################################################################### */
+
+@media (max-width: 768px) {
+  .myportfolio-page {
+    padding: 1.5rem 0rem;
+  }
+
+  .hero .title {
+    padding-bottom: 1rem;
+    font-size: 2.3rem;
+  }
+
+  .hero .subtitle {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .overview-section,
+  .goals-section,
+  .tech-section,
+  .design-section,
+  .dev-section,
+  .code-snippet-section,
+  .workflow-section,
+  .lessons-section,
+  .structure-section {
+    width: 85%;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    gap: 2rem;
+    margin: 3rem 1rem;
+    padding: 1rem;
+  }
+
+  .tech-icons {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tech-icon .icon {
+    font-size: 2.2rem;
+    padding-top: 1rem;
+  }
+
+  .tech-icon .label {
+    font-size: 0.85rem;
+  }
+
+  /* Goals Section */
+  .goals-grid {
+    display: none; /* hide original grid on mobile */  
+  }
+
+  .goals-carousel-wrapper {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  .goals-carousel {
+    display: flex;
+    overflow-x: auto;                  /* <-- missing */
+    scroll-snap-type: x mandatory; 
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+  }
+
+  .goal-card {
+    scroll-snap-align: center; 
+    min-width: 100%;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    background-color: #1a1a1a;
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #ffd70022;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+
+  .goal-card h3 {
+    color: #FFD700;
+    margin-bottom: 0.5rem;
+  }
+
+  .goal-card p {
+    font-size: 0.95rem;
+  }
+
+  /* Structure Section */
+  .structure-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .structure-left,
+  .structure-right {
+    width: 81%;
+  }
+
+  .major-section-title {
+    font-size: 2.2rem;
+  }
+
+  .code-snippet-inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .code-block {
+    font-size: 0.8rem;
+    padding: 0.8rem;
+  }
+
+  .workflow-step {
+    width: 100%;
+  }
+}
