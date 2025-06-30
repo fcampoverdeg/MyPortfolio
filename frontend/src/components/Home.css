@@ -294,7 +294,9 @@
   }
 
   .top-right-button-group {
-  left: 6rem;
+   left: 50%;
+   right: auto;
+   transform: translateX(-50%);
 }
 }
 
