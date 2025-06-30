@@ -2,32 +2,11 @@ import mongoose from "mongoose";
 
 const modelSchema = new mongoose.Schema(
   {
-    // TODO: Change model depending on needs
-    name: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    // description: {
-    //   type: String,
-    //   required: true,
-    // },
-    // createdAt: {
-    //   type: Date,
-    //   default: Date.now,
-    // },
-    // updatedAt: {
-    //   type: Date,
-    //   default: Date.now,
-    // },
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    message: { type: String, required: true },
   },
-  {
-    timestamps: true, // Automatically manage createdAt and updatedAt fields
-  }
+  { timestamps: true }
 );
 
 const Model = mongoose.model("Model", modelSchema);

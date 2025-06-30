@@ -1,89 +1,87 @@
-// This file contains the controller functions for handling API requests
-// backend/controllers/controller.js
+// backend/controllers/contactController.js
 
-import mongoose from "mongoose";
-import Model from "../models/model.js";
+import Model from "../models/model.js"; // Model now refers to ContactMessage
 
-// ============== POST / API ==============
-// Data is Sent to MongoDB
-export const postData = async (req, res) => {
-  const data = req.body;
+// ============== POST /api/contact ==============
+// Create new contact message
+export const postMessage = async (req, res) => {
+  const { name, email, message } = req.body;
 
-  if (!data.name || !data.price) {
+  if (!name || !email || !message) {
     return res
       .status(400)
-      .json({ success: false, message: "Please provide all required fields." });
+      .json({ success: false, message: "All fields are required." });
   }
 
-  const newModel = new Model(data);
-
   try {
-    await newModel.save();
-    res.status(201).json({ success: true, data: newModel });
+    const newMessage = new Model({ name, email, message });
+    await newMessage.save();
+    res.status(201).json({ success: true, data: newMessage });
   } catch (error) {
-    console.error("Error in create data:", error.message);
+    console.error("Error saving contact message:", error.message);
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// ============== GET / API ==============
-// Data is Retrieved from MongoDB
-export const getData = async (req, res) => {
+// ============== GET /api/contact ==============
+// Retrieve all contact messages
+export const getMessages = async (req, res) => {
   try {
-    const models = await Model.find();
-    res.json({ success: true, data: models });
+    const messages = await Model.find();
+    res.json({ success: true, data: messages });
   } catch (error) {
-    console.error("Error in fetching data:", error.message);
+    console.error("Error fetching messages:", error.message);
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// ============== DELETE / API ==============
-// Data is Deleted from MongoDB
-export const deleteData = async (req, res) => {
+// ============== DELETE /api/contact/:id ==============
+// Delete a contact message
+export const deleteMessage = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const deletedModel = await Model.findByIdAndDelete(id);
-    if (!deletedModel) {
+    const deleted = await Model.findByIdAndDelete(id);
+    if (!deleted) {
       return res
         .status(404)
-        .json({ success: false, message: "Data not found." });
+        .json({ success: false, message: "Message not found." });
     }
-    res.json({ success: true, data: deletedModel });
+    res.json({ success: true, data: deleted });
   } catch (error) {
-    console.error("Error in delete data:", error.message);
+    console.error("Error deleting message:", error.message);
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// ============== PUT / API ==============
-// Updated All Data in MongoDB
-export const putData = async (req, res) => {
+// ============== PUT /api/contact/:id ==============
+// Update a contact message
+export const updateMessage = async (req, res) => {
   const { id } = req.params;
-  const data = req.body;
+  const { name, email, message } = req.body;
 
-  if (!data.name || !data.price) {
+  if (!name || !email || !message) {
     return res
       .status(400)
-      .json({ success: false, message: "Please provide all required fields." });
+      .json({ success: false, message: "All fields are required." });
   }
 
   try {
-    const updatedModel = await Model.findByIdAndUpdate(id, data, {
-      new: true,
-      runValidators: true,
-    });
+    const updated = await Model.findByIdAndUpdate(
+      id,
+      { name, email, message },
+      { new: true, runValidators: true }
+    );
 
-    if (!updatedModel) {
+    if (!updated) {
       return res
         .status(404)
-        .json({ success: false, message: "Data not found." });
+        .json({ success: false, message: "Message not found." });
     }
 
-    res.json({ success: true, data: updatedModel });
+    res.json({ success: true, data: updated });
   } catch (error) {
-    console.error("Error in update data:", error.message);
+    console.error("Error updating message:", error.message);
     res.status(500).json({ success: false, message: error.message });
   }
 };
