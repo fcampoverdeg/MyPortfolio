@@ -5,7 +5,7 @@
 /* #################################################################################################### */
 
 .contact-section {
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   padding-bottom: 5rem;
   scroll-snap-align: start;
@@ -218,7 +218,7 @@
 
 @media (max-width: 768px) {
   .contact-section {
-    min-height: 135vh;
+    min-height: 145vh;
     padding: 2rem 0rem 4rem;
   }
 

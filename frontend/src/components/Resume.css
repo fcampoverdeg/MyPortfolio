@@ -225,8 +225,8 @@
 
 @media (max-width: 768px) {
   .resume-container {
-    height: 100vh;
-    margin-top: -200px;
+    height: 110vh;
+    margin-top: -100px;
     padding: 0rem 2rem 2rem 2rem;
     display: flex;
     flex-direction: column;
@@ -281,7 +281,7 @@
   .resume-title {
     font-size: 2.2rem;
     text-align: center;
-    padding: 5rem 0rem 2rem 0rem;
+    padding: 7rem 0rem 2rem 0rem;
   }
 
   .resume-title::after {
