@@ -20,20 +20,22 @@ const Home = () => {
   useEffect(() => {
     if (!isHome) return;
 
+    const target = homeEndRef.current; // ✅ Safely cache ref
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setButtonsVisible(entry.isIntersecting); // show when in view
+        setButtonsVisible(entry.isIntersecting);
       },
       { threshold: 0.1 }
     );
 
-    if (homeEndRef.current) {
-      observer.observe(homeEndRef.current);
+    if (target) {
+      observer.observe(target);
     }
 
     return () => {
-      if (homeEndRef.current) {
-        observer.unobserve(homeEndRef.current);
+      if (target) {
+        observer.unobserve(target);
       }
     };
   }, [isHome]);
