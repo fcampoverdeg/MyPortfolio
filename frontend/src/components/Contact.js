@@ -29,7 +29,7 @@ const Contact = () => {
     };
   }, [vantaEffect]);
 
-  // === Intersection animation ===
+  // === Intersection animation === //
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -41,6 +41,47 @@ const Contact = () => {
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
+
+  // === Communications === //
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+
+    console.log("Sending data to backend:", data);
+
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/api/contact`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      const result = await response.json();
+      console.log("Response status:", response.status);
+      console.log("Response body:", result);
+
+      if (response.ok) {
+        alert("Message sent successfully!");
+        e.target.reset();
+      } else {
+        alert("Failed to send message.");
+      }
+    } catch (err) {
+      console.error("Error:", err);
+      alert("Something went wrong.");
+    }
+  };
 
   return (
     <section
@@ -55,7 +96,7 @@ const Contact = () => {
           <div className="contact-wrapper">
             {/* === Left: Fancy Contact Form === */}
             <div className="contact-card">
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="form-group">
                   <input type="text" name="name" required />
                   <label>Your Name</label>

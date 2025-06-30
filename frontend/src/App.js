@@ -20,7 +20,7 @@ import "./App.css";
 const App = () => {
   // Fetching data from the backend API
   useEffect(() => {
-    fetch("http://localhost:5000/api/Home")
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/contact`)
       .then((res) => res.json())
       .then((data) => console.log(data))
       .catch((err) => console.error("Error fetching data:", err));
