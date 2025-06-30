@@ -20,7 +20,13 @@ const Home = () => {
   useEffect(() => {
     if (!isHome) return;
 
-    const target = homeEndRef.current; // ✅ Safely cache ref
+    // On mobile, always show buttons
+    if (window.innerWidth <= 768) {
+      setButtonsVisible(true);
+      return;
+    }
+
+    const target = homeEndRef.current; // ← Fix: copy ref to a local variable
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -29,14 +35,10 @@ const Home = () => {
       { threshold: 0.1 }
     );
 
-    if (target) {
-      observer.observe(target);
-    }
+    if (target) observer.observe(target);
 
     return () => {
-      if (target) {
-        observer.unobserve(target);
-      }
+      if (target) observer.unobserve(target); // ← Use same local reference
     };
   }, [isHome]);
 
