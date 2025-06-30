@@ -1,5 +1,6 @@
 // src/components/Portfolio.js
 import React, { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
 import Footer from "./Footer";
 import "./Portfolio.css";
@@ -20,7 +21,7 @@ const projects = [
       "Graphics",
     ],
     github: "https://github.com/VT-CRO/CroQuest",
-    demo: "/games/croquest",
+    website: "https://morganw040.wixsite.com/croquest",
     video: "https://www.youtube.com/watch?v=Fxc-An2Zm-w",
     organization: "https://www.vtcro.org/design-teams/qst",
     path: "/projects/CroQuest",
@@ -42,18 +43,18 @@ const projects = [
       "CSS",
     ],
     github: "https://github.com/fcampoverdeg/MyPortfolio",
-    demo: "/projects/dashboard",
+    // demo: "/projects/dashboard",
     path: "/projects/MyPortfolio",
     reverse: true,
   },
   {
-    title: "Autonomous Car",
+    title: "Autonomous Car (Temporarily Unavailable)",
     image: "/images/car/NCB.jpg",
     description:
       "Engineered a fully autonomous vehicle using ROS2 and Gazebo to navigate obstacle courses for the National Robotics Challenge, including real-time mapping, path planning, and simulation.",
     tags: ["C++", "ROS", "Gazebo", "RVIZ", "Nav2", "Linux"],
     github: "https://github.com/VT-CRO/NationalRoboticsChallengeCode",
-    demo: "/projects/dashboard",
+    // demo: "/projects/dashboard",
     organization: "https://www.vtcro.org/design-teams/dog",
     path: "/projects/AutonomousCar",
     reverse: true,
@@ -63,8 +64,24 @@ const projects = [
 const Portfolio = () => {
   const containerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const location = useLocation();
 
-  // Set up Intersection Observer to animate on scroll
+  useEffect(() => {
+    const hash = location.hash;
+
+    if (hash) {
+      setTimeout(() => {
+        const el = document.querySelector(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: "auto" }); // <- changed to "auto"
+        }
+      }, 0); // optional: keep small delay if needed for DOM paint
+    } else {
+      window.scrollTo({ top: 0, behavior: "auto" }); // <- instant top
+    }
+  }, [location]);
+
+  // Animated Background
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -82,9 +99,35 @@ const Portfolio = () => {
     };
   }, []);
 
-  // Render
+  // Transitions for Project Cards
+  useEffect(() => {
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    reveals.forEach((el) => observer.observe(el));
+
+    return () => {
+      reveals.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
+  useEffect(() => {
+    // Restore smooth scrolling once page has loaded
+    document.documentElement.style.scrollBehavior = "smooth";
+  }, []);
+
   return (
-    <>
+    <div id="portfolio-top" className="portfolio-page">
       {/* Particle Background */}
       <div className="background-particles">
         {[...Array(20)].map((_, i) => (
@@ -112,15 +155,22 @@ const Portfolio = () => {
         <h1 className="portfolio-title">Portfolio</h1>
         <div className="portfolio-grid">
           {projects.map((project, index) => (
-            <ProjectCard key={index} {...project} reverse={true} />
+            <div
+              key={index}
+              className="project-card-wrapper reveal"
+              style={{ transitionDelay: `${index * 0.15}s` }}
+            >
+              <ProjectCard {...project} reverse={true} />
+            </div>
           ))}
         </div>
       </div>
+
       {/* Footer */}
       <section id="footer" className="footer-section">
         <Footer />
       </section>
-    </>
+    </div>
   );
 };
 

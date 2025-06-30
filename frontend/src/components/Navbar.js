@@ -258,7 +258,7 @@ const Navbar = () => {
 
           {/*------- Portfolio -------*/}
           <Link
-            to="/portfolio"
+            to="/portfolio#portfolio-top"
             className={`nav-link ${
               location.pathname === "/portfolio" ? "active" : ""
             }`}

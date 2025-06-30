@@ -1,15 +1,49 @@
-import React from "react";
-import "./CroQuest.css";
+import React, { useEffect } from "react";
 import CroQuestGallery from "./CroQuestGallery";
 import CroQuestModelViewer from "./CroQuestModel";
 import CroQuestCode from "./CroQuestCode";
 
 import Footer from "../../Footer";
 
+import "./CroQuest.css";
+
 const CroQuestPage = () => {
+  // Goes back at the top.
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const el = document.querySelector(hash);
+      if (el) el.scrollIntoView({ behavior: "auto" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
+  }, []);
+
+  // Animations
+  useEffect(() => {
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    reveals.forEach((el) => observer.observe(el));
+
+    return () => {
+      reveals.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
   return (
     <>
-      <div className="croquest-page">
+      <div id="croquestgameconsole-top" className="croquest-page">
         {/* ---------- HERO ---------- */}
         <div className="hero">
           <h1 className="title">CroQuest</h1>
@@ -20,7 +54,7 @@ const CroQuestPage = () => {
         </div>
 
         {/* ---------- OVERVIEW SPLIT ---------- */}
-        <div className="overview-container">
+        <div className="overview-container reveal">
           <div className="overview-left">
             <img
               src="/images/CroQuest/CroQuest_Cover.png"
@@ -31,7 +65,6 @@ const CroQuestPage = () => {
 
           <div className="overview-right">
             <h2 className="overview-title">What is CroQuest?</h2>
-
             <p className="overview-description">
               <strong>CroQuest</strong> is a custom-built handheld console
               powered by an ESP32, featuring an 8-bit parallel TFT screen, SD
@@ -73,7 +106,7 @@ const CroQuestPage = () => {
         </div>
 
         {/* ---------- GALLERY ---------- */}
-        <div className="gallery-section">
+        <div className="gallery-section reveal">
           <h2 className="gallery-main-title">Gallery</h2>
           <p className="gallery-description">
             The gallery showcases the development journey of{" "}
@@ -91,7 +124,7 @@ const CroQuestPage = () => {
         </div>
 
         {/* ---------- 3D MODEL FULL WIDTH ---------- */}
-        <div className="model-section">
+        <div className="model-section reveal reveal-left">
           <h2 className="model-title">3D Model</h2>
           <p className="model-description">
             This interactive 3D viewer lets you explore the physical shell of
@@ -107,12 +140,12 @@ const CroQuestPage = () => {
         </div>
 
         {/* ---------- CODE + LESSONS SIDE-BY-SIDE ---------- */}
-        <div className="code-lessons">
+        <div className="code-lessons reveal reveal-right">
           <div className="code-side">
             <CroQuestCode />
           </div>
 
-          <div className="lessons-side">
+          <div className="lessons-side reveal reveal-fade">
             <h2>Lessons Learned</h2>
             <p>
               This project taught me valuable lessons in embedded systems
@@ -124,6 +157,7 @@ const CroQuestPage = () => {
           </div>
         </div>
       </div>
+
       {/* Footer */}
       <section id="footer" className="footer-section">
         <Footer />

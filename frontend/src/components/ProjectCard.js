@@ -15,7 +15,7 @@ const ProjectCard = ({
   description,
   tags,
   github,
-  demo,
+  website,
   video,
   organization,
   path,
@@ -26,8 +26,12 @@ const ProjectCard = ({
 
   const handleClick = () => {
     setFlipped(true);
+    document.documentElement.style.scrollBehavior = "auto";
+
+    const hashTarget = title.toLowerCase().replace(/[^\w]/g, "") + "-top";
+
     setTimeout(() => {
-      navigate(path);
+      navigate(`${path}#${hashTarget}`);
     }, 1300);
   };
 
@@ -67,14 +71,15 @@ const ProjectCard = ({
                       <FontAwesomeIcon icon={faGithub} /> GitHub
                     </a>
                   )}
-                  {demo && (
+                  {website && (
                     <a
-                      href={demo}
+                      href={website}
                       onClick={stopProp}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <FontAwesomeIcon icon={faWebAwesome} /> Live Demo
+                      <FontAwesomeIcon icon={faWebAwesome} /> Website (In
+                      process)
                     </a>
                   )}
                   {organization && (
