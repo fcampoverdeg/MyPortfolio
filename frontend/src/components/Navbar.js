@@ -16,7 +16,6 @@ import {
 import {
   faGithub,
   faLinkedin,
-  faPaypal,
   faWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
 
@@ -135,19 +134,6 @@ const Navbar = () => {
 
           {/* ===== Social Icons Block ===== */}
           <div className="social-icons">
-            {/*------- PayPal -------*/}
-            <a
-              href="https://paypal.me/fcampoverdegdev"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => {
-                if (window.innerWidth < 768) {
-                  setMenuOpen(false);
-                }
-              }}
-            >
-              <FontAwesomeIcon icon={faPaypal} />
-            </a>
             {/*------- Linkedin -------*/}
             <a
               href="https://www.linkedin.com/in/fcampoverdeg/"

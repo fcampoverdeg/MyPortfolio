@@ -1,19 +1,73 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import TypewriterEffect from "./TypewriterEffect";
+import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "./Home.css";
 
 const Home = () => {
   const [mounted, setMounted] = useState(false);
+  const [buttonsVisible, setButtonsVisible] = useState(true);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+  const homeEndRef = useRef(null);
 
   useEffect(() => {
-    // Short delay to allow CSS to register
     const timer = setTimeout(() => setMounted(true), 50);
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    if (!isHome) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setButtonsVisible(entry.isIntersecting); // show when in view
+      },
+      { threshold: 0.1 }
+    );
+
+    if (homeEndRef.current) {
+      observer.observe(homeEndRef.current);
+    }
+
+    return () => {
+      if (homeEndRef.current) {
+        observer.unobserve(homeEndRef.current);
+      }
+    };
+  }, [isHome]);
+
   return (
     <section id="home" className="home-container">
+      {/* Top-right buttons */}
+      {isHome && (
+        <div
+          className={`top-right-button-group ${
+            buttonsVisible ? "buttons-animate-in" : ""
+          }`}
+        >
+          <div className="vt-news-slide-container">
+            <div className="home-button vt-news-hover-trigger">
+              Featured in VT NEWS
+            </div>
+            <div className="vt-news-video-slide">
+              <iframe
+                src="https://www.youtube.com/embed/Fxc-An2Zm-w?autoplay=1&mute=1"
+                title="VT News Feature"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+          <Link to="/portfolio" className="home-button">
+            View Portfolio
+          </Link>
+        </div>
+      )}
+
+      {/* Main title */}
       <div className={`home-content-wrapper ${mounted ? "fancy-fade-in" : ""}`}>
         <div className="overlay">
           <div className="home-content">
@@ -26,6 +80,9 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {/* Invisible anchor to detect end of Home section */}
+      <div ref={homeEndRef} className="home-end-anchor" />
     </section>
   );
 };

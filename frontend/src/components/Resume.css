@@ -6,7 +6,7 @@
 
 /* ======== Resume Container ======== */
 .resume-container {
-  height: 170vh;
+  height: auto;
   width: 100vw;
   font-family: 'Playfair Display', cursive;
   scroll-snap-align: start;

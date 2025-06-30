@@ -9,7 +9,7 @@ ________________
 
 
 WORK EXPERIENCE
-Chief Engineer & Software Engineer: CroQuest | VT CRO| Blacksburg, VA                                                 March 2025 - Present
+Chief Engineer & Software Engineer: CroQuest | VT CRO| Blacksburg, VA                                              March 2025 - Present
 
 
 * Developed an educational game console using ESP32-WROOM, Bluetooth, SD. Wrote 5000+ lines of code.

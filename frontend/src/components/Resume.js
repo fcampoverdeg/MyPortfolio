@@ -106,7 +106,6 @@ const Resume = () => {
             <p className="project-tech">
               B.S. in Computer Science, 2024 - 2026
             </p>
-            <p className="project-description">GPA: 3.0</p>
           </div>
 
           <h2 className="resume-project">Skills</h2>
@@ -124,9 +123,13 @@ const Resume = () => {
           <div className="project-entry">
             <h3 className="project-title">Software Engineer – VT CRO</h3>
             <p className="project-description">
-              Support robotics competitions and development
+              Contributed to the development of an autonomous RC car using ROS
+              2, RViz, Nav2, URDF, and Gazebo.{" "}
+            </p>{" "}
+            <p className="project-description">
+              Integrated hardware including LiDAR, RealSense camera, Arduino,
+              and Raspberry Pi for SLAM and navigation,
             </p>
-
             <h3 className="project-title">Peer Mentor – Ceed</h3>
             <p className="project-description">
               Mentored first-year engineering students
@@ -147,12 +150,22 @@ const Resume = () => {
 
           <div className="project-entry">
             <h3 className="project-title">
-              Embedded Software Engineer – VT CRO
+              Chief Engineer of CroQuest – VT CRO
             </h3>
             <p className="project-tech">March 2025 – Present</p>
             <ul className="project-highlights">
-              <li>Developed GameBoy-style console using ESP32 and C++</li>
-              <li>Built games and dynamic content system for students</li>
+              <li>
+                Developed an educational game console using ESP32-WROOM,
+                Bluetooth, SD. Wrote 5000+ lines of code.
+              </li>
+              <li>
+                Programmed 8 games like Snake, Pong, Tetris, Breakout, TicTacToe
+                using C/C++, use of assets
+              </li>
+              <li>
+                Programmed Bluetooth (BLE) connectivity to develop multiplayer
+                logic in games
+              </li>
             </ul>
           </div>
 
@@ -162,8 +175,14 @@ const Resume = () => {
             </h3>
             <p className="project-tech">May 2024 – August 2024</p>
             <ul className="project-highlights">
-              <li>Taught network security and ethical hacking to students</li>
-              <li>Translated complex concepts into engaging lessons</li>
+              <li>
+                Taught core cybersecurity concepts such as encryption, network
+                security, and ethical hacking to school student
+              </li>
+              <li>
+                Explained security topics into accessible lessons, fostering
+                early interest in cyber defense and ethical computin
+              </li>
             </ul>
           </div>
 
@@ -174,7 +193,12 @@ const Resume = () => {
             <p className="project-tech">January 2024 – Present</p>
             <ul className="project-highlights">
               <li>
-                Managed food safety, team ops, and bilingual customer support
+                Supervise student coworkers, ensure food safety protocols, and
+                manage customer-facing service stations
+              </li>
+              <li>
+                Provide bilingual support (English/Spanish) and ensure smooth
+                daily operations across various roles
               </li>
             </ul>
           </div>
