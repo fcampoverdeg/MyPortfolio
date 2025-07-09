@@ -73,6 +73,11 @@ const Home = () => {
 
       {/* Main title */}
       <div className={`home-content-wrapper ${mounted ? "fancy-fade-in" : ""}`}>
+        <video className="background-video" autoPlay loop muted playsInline>
+          <source src="/videos/home_background.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
         <div className="overlay">
           <div className="home-content">
             <h1 className="home-title">Felipe S. Campoverde</h1>
