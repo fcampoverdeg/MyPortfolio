@@ -1,65 +1,66 @@
 ﻿Felipe Campoverde
-Blacksburg Virginia | (804) 356-5749 | fcampoverdeg@vt.edu | in/fcampoverdeg | fcampoverdeg.dev/
-EDUCATION        
-Virginia Tech, College of Engineering, Blacksburg, VA                                                            2024 - 2026 
-Bachelor of Science in Computer Science                                                                              GPA: 3.0
-
-
+Software Engineer • (804) 356-5749 • fcampoverdeg@vt.edu • in/fcampoverdeg/ • fcampoverdeg.dev/
+EXPERIENCE
 ________________
+Chief Engineer & Software Developer: CroQuest | VT CRO | Blacksburg, VA                        March 2025 - Present
 
 
-WORK EXPERIENCE
-Chief Engineer & Software Engineer: CroQuest | VT CRO| Blacksburg, VA                                              March 2025 - Present
+* Engineered a custom educational handheld game console using ESP32-WROOM, SD card, and BLE 
+* Wrote 5,000+ lines of C/C++ to develop 8+ retro-style games including Snake, Pong, Tetris, and Tic Tac 
+* Designed and implemented Bluetooth multiplayer logic, asset rendering, and UI feedback for each game
 
 
-* Developed an educational game console using ESP32-WROOM, Bluetooth, SD. Wrote 5000+ lines of code.
-* Programmed 8 games like Snake, Pong, Tetris, Breakout, TicTacToe using C/C++, use of assets
-* Programmed Bluetooth (BLE) connectivity to develop multiplayer logic in games.
+Cyber Security Instructor | Virginia Tech | Blacksburg, VA                                                      May 2024 - August 2024
 
 
-Cyber Security Instructor| Virginia Tech| Blacksburg, VA                                                       May 2024 - August 2024
+* Taught core cybersecurity concepts such as encryption, network security, and ethical hacking to school students
+* Explained security topics into accessible lessons, fostering early interest in cyber defense and ethical computing
 
 
-*  Taught core cybersecurity concepts such as encryption, network security, and ethical hacking to school students
-*   Explained security topics into accessible lessons, fostering early interest in cyber defense and ethical computing
-
-
-Student Assistant Manager| Virginia Tech| Blacksburg, VA                                                       January 2024 - Present 
-
-
-* Supervise student coworkers, ensure food safety protocols, and manage customer-facing service stations
-* Provide bilingual support (English/Spanish) and ensure smooth daily operations across various roles
-
-
+LEADERSHIP
 ________________
+Chief Engineer - CroQuest, VT Competitive Robotics Organization                              September 2024 - June 2025
 
 
-PROJECTS 
+* Led software development across multiple student-led robotics projects, guiding system design and implementation
+* Mentored team members and assisted in preparing for regional and national robotics competitions
 
 
-Multithreaded Fork/Join Threadpool with Work Stealing ( C )
-* Developed a threadpool system in C supporting dynamic task scheduling and load balancing
-* Implemented a custom queue structure and used condition variables and mutexes for thread-safe operation
-RC Car - VT CRO ( C++, Python, XML, Git )
-* Contributed to the development of an autonomous RC car using ROS 2, RViz, Nav2, URDF, and Gazebo
-* Integrated hardware including LiDAR, RealSense camera, Arduino, and Raspberry Pi for SLAM and navigation,
-Interactive Bar Chart Web App ( JavaScript, HTML, CSS )
-* Created a React-based web app that allows users to enter, edit, and visualize data using bar charts
-* Implemented coordinated multiple views, file saving/loading, and dynamic axis label configuration
+Student Assistant Manager | Virginia Tech | Blacksburg, VA                                                    January 2024 - Present 
+
+
+* Supervise student staff, enforce safety protocols, and ensure smooth day-to-day operations
+* Provide bilingual (English/Spanish) support to staff and customers in high-paced service environments
+
+
+Peer Mentor, Ceed | Virginia Tech  | Blacksburg, VA                                                        September 2024 - Present
+
+
+* Supported first-year engineering students through workshops, academic mentoring, and study group facilitation
+
+
+EDUCATION
 ________________
+* Bachelor of Science in Computer Science  ·  GPA: 3.0  ·  Blacksburg, VA                         Expected May 2026
 
 
-EXTRACURRICULARS
-Software Engineer, VT CRO                                                                            September 2024 - Present
-* Support robotics projects in a student-led team by developing software and preparing for competitions
-Peer Mentor, Ceed | Virginia Tech                                                                                September 2024 - Present
-* Supported first-year engineering students through mentorship, workshops, and study sessions
-
-
+SOFTWARE PROJECTS
 ________________
+Full-Stack Portfolio Website ( React, JavaScript, HTML/CSS, Node.js, MongoDB, WebGL, Netlify, Blender)
+* Built a dynamic web app to visualize datasets via interactive charts (bar, pie, scatter) and coordinated views
+* Integrated file import/export, axis configuration, and responsive UI for polished user experience
+* Learn more about Felipe Campoverde
+Autonomous Car - VT CRO ( C++, Python, ROS, RVIZ, Linux, XML, Git )
+* Developed autonomous navigation with SLAM using ROS2 and Gazebo
+* Integrated hardware sensors (LiDAR, camera, Arduino) to build a fully autonomous robotics platform
+Multithreaded Fork/Join Threadpool, Concurrency, Work-Stealing, Task Queues ( C )
+* Designed a high-performance threadpool supporting dynamic task distribution and parallel execution
+* Implemented thread-safe queues and synchronization using condition variables and mutexes
 
 
 SKILLS
-* Programming languages: C, C++, Python, Java, JavaScript, HTML/CSS, 
-* Technologies/Tools: Linux, React.js, Platform/IO, Arduino, ROS2, Rviz, Gazebo, Git, 
-* Other: Bilingual (English / Spanish), Team Leadership, Quick Learner, Curious
+________________
+* Languages C, C++, Python, Java, JavaScript, HTML, CSS
+* Web & Full-Stack Development React.js, Zustand, Node.js, Express, MongoDB, REST APIs
+* Embedded & Robotics ESP32, Arduino, PlatformIO, Bluetooth (BLE), ROS2, URDF, RViz, Gazebo, LiDAR, RealSense
+* Tools & Platforms Git, Linux, VSCode, Netlify, Blender, SD Card Interfaces, WebGL
