@@ -86,7 +86,7 @@ const CroQuestPage = () => {
             <p className="overview-credit">
               <em>
                 Project concept and visual design led by{" "}
-                <strong>Marco Gonzales Hauger</strong>, who served as Chief
+                <strong>Marco Gonzalez Hauger</strong>, who served as Chief
                 Designer and originated the CroQuest idea.
               </em>
             </p>
