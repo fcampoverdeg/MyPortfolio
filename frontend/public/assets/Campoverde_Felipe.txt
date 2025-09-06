@@ -1,47 +1,30 @@
 ﻿Felipe Campoverde
 Software Engineer • (804) 356-5749 • fcampoverdeg@vt.edu • in/fcampoverdeg/ • fcampoverdeg.dev/
+EDUCATION
+________________
+* Virginia Tech Bachelor of Science in Computer Science  ·  GPA: 3.0  ·  Blacksburg, VA                    Expected May 2026
+
+
+
+
 EXPERIENCE
 ________________
-Chief Engineer & Software Developer: CroQuest | VT CRO | Blacksburg, VA                        March 2025 - Present
-
-
+Chief Software Engineer - CroQuest ( C/C++, BLE, Bash, Git, Bluetooth, PlatformIO )         March 2025 - Present
 * Engineered a custom educational handheld game console using ESP32-WROOM, SD card, and BLE 
-* Wrote 5,000+ lines of C/C++ to develop 8+ retro-style games including Snake, Pong, Tetris, and Tic Tac 
+* Wrote 5,000+ lines of C/C++ to develop 8+ retro-style games including Snake, Pong, Tetris, and Tic Tac Toe 
 * Designed and implemented Bluetooth multiplayer logic, asset rendering, and UI feedback for each game
 
 
-Cyber Security Instructor | Virginia Tech | Blacksburg, VA                                                      May 2024 - August 2024
+Autonomous Car - VT CRO ( C++, Python, ROS, RVIZ, Linux, XML, Git, SSH )          September 2024 - June 2025
+* Developed autonomous navigation with SLAM using ROS2 and Gazebo
+* Integrated hardware sensors (LiDAR, camera, Arduino) to build a fully autonomous robotics platform
 
 
-* Taught core cybersecurity concepts such as encryption, network security, and ethical hacking to school students
-* Explained security topics into accessible lessons, fostering early interest in cyber defense and ethical computing
-
-
-LEADERSHIP
-________________
-Chief Engineer - CroQuest, VT Competitive Robotics Organization                              September 2024 - June 2025
-
-
-* Led software development across multiple student-led robotics projects, guiding system design and implementation
-* Mentored team members and assisted in preparing for regional and national robotics competitions
-
-
-Student Assistant Manager | Virginia Tech | Blacksburg, VA                                                    January 2024 - Present 
-
-
-* Supervise student staff, enforce safety protocols, and ensure smooth day-to-day operations
-* Provide bilingual (English/Spanish) support to staff and customers in high-paced service environments
-
-
-Peer Mentor, Ceed | Virginia Tech  | Blacksburg, VA                                                        September 2024 - Present
-
-
-* Supported first-year engineering students through workshops, academic mentoring, and study group facilitation
-
-
-EDUCATION
-________________
-* Bachelor of Science in Computer Science  ·  GPA: 3.0  ·  Blacksburg, VA                         Expected May 2026
+Linux Systems (Haskell, Lua, C/C++, Nvim, Hyperland, Waybar, VM, File Systems, Terminal)          2019 - Present
+* Configured Arch Linux daily driver;  managed  Hyperland WM, Waybar, extensions, lock screens..
+* Set up and Troubleshot Bluetooth, WiFi, and system services to improve workflow and hardware compatibility
+* Performed system installs, SSD partitioning, data migrations; debugged boot and kernel issues to restore system stability
+* Built automation scripts and custom configs in Lua, Haskell, and Bash, extending functionality and optimizing workflows.
 
 
 SOFTWARE PROJECTS
@@ -50,17 +33,33 @@ Full-Stack Portfolio Website ( React, JavaScript, HTML/CSS, Node.js, MongoDB, We
 * Built a dynamic web app to visualize datasets via interactive charts (bar, pie, scatter) and coordinated views
 * Integrated file import/export, axis configuration, and responsive UI for polished user experience
 * Learn more about Felipe Campoverde
-Autonomous Car - VT CRO ( C++, Python, ROS, RVIZ, Linux, XML, Git )
-* Developed autonomous navigation with SLAM using ROS2 and Gazebo
-* Integrated hardware sensors (LiDAR, camera, Arduino) to build a fully autonomous robotics platform
+
+
 Multithreaded Fork/Join Threadpool, Concurrency, Work-Stealing, Task Queues ( C )
 * Designed a high-performance threadpool supporting dynamic task distribution and parallel execution
 * Implemented thread-safe queues and synchronization using condition variables and mutexes
 
 
+LEADERSHIP
+________________
+Co-Founder & CTO | CroQuest LLC | Virginia | Blacksburg, VA                                                    June 2025 - Present
+* Co-founded an educational technology company delivering hand-on STEM learning programs.
+* Taught 100+ students electronics, embedded programming, and console assembly through workshops and camps.
+* Guided long-term technical roadmap, product scalability, and partnerships with local schools.
+  
+Student Assistant Manager | Virginia Tech | Blacksburg, VA                                                       January 2024 - Present 
+* Supervise 10+ student staff, ensuring compliance with safety and service standards
+* Provide bilingual (English/Spanish) support to staff and customers in high-paced service environments
+
+
+Peer Mentor, Ceed | Virginia Tech  | Blacksburg, VA                                            September 2024 - December 2024
+* Supported first-year engineering students through workshops, academic mentoring, and study group facilitation
+
+
 SKILLS
 ________________
-* Languages C, C++, Python, Java, JavaScript, HTML, CSS
+* Languages C, C++, Python, Java, JavaScript, HTML/CSS, Haskell, Lua
 * Web & Full-Stack Development React.js, Zustand, Node.js, Express, MongoDB, REST APIs
 * Embedded & Robotics ESP32, Arduino, PlatformIO, Bluetooth (BLE), ROS2, URDF, RViz, Gazebo, LiDAR, RealSense
-* Tools & Platforms Git, Linux, VSCode, Netlify, Blender, SD Card Interfaces, WebGL
+* Tools & Systems Git, Linux, VSCode, Netlify, Blender, SD Card Interfaces, WebGL, Blender, SD card interfaces
+* Other: Bilingual (English/Spanish)
