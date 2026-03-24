@@ -19,7 +19,7 @@ html, body {
     height:100%;
     width:100%;
     font-family:'Courier New', Courier, monospace;
-    background-color: black;
+    background-color: #0a0a0a;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -28,13 +28,30 @@ html, body {
 .app-container {
     height: 100%;
     width: 100%;
+    visibility: hidden;
+}
+
+.app-container.app-loaded {
+    visibility: visible;
+}
+
+/* ======== Global Grain Overlay ======== */
+.global-grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 99998;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    mix-blend-mode: overlay;
 }
 
 main {
-  scroll-snap-type: y proximity; /* still snappy but not locked */
-  overflow-y: visible; /* allow full page scrolling */
+  scroll-snap-type: y proximity;
+  overflow-y: visible;
   flex-grow: 1;
   margin: 0;
+  padding-left: 0;
 }
 
 section {
@@ -42,37 +59,47 @@ section {
     flex-direction: column;
     justify-content: center;
     margin: 0;
-    padding: 0rem 3rem 0rem 2rem;
-    background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+    padding: 0;
+    background: #0a0a0a;
 }
 
 .about-section{
   scroll-margin-top: 80px;
+  padding-left: 180px;
 }
 
 .resume-section {
   background: #0a0a0a;
   scroll-margin-top: -65px;
+  padding-left: 180px;
 }
 
 .contact-section {
-  background: #000;
+  background: #0a0a0a;
   scroll-margin-top: -40px;
+  padding-right: 450px;
+}
+
+.footer-section {
 }
 
 
 /* ======== Scroll Bar ======== */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #FFD700;
-  border-radius: 4px;
+  background-color: #333;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #111;
+  background-color: #0a0a0a;
 }
 
 /* #################################################################################################### */
@@ -91,6 +118,11 @@ section {
 
   .about-section{
   scroll-margin-top: 15px;
+  padding-left: 0;
+  }
+
+  .resume-section {
+  padding-left: 0;
   }
 
   .resume-section {
@@ -100,9 +132,51 @@ section {
   }
 
   .contact-section {
-      background: #000;
+      background: #0a0a0a;
       scroll-margin-top: -10px;
+      padding-right: 0;
   }
 
 }
 
+/* ======== 404 Page ======== */
+.not-found-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #e0e0e0;
+  font-family: 'Playfair Display', cursive;
+  text-align: center;
+}
+
+.not-found-page h1 {
+  font-size: 8rem;
+  margin: 0;
+  line-height: 1;
+  opacity: 0.15;
+}
+
+.not-found-page p {
+  font-size: 1.3rem;
+  font-family: 'Ubuntu', sans-serif;
+  color: #999;
+  margin: 1rem 0 2rem;
+}
+
+.not-found-link {
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.not-found-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.35);
+}

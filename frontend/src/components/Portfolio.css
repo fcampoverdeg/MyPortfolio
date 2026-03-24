@@ -1,109 +1,166 @@
 
 /* #################################################################################################### */
-/* Portfolio Page Design */
+/* Portfolio Page Design — Premium Monochrome */
 /* #################################################################################################### */
 
-.portfolio-container {
-  min-height: 215vh;
-  width: 100%;
-  padding: 1rem 6rem;
-  color: #FFD700;
-  transition: all 1s ease;
-  opacity: 1;
-  transform: translateY(40px);
+.portfolio-page {
   position: relative;
+  min-height: 100vh;
+  background-color: #0a0a0a;
   overflow: hidden;
 }
 
+/* === Animated Gradient Orbs Background === */
+.portfolio-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.07;
+  will-change: transform;
+}
+
+.orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #ffffff, transparent 70%);
+  top: -10%;
+  right: -5%;
+  animation: floatOrb1 20s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #cccccc, transparent 70%);
+  bottom: -15%;
+  left: -10%;
+  animation: floatOrb2 25s ease-in-out infinite;
+}
+
+.orb-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #e0e0e0, transparent 70%);
+  top: 40%;
+  left: 50%;
+  animation: floatOrb3 18s ease-in-out infinite;
+}
+
+@keyframes floatOrb1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-80px, 60px) scale(1.1); }
+  66% { transform: translate(40px, -40px) scale(0.95); }
+}
+
+@keyframes floatOrb2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(60px, -50px) scale(1.05); }
+  66% { transform: translate(-30px, 70px) scale(0.9); }
+}
+
+@keyframes floatOrb3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-60px, -40px) scale(1.15); }
+}
+
+/* === Noise/Grain Overlay === */
+.portfolio-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* === Subtle Grid Pattern === */
+.portfolio-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+/* #################################################################################################### */
+/* Portfolio Container */
+/* #################################################################################################### */
+
+.portfolio-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 3rem 6rem;
+  transition: opacity 1s ease, transform 1s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
 
 .portfolio-container.animate {
   opacity: 1;
   transform: translateY(0);
 }
 
-.portfolio-title {
-  font-size: 3rem;
+/* === Title === */
+.portfolio-header {
   text-align: center;
-  margin-bottom: 1rem;
-  margin-top: 3rem;
+  margin-bottom: 5rem;
+}
+
+.portfolio-title {
+  font-size: 3.5rem;
   font-family: 'Playfair Display', cursive;
+  color: #f0f0f0;
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.5px;
 }
 
 .portfolio-title::after {
   content: "";
   display: block;
-  width: 125px;
-  height: 4px;
-  background-color: #FFD700;
-  margin: 0.5rem 45% 0;
-  border-radius: 2px;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #666, transparent);
+  margin: 1rem auto 0;
 }
 
-/* This works with ProjectCard's layout */
+.portfolio-subtitle {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.1rem;
+  color: #666;
+  font-weight: 400;
+  margin-top: 1rem;
+}
+
+/* === Grid === */
 .portfolio-grid {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 3rem;
   align-items: center;
 }
 
-/* === Particle Background === */
-.background-particles {
-  position: fixed;
-  background-color: #0a0a0a;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 200vh;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.particle {
-  position: absolute;
-  background-color: #ffd700;
-  border-radius: 50%;
-  opacity: 0.6;
-  animation: moveInDirection var(--duration, 20s) linear infinite;
-  transform: rotate(var(--angle));
-}
-
-@keyframes moveInDirection {
-  0% {
-    transform: rotate(var(--angle)) translate(0, 0);
-  }
-  100% {
-    transform: rotate(var(--angle)) translate(100px, 0);
-  }
-}
-
-.grid-pulse-background {
-  z-index: 0;
-}
-
-.background-particles {
-  z-index: 1;
-}
-
-.portfolio-container {
-  position: relative;
-  z-index: 2;
-}
-
-.footer-section {
-  min-height: 20vh;
-  background-color: #111; /* dark, but distinguishable */
-  position: relative;
-  height: 1vh;
-  z-index: 1;
-}
-
-
 /* #################################################################################################### */
-/* Project Card Transitions */
+/* Card Transitions */
 /* #################################################################################################### */
 
-/* === Reveal Animations === */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -115,7 +172,6 @@
   transform: none;
 }
 
-/* Optional: delay effect for cards */
 .project-card-wrapper {
   width: 100%;
   display: flex;
@@ -135,30 +191,50 @@
 
 
 /* #################################################################################################### */
+/* Footer Section */
+/* #################################################################################################### */
+
+.footer-section {
+  background-color: #0a0a0a;
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+
+/* #################################################################################################### */
 /* Phone Setup */
 /* #################################################################################################### */
 
 @media (max-width: 768px) {
   .portfolio-container {
-    height: auto;
-    width: 100%;
-    padding: 1rem 0rem;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .portfolio-header {
+    margin-bottom: 3rem;
   }
 
   .portfolio-title {
-    font-size: 2.2rem;
-    margin-top: 2rem;
+    font-size: 2.4rem;
   }
 
-  .portfolio-title::after {
-    margin: 0.5rem auto 0;
+  .portfolio-subtitle {
+    font-size: 1rem;
   }
 
-  .particle {
-    width: 8px !important;
-    height: 8px !important;
-    opacity: 0.4;
+  .portfolio-grid {
+    gap: 2rem;
   }
+
+  .orb {
+    filter: blur(80px);
+    opacity: 0.05;
+  }
+
+  .orb-1 { width: 300px; height: 300px; }
+  .orb-2 { width: 250px; height: 250px; }
+  .orb-3 { width: 200px; height: 200px; }
 
   .flip-card-wrapper {
     width: 100%;
@@ -170,7 +246,7 @@
   .flip-card {
     width: 100%;
     height: auto;
-    transition: transform 0.8s ease;
+    transition: transform 0.6s ease;
     transform-style: preserve-3d;
     position: relative;
   }
@@ -197,17 +273,11 @@
     transform: rotateY(180deg);
   }
 
-  .footer-section {
-    padding: 2rem 1rem;
-  }
-
   .project-card-wrapper {
-    width: 90vw;
+    width: 100%;
     height: auto;
     perspective: 1000px;
-    margin-top: 3rem;
-    margin-bottom: 22rem;
+    margin-top: 1rem;
+    margin-bottom: 18rem;
   }
 }
-
-

@@ -1,18 +1,17 @@
-/* src/components/Contact.css */
+/* src/components/Contact.css — Premium Monochrome */
 
 /* #################################################################################################### */
 /* Contact Page Design */
 /* #################################################################################################### */
 
 .contact-section {
-  height: 100vh;
+  min-height: auto;
   width: 100%;
-  padding-bottom: 5rem;
   scroll-snap-align: start;
   scroll-margin-top: 80px;
-  padding: 2rem 4rem;
-  background: #000;
-  color: #FFD700;
+  padding: 2rem 4rem 2rem 4rem;
+  background: #0a0a0a;
+  color: #e0e0e0;
   font-family: 'Playfair Display', cursive;
   text-align: center;
   scroll-snap-align: start;
@@ -26,7 +25,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(ellipse at center, #ffd70011 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.02) 0%, transparent 70%);
   z-index: 0;
   pointer-events: none;
   animation: shimmer 12s infinite ease-in-out;
@@ -60,15 +59,16 @@
 .contact-inner {
   position: relative;
   z-index: 1;
-  color: #FFD700;
+  color: #e0e0e0;
 }
 
 .contact-title {
   position: relative;
-  font-size: 3.5rem;
-  margin-bottom: 4rem;
+  font-size: 2.8rem;
+  margin-bottom: 3rem;
   letter-spacing: 1px;
-  text-shadow: 0 0 10px #FFD70055;
+  text-shadow: 0 0 10px rgba(255,255,255,0.06);
+  margin-right: 100px;
 }
 
 .contact-title::after {
@@ -79,7 +79,7 @@
   transform: translateX(-50%);
   height: 3px;
   width: 18%;
-  background: #FFD700;
+  background: #e0e0e0;
 }
 
 
@@ -89,21 +89,22 @@
   justify-content: center;
   align-items: stretch;
   flex-wrap: wrap;
-  gap: 3rem;
-  max-width: 1100px;
-  margin: auto;
+  gap: 2rem;
+  max-width: 850px;
+  margin: 0 auto 0 auto;
+  padding-right: 100px;
 }
 
 /* === Glass Card Style === */
 .contact-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 215, 0, 0.2);
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
-  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 2rem;
   border-radius: 16px;
   backdrop-filter: blur(10px);
-  flex: 1 1 400px;
-  transition: transform 0.3s ease;
+  flex: 1 1 340px;
+  max-width: 420px;
+  transition: all 0.3s ease;
 }
 
 .contact-card:hover {
@@ -117,16 +118,33 @@
   margin-bottom: 2rem;
 }
 
+/* Expanding focus line */
+.form-group::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.form-group:focus-within::after {
+  width: 90%;
+  left: 5%;
+}
+
 .form-group input,
 .form-group textarea {
   width: 90%;
   padding: 2rem 1rem 1rem;
   font-family: 'Courier New', monospace;
-  font-size: 1.3rem;
+  font-size: 1rem;
   background: transparent;
   border: none;
-  border-bottom: 2px solid #FFD70099;
-  color: #FFD700;
+  border-bottom: 1px solid rgba(255,255,255,0.20);
+  color: #e0e0e0;
   outline: none;
   transition: all 0.3s ease;
 }
@@ -137,10 +155,10 @@
   top: 1rem;
   left: 1rem;
   bottom: 2rem;
-  color: #FFD70099;
+  color: rgba(255,255,255,0.35);
   pointer-events: none;
   transition: 0.3s ease;
-  font-size: 2rem;
+  font-size: 1.4rem;
 }
 
 .form-group input:focus + label,
@@ -150,17 +168,17 @@
   top: -0.6rem;
   left: 0.8rem;
   bottom: 1rem;
-  font-size: 1.3rem;
-  color: #fff8dc;
+  font-size: 1rem;
+  color: #d4d4d4;
 }
 
 .contact-form button,
 .contact-card button {
-  background: #FFD700;
-  color: #111;
+  background: transparent;
+  color: #e0e0e0;
   padding: 0.8rem 2rem;
-  font-weight: bold;
-  border: none;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.20);
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -169,13 +187,14 @@
 
 .contact-form button:hover,
 .contact-card button:hover {
-  background: #fff8dc;
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 /* === Info Card Specific === */
 .info-card p {
   font-family: 'Ubuntu', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   margin: 1rem 0;
   display: flex;
   align-items: center;
@@ -187,7 +206,7 @@
   margin-top: 2rem;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 0 10px #ffd70055;
+  box-shadow: 0 0 10px rgba(255,255,255,0.06);
 }
 
 /* === Animation on Scroll === */

@@ -127,7 +127,7 @@ const Navbar = () => {
         {/*======= Profile Picture =======*/}
         <div className="profile-header">
           <img
-            src={require("../images/Logo.png")}
+            src={require("../images/profile.png")}
             alt="Profile"
             className="profile-image"
           />

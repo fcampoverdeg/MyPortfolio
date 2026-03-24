@@ -5,92 +5,160 @@ import { Link } from "react-router-dom";
 
 import "./Home.css";
 
-const Home = () => {
-  const [mounted, setMounted] = useState(false);
+const Home = ({ loaded }) => {
+  const [showContent, setShowContent] = useState(false);
   const [buttonsVisible, setButtonsVisible] = useState(true);
+  const [showVideo, setShowVideo] = useState(false);
+  const videoTimerRef = useRef(null);
   const location = useLocation();
   const isHome = location.pathname === "/";
   const homeEndRef = useRef(null);
+  const videoRef = useRef(null);
 
+  // Only start animations AFTER preloader is done
   useEffect(() => {
-    const timer = setTimeout(() => setMounted(true), 50);
-    return () => clearTimeout(timer);
+    if (loaded) {
+      // Small delay so the preloader split is fully open
+      const timer = setTimeout(() => setShowContent(true), 200);
+      return () => clearTimeout(timer);
+    }
+  }, [loaded]);
+
+  // Parallax video on scroll
+  useEffect(() => {
+    if (window.innerWidth <= 768) return;
+    const handleScroll = () => {
+      if (videoRef.current) {
+        const scrollY = window.scrollY;
+        videoRef.current.style.transform = `translateY(${scrollY * 0.25}px) scale(1.1)`;
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     if (!isHome) return;
-
-    // On mobile, always show buttons
     if (window.innerWidth <= 768) {
       setButtonsVisible(true);
       return;
     }
 
-    const target = homeEndRef.current; // ← Fix: copy ref to a local variable
-
+    const target = homeEndRef.current;
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setButtonsVisible(entry.isIntersecting);
-      },
+      ([entry]) => setButtonsVisible(entry.isIntersecting),
       { threshold: 0.1 }
     );
 
     if (target) observer.observe(target);
-
-    return () => {
-      if (target) observer.unobserve(target); // ← Use same local reference
-    };
+    return () => { if (target) observer.unobserve(target); };
   }, [isHome]);
+
+  // Split title into characters for staggered animation
+  const titleChars = "Felipe S. Campoverde".split("").map((char, i) => (
+    <span
+      key={i}
+      className="title-char"
+      style={{ "--char-index": i }}
+    >
+      {char === " " ? "\u00A0" : char}
+    </span>
+  ));
 
   return (
     <section id="home" className="home-container">
-      {/* Top-right buttons */}
       {isHome && (
         <div
           className={`top-right-button-group ${
-            buttonsVisible ? "buttons-animate-in" : ""
+            buttonsVisible && showContent ? "buttons-animate-in" : ""
           }`}
         >
-          <div className="vt-news-slide-container">
-            <div className="home-button vt-news-hover-trigger">
-              Featured in VT NEWS
-            </div>
-            <div className="vt-news-video-slide">
+          <Link to="/portfolio" className="home-button">
+            View Portfolio
+          </Link>
+          <div
+            className="vt-news-trigger"
+            onMouseEnter={() => {
+              clearTimeout(videoTimerRef.current);
+              setShowVideo(true);
+            }}
+            onMouseLeave={() => {
+              videoTimerRef.current = setTimeout(() => setShowVideo(false), 400);
+            }}
+          >
+            <span className="home-button">Featured in VT NEWS</span>
+            {/* Invisible bridge so hover stays connected */}
+            <div className="vt-hover-bridge" />
+            <div className={`vt-video-popup ${showVideo ? "visible" : ""}`}>
               <iframe
-                src="https://www.youtube.com/embed/Fxc-An2Zm-w?autoplay=1&mute=1"
+                src={showVideo ? "https://www.youtube.com/embed/Fxc-An2Zm-w?autoplay=1&mute=1" : ""}
                 title="VT News Feature"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-              ></iframe>
+              />
             </div>
           </div>
-          <Link to="/portfolio" className="home-button">
-            View Portfolio
-          </Link>
         </div>
       )}
 
-      {/* Main title */}
-      <div className={`home-content-wrapper ${mounted ? "fancy-fade-in" : ""}`}>
-        <video className="background-video" autoPlay loop muted playsInline>
+      {/* Starfield background */}
+      <div className="starfield">
+        {[...Array(80)].map((_, i) => (
+          <div
+            key={i}
+            className="star"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 2 + 1}px`,
+              height: `${Math.random() * 2 + 1}px`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${Math.random() * 3 + 2}s`,
+              "--drift-x": `${(Math.random() - 0.5) * 30}px`,
+              "--drift-y": `${(Math.random() - 0.5) * 30}px`,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="home-content-wrapper">
+        <video
+          ref={videoRef}
+          className={`background-video ${showContent ? "video-visible" : ""}`}
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{ transform: "scale(1.1)" }}
+        >
           <source src="/videos/home_background.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
         </video>
 
-        <div className="overlay">
+        <div className={`overlay ${showContent ? "overlay-visible" : ""}`}>
           <div className="home-content">
-            <h1 className="home-title">Felipe S. Campoverde</h1>
-            {mounted && (
+            <h1 className={`home-title ${showContent ? "title-animate" : ""}`}>
+              {titleChars}
+            </h1>
+            <div className={`title-line ${showContent ? "line-animate" : ""}`} />
+            {showContent && (
               <h2 className="home-subtitle">
-                I’m a <TypewriterEffect />
+                I'm a <TypewriterEffect />
               </h2>
             )}
           </div>
         </div>
+
+        {isHome && showContent && (
+          <div className="scroll-indicator">
+            <div className="scroll-mouse">
+              <div className="scroll-dot" />
+            </div>
+            <span>Scroll</span>
+          </div>
+        )}
       </div>
 
-      {/* Invisible anchor to detect end of Home section */}
       <div ref={homeEndRef} className="home-end-anchor" />
     </section>
   );

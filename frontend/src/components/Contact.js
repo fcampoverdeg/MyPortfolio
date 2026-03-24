@@ -16,8 +16,8 @@ const Contact = () => {
       setVantaEffect(
         window.VANTA.NET({
           el: vantaRef.current,
-          color: 0xffd700,
-          backgroundColor: 0x000000,
+          color: 0x444444,
+          backgroundColor: 0x0a0a0a,
           points: 12.0,
           maxDistance: 20.0,
           spacing: 18.0,

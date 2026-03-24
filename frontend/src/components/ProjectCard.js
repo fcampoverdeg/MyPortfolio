@@ -32,7 +32,7 @@ const ProjectCard = ({
 
     setTimeout(() => {
       navigate(`${path}#${hashTarget}`);
-    }, 1300);
+    }, 700);
   };
 
   const stopProp = (e) => e.stopPropagation();

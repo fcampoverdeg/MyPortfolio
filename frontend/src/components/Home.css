@@ -1,116 +1,46 @@
-/* src/components/Home.css */
+/* src/components/Home.css — Premium Monochrome Hero */
 
 /* #################################################################################################### */
 /* Home Page Design */
 /* #################################################################################################### */
 
-/* ======= Home Container ======== */
 .home-container {
   height: 100vh;
   width: 100vw;
-  background-image: url("../../public/images/general/cover.jpg");
-  background-size: cover;
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-attachment: fixed !important;
   position: relative;
-
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-/* ========================================== */
-/* Top-right stacked buttons */
-/* ========================================== */
-/* Animate top-right buttons on entry */
-.top-right-button-group {
-  position: fixed;
-  top: 1.5rem;
-  right: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  z-index: 1000;
-  opacity: 0;
-  /* transform: translateY(-20px); */
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.top-right-button-group.buttons-animate-in {
-  opacity: 1;
-  /* transform: translateY(0); */
-}
-
-
-/* Matching gold button style */
-.home-button {
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 1.1rem;
-  font-weight: bold;
-  padding: 0.7rem 1.5rem;
-  background: linear-gradient(to right, #ffd700, #e6c200);
-  color: #111;
-  border: 2px solid #bfa600;
-  border-radius: 10px;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(255, 215, 0, 0.25);
-  transition: all 0.3s ease;
-  text-align: center;
-  width: 20vh;
-  cursor: pointer;
-}
-
-.home-button:hover {
-  background: linear-gradient(to right, #ffe066, #ffd700);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4);
-}
-
-/* ========================================== */
-/* VT News Slide Feature */
-/* ========================================== */
-.vt-news-slide-container {
-  position: relative;
-  width: fit-content;
-  pointer-events: auto;
-}
-
-.vt-news-video-slide {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  background-color: #111;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease;
-  box-shadow: 0 10px 20px #ffd70033;
-  z-index: 999;
-  border-radius: 0 0 12px 12px;
-}
-
-.vt-news-slide-container:hover .vt-news-video-slide {
-  max-height: 80vh;
-}
-
-.vt-news-video-slide iframe {
-  width: 100%;
-  height: 80vh;
-  border: none;
-  display: block;
-  border-radius: 0 0 12px 12px;
-}
-
-
-/* New inner wrapper for animated content only */
-.home-content-wrapper {
-  height: 100%;
-  width: 105%;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+/* ======== Starfield ======== */
+.starfield {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle var(--duration, 3s) ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(var(--drift-x, 0), var(--drift-y, 0));
+  }
 }
 
 /* ======== Background Video ======== */
@@ -121,59 +51,135 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1;
+  z-index: 0;
+  will-change: transform;
+  opacity: 0;
+  transition: opacity 1.5s ease;
 }
 
+.background-video.video-visible {
+  opacity: 1;
+}
 
-/* ======== Overlay ======== */
+/* ======== Overlay — cinematic ======== */
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
-  height: 101%;
+  height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* covers entire image */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.65) 50%,
+    rgba(10, 10, 10, 0.95) 100%
+  );
   display: flex;
-  align-items: center;      /* Vertical centering */
-  justify-content: center;  /* Horizontal centering */
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  /* Half the sidebar width — centers content in visible area */
+  padding-left: 90px;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.overlay.overlay-visible {
+  opacity: 1;
+}
+
+/* ======== Content Wrapper ======== */
+.home-content-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
 }
 
 /* ======== Home Content ======== */
 .home-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   text-align: center;
   z-index: 2;
+  padding: 0 2rem;
 }
 
-/* ======== Home Title ======== */
+/* ======== Split Text Title ======== */
 .home-title {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #FFD700;
+  font-size: 4rem;
+  font-weight: 700;
+  color: #f5f5f5;
   font-family: 'Playfair Display', cursive;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-/* ======== Animation I'm a ======== */
-.home-subtitle {
-  color: #fff8dc;
-  font-size: 1.9rem;
-  margin-top: 0rem;;
-  font-family: 'Playfair Display', cursive;
+.title-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px) rotateX(-60deg);
+  filter: blur(4px);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.6s ease;
+  transition-delay: calc(var(--char-index) * 0.04s + 0.3s);
+}
 
-  min-height: 2.2em;          /* Reserve space for 1-2 lines */
+.title-animate .title-char {
+  opacity: 1;
+  transform: translateY(0) rotateX(0deg);
+  filter: blur(0);
+}
+
+/* ======== Decorative Line Under Title ======== */
+.title-line {
+  width: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.25), transparent);
+  margin: 1rem auto;
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 1.3s;
+}
+
+.line-animate {
+  width: 140px;
+}
+
+/* ======== Subtitle with Typewriter ======== */
+.home-subtitle {
+  color: #777;
+  font-size: 1.4rem;
+  margin-top: 0.3rem;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;
+  min-height: 2em;
   width: 100%;
-  max-width: 80vw;            /* Prevent overflow on mobile */
-  white-space: nowrap;        /* Prevent wrapping during typing */
-  overflow: hidden;           /* Hide overflow text */
-  text-overflow: ellipsis;    /* Optional: add ... if overflowing */
+  max-width: 80vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  animation: subtitleAppear 1s ease forwards 1.5s;
+}
+
+@keyframes subtitleAppear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ======== Blinking Cursor ======== */
 .blinking-cursor {
+  color: #555;
   animation: blink 1s infinite;
+  font-weight: 300;
 }
 
 @keyframes blink {
@@ -181,134 +187,278 @@
   50% { opacity: 0; }
 }
 
-/* ======== View Portfolio Button ========
-.view-portfolio-button {
-  margin-top: 2.5rem;
-  padding: 1.1rem 3rem;
-  font-size: 1.6rem;
-  font-family: 'Playfair Display', cursive;
-  font-weight: bold;
-  color: #FFD700;
-  background: radial-gradient(circle, #FFD70044, transparent 70%);
-  border: 1px solid #FFD70055;
-  border-radius: 16px;
+/* ========================================== */
+/* Top-right buttons — gradient border */
+/* ========================================== */
+.top-right-button-group {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.6s ease 2s, transform 0.6s ease 2s;
+}
+
+.top-right-button-group.buttons-animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.home-button {
+  position: relative;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.65rem 1.4rem;
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 8px;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 0 12px #ffd70088;
+  text-align: center;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  letter-spacing: 0.5px;
+  overflow: hidden;
+}
+
+/* Animated gradient border */
+.home-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02), rgba(255,255,255,0.12));
+  background-size: 200% 200%;
+  animation: gradientBorder 5s ease infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+@keyframes gradientBorder {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.home-button:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.85);
+  transform: translateY(-1px);
+}
+
+/* ======== VT News Video Popup ======== */
+.vt-news-trigger {
   position: relative;
+  padding-bottom: 0.5rem;
+}
+
+/* Invisible hover bridge between button and popup */
+.vt-hover-bridge {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  height: 1.2rem;
+  background: transparent;
+}
+
+.vt-video-popup {
+  position: absolute;
+  top: calc(100% + 0.8rem);
+  right: 0;
+  width: 420px;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8),
+              0 0 0 1px rgba(255, 255, 255, 0.04);
+  opacity: 0;
+  transform: translateY(-15px) scale(0.88);
+  transform-origin: top right;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vt-video-popup.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Iframe fades in with delay so the container animates first */
+.vt-video-popup iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.4s ease 0.3s;
+}
+
+.vt-video-popup.visible iframe {
+  opacity: 1;
+}
+
+/* Glow line on top edge */
+.vt-video-popup::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
   z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s ease 0.2s;
 }
 
-.view-portfolio-button:hover {
-  background: radial-gradient(circle, #ffe066, #ffd700aa);
-  color: #000;
-  transform: translateY(-2px);
-  box-shadow: 0 0 14px #ffd70088;
-} */
+.vt-video-popup.visible::before {
+  opacity: 1;
+}
 
+/* ======== Scroll Indicator ======== */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: calc(50% + 90px);
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: fadeInDelayed 1s ease-out 2.5s forwards;
+}
 
+.scroll-indicator span {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 0.65rem;
+  color: #444;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.scroll-mouse {
+  width: 22px;
+  height: 36px;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 11px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.scroll-dot {
+  width: 2px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 1px;
+  margin-top: 6px;
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(16px); opacity: 0; }
+}
+
+@keyframes fadeInDelayed {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
 
 /* #################################################################################################### */
-/* Start up Animation */
-/* #################################################################################################### */
-
-/* === Fancy fade-in animation === */
-@keyframes fancyAppearDesktop {
-  0% {
-    opacity: 0;
-    transform: translateY(40px) scale(0.98);
-    filter: blur(3px);
-  }
-  50% {
-    opacity: 0.5;
-    transform: translateY(15px) scale(1.01);
-    filter: blur(1px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-}
-
-@keyframes fancyAppearMobile {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-/* Base fade-in class */
-.fancy-fade-in {
-  animation: fancyAppearMobile 1s ease-out both;
-}
-
-/* #################################################################################################### */
-/* Desktop Setup */
+/* Desktop */
 /* #################################################################################################### */
 
 @media screen and (min-width: 769px) {
-  .home-container {
-    background-attachment: fixed;
-  }
-
-  .fancy-fade-in {
-    animation: fancyAppearDesktop 1.8s ease-out both;
-  }
-
+  /* no additional desktop overrides needed */
 }
-
 
 /* #################################################################################################### */
 /* Phone Setup */
 /* #################################################################################################### */
 
-/* Tweak home-content positioning on smaller screens */
 @media screen and (max-width: 768px) {
-
-  /* ======== Home Container Phone ======== */
   .home-container {
-    top: 50%;
-    left: 50%;
-    right: 50%;
-    transform: translate(-48%, -50%); /* truly centers the block */
-    width: 100%;
-    text-align: center;               /* centers text inside */
     background-attachment: scroll;
   }
-  
-  /* ======== Overlay Phone ======== */
+
+  .overlay {
+    padding-left: 0;
+  }
+
   .home-content {
-    display: block;
-    width: 60%;
-    left: 50%;
-    right: 50%;
-    position: absolute;
-    font-size: 90%;
+    width: 85%;
   }
 
-  /* ======== Home Title Phone ======== */
   .home-title {
-    display: block;
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;   /* space between lines */
+    font-size: 2.5rem;
   }
 
-  /* ======== Home Subtitle Phone ======== */
   .home-subtitle {
-    display: block;
-    font-size: 1.4rem;
-    margin-top: 0.5rem;
-    position: center;
+    font-size: 1.1rem;
     white-space: normal;
   }
 
   .top-right-button-group {
-   left: 50%;
-   right: auto;
-   transform: translateX(-50%);
- }
-}
+    top: 1rem;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;
+    gap: 0.5rem;
+  }
 
+  .top-right-button-group.buttons-animate-in {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .home-button {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.7rem;
+  }
+
+  .vt-video-popup {
+    width: 280px;
+    right: auto;
+    left: 50%;
+    transform-origin: top center;
+    transform: translateX(-50%) translateY(-15px) scale(0.88);
+  }
+
+  .vt-video-popup.visible {
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+
+  .scroll-indicator {
+    bottom: 1.5rem;
+    left: 50%;
+  }
+
+  .title-char {
+    transition-delay: calc(var(--char-index) * 0.025s + 0.1s);
+    transform: translateY(20px);
+    filter: none;
+  }
+
+  .title-line {
+    transition-delay: 0.7s;
+  }
+
+  .home-subtitle {
+    animation-delay: 0.9s;
+  }
+}

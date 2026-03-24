@@ -12,11 +12,13 @@
   top: 0;
   left: 0;
   height: 100vh;
-  width: 250px;
+  width: 180px;
   overflow-y: auto;
-  background-color: #000;
-  color: #FFD700;
-  padding: 2rem 1rem;
+  background-color: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(20px);
+  border-right: none;
+  color: #e0e0e0;
+  padding: 1.5rem 0.8rem;
   z-index: 999;
   transition: transform 0.4s ease;
   font-family: 'Playfair Display', cursive;
@@ -39,6 +41,24 @@
 
 .sidebar-animate-in {
   animation: sidebar-slide-in 0.8s ease-out;
+}
+
+/* Animated gradient border on right edge */
+.profile::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.08) 30%, rgba(255,255,255,0.03) 70%, transparent 100%);
+  background-size: 1px 250%;
+  animation: borderShimmer 8s ease-in-out infinite;
+}
+
+@keyframes borderShimmer {
+  0%, 100% { background-position: 0 0%; }
+  50% { background-position: 0 100%; }
 }
 
 
@@ -82,7 +102,7 @@ Desktop Setup
 @media screen and (min-width: 769px) {
   .profile {
     transform: translateX(0);
-    width: 250px;
+    width: 180px;
   }
 
   .mobile-nav-toggle {
@@ -131,7 +151,7 @@ Sidebar Overlay For Mobile
   width: 25px;
   height: 3px;
   margin: 5px auto;
-  background: #FFD700;
+  background: #e0e0e0;
   transition: all 0.4s ease-in-out;
 }
 
@@ -163,21 +183,27 @@ Sidebar Overlay For Mobile
 
 /* ======== Profile Image ======== */
 .profile-image {
-  width: 130px;
-  height: 130px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #FFD700;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.04);
   margin-bottom: 1rem;
+  animation: profileGlow 5s ease-in-out infinite;
+}
+
+@keyframes profileGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.03); }
+  50% { box-shadow: 0 0 35px rgba(255,255,255,0.07); }
 }
 
 /* ======== Profile Name ======== */
 .profile-name {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   font-weight: bold;
   padding: 0.5rem;
-  color: #FFD700;
+  color: #e0e0e0;
     padding: 0rem 1rem;
   font-family: 'Playfair Display', cursive;
   text-align: center;
@@ -193,7 +219,7 @@ Sidebar Overlay For Mobile
 
 /* Social icons styles */
 .social-icons a {
-  color: #FFD700;
+  color: #e0e0e0;
   font-size: 1.3rem;
   transition: transform 0.3s ease, color 0.3s ease;
 }
@@ -208,17 +234,17 @@ Sidebar Overlay For Mobile
 .nav-menu {
   list-style: none;
   display: flex;
-  padding: 0rem 1rem 2rem;
+  padding: 0rem 0.8rem 2rem;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 1.4rem;
 }
 
 /* Nav menu items */
 .nav-link {
-  color: #FFD700;
+  color: #e0e0e0;
   text-decoration: none;
   z-index: 1;
-  font-size: 1.3rem;
+  font-size: 1.05rem;
   transition: all 0.3s ease;
   position: relative;
   cursor: pointer;
@@ -226,17 +252,17 @@ Sidebar Overlay For Mobile
 
 /* Hover effect for nav links */
 .nav-link:hover {
-  color: #fff8dc;
+  color: #ffffff;
 }
 
 /* Hightlight Section */
 .nav-link.active {
-  background: radial-gradient(circle, #FFD70044, transparent);
-  color: #FFD700;
-  border: 1px solid #FFD70055;
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   padding: 0.4rem 0.8rem;
-  box-shadow: 0 0 12px #ffd70088;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.06);
   transition: all 0.3s ease;
 }
 
@@ -248,7 +274,7 @@ Sidebar Overlay For Mobile
   bottom: -4px;
   height: 2px;
   width: 0;
-  background: #FFD700;
+  background: #e0e0e0;
   transition: width 0.3s ease;
 }
 
@@ -293,7 +319,7 @@ Sidebar Overlay For Mobile
 
 /* Submenu links */
 .github-submenu .nav-link {
-  color: #FFD700;
+  color: #e0e0e0;
   text-decoration: none;
   font-size: 0.95rem;
   padding-left: 1.2rem;
@@ -311,7 +337,7 @@ Sidebar Overlay For Mobile
   bottom: -4px;
   height: 2px;
   width: 0;
-  background: #FFD700;
+  background: #e0e0e0;
   transition: width 0.3s ease;
 }
 
