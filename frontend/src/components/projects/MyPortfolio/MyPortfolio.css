@@ -3,8 +3,8 @@
   height: 100%;
   width: 100%;
   font-family: 'Playfair Display', cursive;
-  color: #FFD700;
-  background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+  color: #e0e0e0;
+  background: linear-gradient(to bottom, #0e0e0e, #161616);
   padding: 1rem 5rem;
 }
 
@@ -40,19 +40,19 @@
 /* =================== Hero =================== */
 .hero-section {
   text-align: center;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #2e2e2e;
 }
 
 .hero .title {
   font-size: 3.5rem;
   font-weight: bold;
-  color: #FFD700;
+  color: #e0e0e0;
   margin-bottom: 1rem;
 }
 
 .hero .subtitle {
   font-size: 1.4rem;
-  color: #fff8dc;
+  color: #d4d4d4;
   font-family: 'Ubuntu', sans-serif;
 }
 
@@ -60,7 +60,7 @@
 .section-title {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  border-bottom: 3px solid #FFD700;
+  border-bottom: 3px solid #e0e0e0;
   display: inline-block;
   padding-bottom: 0.4rem;
 }
@@ -78,10 +78,10 @@
   width: 77vw;
   margin: 3rem 14rem;
   padding: 2rem;
-  background-color: #111;
+  background-color: #161616;
   border-radius: 16px;
-  box-shadow: 0 0 25px #ffd70033;
-  color: #fff8dc;
+  box-shadow: 0 0 25px rgba(255,255,255,0.04);
+  color: #d4d4d4;
   font-family: 'Ubuntu', sans-serif;
 }
 
@@ -95,10 +95,10 @@
 }
 
 .goal-card {
-  background-color: #1a1a1a;
+  background-color: #1e1e1e;
   padding: 1.2rem;
   border-radius: 12px;
-  box-shadow: 0 0 15px #ffd70022;
+  box-shadow: 0 0 15px rgba(255,255,255,0.03);
   transition: transform 0.3s ease;
   text-align: center;
 }
@@ -108,7 +108,7 @@
 }
 
 .goal-card h3 {
-  color: #FFD700;
+  color: #e0e0e0;
   margin-bottom: 0.5rem;
 }
 
@@ -135,7 +135,7 @@
   flex-direction: column;
   align-items: center;
   transition: transform 0.3s ease;
-  color: #FFD700;
+  color: #e0e0e0;
   font-family: 'Ubuntu', sans-serif;
   text-align: center;
 }
@@ -147,7 +147,7 @@
 
 .tech-icon:hover .icon {
   transform: scale(1.15);
-  color: #fff8dc;
+  color: #d4d4d4;
 }
 
 .tech-icon .label {
@@ -171,7 +171,7 @@
 /* =================== Major Section Titles (Frontend, Backend) =================== */
 .major-section-title {
   font-size: 2.7rem;
-  color: #FFD700;
+  color: #e0e0e0;
   font-family: 'Playfair Display', cursive;
   text-align: center;
   margin-bottom: 2rem;
@@ -183,16 +183,16 @@
   display: block;
   width: 80px;
   height: 3px;
-  background-color: #FFD700;
+  background-color: #e0e0e0;
   margin: 0.5rem auto 0;
 }
 
 .code-block {
-  background-color: #1a1a1a;
+  background-color: #1e1e1e;
   padding: 1rem;
   border-radius: 12px;
-  box-shadow: 0 0 10px #ffd70022;
-  color: #FFD700;
+  box-shadow: 0 0 10px rgba(255,255,255,0.03);
+  color: #e0e0e0;
   font-family: 'Courier New', monospace;
   overflow-x: auto;
   font-size: 0.9rem;
@@ -215,8 +215,8 @@
 
 /* =================== Code Snippet Section =================== */
 .code-snippet-inner pre.code-block {
-  background-color: #000;
-  color: #fff8dc;
+  background-color: #0e0e0e;
+  color: #d4d4d4;
   padding: 1rem;
   border-radius: 10px;
   overflow-x: auto;
@@ -233,9 +233,9 @@
 }
 
 .workflow-step {
-  background-color: #1a1a1a;
+  background-color: #1e1e1e;
   border-radius: 12px;
-  box-shadow: 0 0 10px #ffd70033;
+  box-shadow: 0 0 10px rgba(255,255,255,0.04);
   padding: 1.5rem;
   width: 260px;
   text-align: center;
@@ -247,7 +247,7 @@
 }
 
 .workflow-step h3 {
-  color: #fff8dc;
+  color: #d4d4d4;
   margin-bottom: 0.5rem;
 }
 
@@ -338,17 +338,17 @@
     min-width: 100%;
     flex-shrink: 0;
     scroll-snap-align: center;
-    background-color: #1a1a1a;
+    background-color: #1e1e1e;
     padding: 1.5rem 1rem;
     border-radius: 12px;
-    box-shadow: 0 0 15px #ffd70022;
+    box-shadow: 0 0 15px rgba(255,255,255,0.03);
     text-align: center;
     box-sizing: border-box;
   }
 
 
   .goal-card h3 {
-    color: #FFD700;
+    color: #e0e0e0;
     margin-bottom: 0.5rem;
   }
 

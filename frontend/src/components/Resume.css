@@ -1,217 +1,346 @@
-/* src/components/Resume.css */
+/* src/components/Resume.css — Timeline Tree Layout */
 
 /* #################################################################################################### */
 /* Resume Page Design */
 /* #################################################################################################### */
 
-/* ======== Resume Container ======== */
 .resume-container {
-  height: auto;
-  width: 100vw;
+  width: 100%;
   font-family: 'Playfair Display', cursive;
-  scroll-snap-align: start;
-  scroll-margin-top: 120px;
   box-sizing: border-box;
-
-  /* Animation */
+  background: #0a0a0a;
   opacity: 0;
-  transform: translateX(-60px);
+  transform: translateY(40px);
   transition: opacity 1s ease, transform 1s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-/* ======== Resume Container Animation ======== */
 .resume-container.animate {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
-/* ======== Main Title ======== */
+/* Ambient glow */
+.resume-container::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(255,255,255,0.02), transparent 70%);
+  pointer-events: none;
+}
+
+/* ======== Header ======== */
+.resume-header {
+  text-align: center;
+  padding: 5rem 0 2rem;
+  position: relative;
+}
+
 .resume-title {
   font-size: 3rem;
-  font-family: 'Playfair Display', cursive;
-  position: relative;
-  text-align: left;
-  padding: 9rem 0 0 18rem;
-  color: #FFD700;
+  color: #f0f0f0;
   margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
 }
 
 .resume-title::after {
   content: "";
   display: block;
-  width: 80px;
-  height: 3px;
-  background-color: #FFD700;
-  margin-top: 10px;
-  border-radius: 2px;
-  margin-left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #555, transparent);
+  margin: 1rem auto 0;
 }
 
-/* ======== Download Icon ======== */
+.resume-subtitle {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1rem;
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+/* ======== Download Buttons ======== */
 .resume-download-icons {
   display: flex;
-  gap: 5rem;
+  gap: 0.6rem;
   justify-content: center;
-  margin-top: 3rem;
+  margin-top: 2rem;
   flex-wrap: wrap;
-  padding-left: 10rem;
 }
 
-.download-block {
-  display: flex;
-  flex-direction: column;
+.download-btn {
+  display: inline-flex;
   align-items: center;
-  color: #FFD700;
-  font-size: 0.9rem;
-  text-align: center;
-}
-
-.download-icon {
-  font-size: 2rem;
-  color: #FFD700;
-  transition: transform 0.2s ease, color 0.2s ease;
-  margin-bottom: 0.3rem;
-}
-
-.download-icon:hover {
-  transform: scale(1.2);
-  color: #ffffff;
-}
-
-.download-block span {
-  margin-top: 0.2rem;
-  font-size: 0.85rem;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #888;
+  text-decoration: none;
   font-family: 'Ubuntu', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
 }
 
+.download-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #e0e0e0;
+  transform: translateY(-1px);
+}
 
+/* ======== Timeline Container ======== */
+.resume-timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 2rem auto 0;
+  padding: 0 2rem 5rem;
+}
+
+/* Center trunk line */
+.timeline-trunk {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent 0%, #333 5%, #333 95%, transparent 100%);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* ======== Two-Column Wrapper ======== */
 .resume-wrapper {
   display: flex;
-  background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
-  width: calc(100vw - 250px);
-  margin-left: 230px;
-  min-height: 100vh;
-  /* align-items: flex-start; makes divider align with section tops */
+  gap: 0;
+  position: relative;
 }
 
 .resume-left,
 .resume-right {
-  width: calc(50% - 1px);
-  padding: 4rem;
-  overflow-y: auto;
+  flex: 1;
+  padding: 1rem 1.5rem;
 }
 
-/* ========= Split Entry Animation ========= */
+/* ========= Slide Animations ========= */
 .slide-in-left {
-  animation: slideFromLeft 1s ease forwards;
+  animation: slideFromLeft 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .slide-in-right {
-  animation: slideFromRight 1s ease forwards;
+  animation: slideFromRight 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes slideFromLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-80px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideFromRight {
-  from {
-    opacity: 0;
-    transform: translateX(80px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
-
-.resume-divider {
-  min-height: 100%;
-  height: auto;
-  width: 2px;
-  background-color: #FFD700;
-  border-radius: 1px;
-  opacity: 0.8;
-  margin-top: 6rem; /* move divider down */
-  
-}
-
-/* Section Titles: Education, Skills, etc. */
-.resume-project {
-  font-size: 2.3rem;
-  color: #FFD700;
-  text-align: left;
+/* ======== Section Titles ======== */
+.resume-section-block {
   margin-bottom: 2rem;
-  margin-left: -1rem;
+}
+
+.resume-project {
+  font-size: 1.5rem;
+  color: #f0f0f0;
+  margin-bottom: 1.2rem;
   position: relative;
+  letter-spacing: -0.3px;
+}
+
+.resume-left .resume-project {
+  text-align: right;
+}
+
+.resume-right .resume-project {
+  text-align: left;
 }
 
 .resume-project::after {
   content: "";
   display: block;
-  width: 60px;
-  height: 3px;
-  background: #FFD700;
-  margin-top: 10px;
-  border-radius: 2px;
+  width: 30px;
+  height: 1px;
+  background: #444;
+  margin-top: 8px;
 }
 
-/* Content Entry Cards */
-.project-entry {
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 2rem;
-  border-radius: 15px;
-  margin-bottom: 2rem;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
-  transition: all 0.4s ease;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 0.8s ease forwards;
+.resume-left .resume-project::after {
+  margin-left: auto;
 }
+
+/* ======== Timeline Entry — Branch + Node + Card ======== */
+.timeline-entry {
+  position: relative;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeUp 0.5s ease forwards;
+  animation-delay: calc(var(--entry-index, 0) * 0.1s);
+}
+
+/* Horizontal branch line */
+.timeline-branch {
+  position: absolute;
+  top: 1.2rem;
+  width: 20px;
+  height: 1px;
+  background: #333;
+  z-index: 2;
+}
+
+/* Node dot at the end of the branch */
+.timeline-node {
+  position: absolute;
+  top: calc(1.2rem - 3px);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #333;
+  border: 1px solid #0a0a0a;
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+.timeline-entry:hover .timeline-node {
+  background: #888;
+  box-shadow: 0 0 8px rgba(255,255,255,0.1);
+}
+
+/* Left entries: branch goes right, node at right edge */
+.timeline-left .timeline-branch {
+  right: -20px;
+}
+
+.timeline-left .timeline-node {
+  right: -24px;
+}
+
+.timeline-left .project-entry {
+  text-align: right;
+}
+
+.timeline-left .project-highlights {
+  direction: rtl;
+}
+
+.timeline-left .project-highlights li {
+  padding-left: 0;
+  padding-right: 1rem;
+}
+
+.timeline-left .project-highlights li::before {
+  left: auto;
+  right: 0;
+}
+
+/* Right entries: branch goes left, node at left edge */
+.timeline-right .timeline-branch {
+  left: -20px;
+}
+
+.timeline-right .timeline-node {
+  left: -24px;
+}
+
+/* ======== Entry Cards — Glass ======== */
+.project-entry {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 1.3rem;
+  border-radius: 14px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-entry::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.07), transparent 50%, rgba(255,255,255,0.03));
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.project-entry:hover::before { opacity: 1; }
 
 .project-entry:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* ======== Entry Content ======== */
 .project-title {
-  font-size: 1.8rem;
-  color: #FFD700;
-  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  margin-bottom: 0.2rem;
+  font-weight: 600;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .project-tech {
-  font-style: italic;
+  font-style: normal;
   font-family: 'Ubuntu', sans-serif;
-  font-size: 1.2;
-  color: #ccc;
-  margin-bottom: 0.8rem;
+  font-size: 0.75rem;
+  color: #555;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .project-description {
-  color: #ddd;
+  color: #888;
   font-family: 'Ubuntu', sans-serif;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .project-highlights {
-  color: #eee;
+  color: #888;
   font-family: 'Ubuntu', sans-serif;
-  list-style-type: square;
-  margin-left: 1.5rem;
-  font-size: 0.95rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
 }
 
-/* Animation */
+.project-highlights li {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.15rem;
+}
+
+.project-highlights li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #444;
+}
+
 @keyframes fadeUp {
   to {
     opacity: 1;
@@ -225,96 +354,81 @@
 
 @media (max-width: 768px) {
   .resume-container {
-    height: 110vh;
-    margin-top: -100px;
-    padding: 0rem 2rem 2rem 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    scroll-snap-align: start;
-    box-sizing: border-box;
+    padding: 0 0.5rem 2rem;
   }
 
-  .resume-download-icons {
-    gap: 2rem;
-    margin-bottom: 3rem;
-    padding: 0rem;
+  .resume-header {
+    padding: 3rem 1rem 1rem;
   }
 
-  .download-icon {
-    font-size: 1.6rem;
+  .resume-title {
+    font-size: 2.2rem;
   }
 
-  .download-block span {
-    font-size: 0.8rem;
+  .resume-timeline {
+    padding: 0 1rem 2rem;
+  }
+
+  /* Single column on mobile — trunk line on the left */
+  .timeline-trunk {
+    left: 12px;
   }
 
   .resume-wrapper {
-    display: flex;
     flex-direction: column;
-    width: 100%;
-    margin-left: 0;
   }
 
   .resume-left,
   .resume-right {
     width: 100%;
-    padding: 1rem;
-    box-sizing: border-box;
+    padding: 0.5rem 0 0.5rem 2rem;
   }
 
-  .resume-spacer {
-    height: 5rem;
-    width: 100%;
-    background: #0a0a0a; /* or #000 or whatever your page bg is */
+  .resume-left .resume-project,
+  .resume-right .resume-project {
+    text-align: left;
   }
 
-  .resume-divider {
-    min-width: 360px;
-    background-color: #FFD700;
-    border-radius: 1px;
-    opacity: 0.8;
-    margin-top: 0rem;
-    min-height: 3px;
-  }
-
-  .resume-title {
-    font-size: 2.2rem;
-    text-align: center;
-    padding: 7rem 0rem 2rem 0rem;
-  }
-
-  .resume-title::after {
-    margin-left: auto;
-    margin-right: auto;
+  .resume-left .resume-project::after {
+    margin-left: 0;
   }
 
   .resume-project {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    text-align: center;
+    font-size: 1.3rem;
   }
 
-  .resume-project::after {
-    margin-left: auto;
-    margin-right: auto;
+  /* All branches go right on mobile */
+  .timeline-left .timeline-branch,
+  .timeline-right .timeline-branch {
+    left: -20px;
+    right: auto;
   }
 
-  .project-entry {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeUp 0.8s ease forwards;
+  .timeline-left .timeline-node,
+  .timeline-right .timeline-node {
+    left: -24px;
+    right: auto;
   }
 
+  .timeline-left .project-entry {
+    text-align: left;
+  }
+
+  .timeline-left .project-highlights {
+    direction: ltr;
+  }
+
+  .timeline-left .project-highlights li {
+    padding-left: 1rem;
+    padding-right: 0;
+  }
+
+  .timeline-left .project-highlights li::before {
+    left: 0;
+    right: auto;
+  }
 
   .project-title {
-    font-size: 1.4rem;
-    font-family: 'Ubuntu', sans-serif;
-  }
-
-  .project-tech,
-  .project-highlights {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 }

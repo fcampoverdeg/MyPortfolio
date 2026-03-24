@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import "./About.css";
-import profileImg from "../images/profile.jpg";
+import profileImg from "../images/profile.png";
 
 const About = () => {
   const sectionRef = useRef(null);
@@ -13,51 +13,43 @@ const About = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            observer.unobserve(entry.target); // Only trigger once
+            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.6 }
+      { threshold: 0.3 }
     );
 
     const currentRef = sectionRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
+    if (currentRef) observer.observe(currentRef);
+    return () => { if (currentRef) observer.unobserve(currentRef); };
   }, []);
 
   return (
     <section className="about-container" ref={sectionRef}>
       <div className={`about-inner ${isVisible ? "animate" : ""}`}>
-        <div className="about-image">
+        <div className="about-image" style={{ "--reveal-delay": "0s" }}>
           <img src={profileImg} alt="Felipe S. Campoverde" />
         </div>
         <div className="about-text">
-          <h2 className="about-title">About</h2>
+          <h2 className="about-title" style={{ "--reveal-delay": "0.15s" }}>About</h2>
           <div className="about-description">
-            <p>
-              I am a senior undergraduate majoring in Computer Science at
-              Virginia Tech. Currently I serve as Chief and Software Engineer on
-              the CroQuest team at VT CRO, the largest robotics organization on
-              campus.
+            <p style={{ "--reveal-delay": "0.25s" }}>
+              CS student at Virginia Tech and Robotics Lead Software Engineer
+              at Dailys. I build things that bridge hardware and software —
+              from robotic systems and ESP32 game consoles to autonomous
+              vehicles and full-stack web apps. Also Co-Founder & CTO of
+              CroQuest LLC.
             </p>
-            <p>
-              My professional background includes working as a Software Engineer
-              intern at the university developing a gaming console and teaching
-              as a Cybersecurity Instructor to students.
-            </p>
-            <p>
-              I enjoy learning new things, reading about technology, going for
-              long drives, collecting cars, playing guitar, and taking care of
-              my plant Benny.
+            <p style={{ "--reveal-delay": "0.35s" }}>
+              Arch Linux daily driver since 2019. When I'm not coding,
+              I'm on long drives, playing guitar, or debugging why my
+              plant Benny won't grow.
             </p>
           </div>
+          <p className="impact-line" style={{ "--reveal-delay": "0.45s" }}>
+            Currently leading robotics at Dailys and building CroQuest LLC.
+          </p>
         </div>
       </div>
     </section>

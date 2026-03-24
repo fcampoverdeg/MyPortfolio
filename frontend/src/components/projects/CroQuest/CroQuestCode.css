@@ -5,17 +5,17 @@
 .code-section {
   width: 77vw;
   padding: 2rem;
-  background-color: #111;
+  background-color: #161616;
   border-radius: 16px;
-  box-shadow: 0 0 25px #ffd70033;
-  color: #fff8dc;
+  box-shadow: 0 0 25px rgba(255,255,255,0.04);
+  color: #d4d4d4;
   font-family: 'Ubuntu', sans-serif;
   margin: 2rem 15rem 5rem;
 }
 
 .section-title {
   font-size: 2.5rem;
-  color: #ffd700;
+  color: #e0e0e0;
   margin-bottom: 1rem;
   position: relative;
   display: inline-block;
@@ -28,7 +28,7 @@
   bottom: -8px;
   height: 3px;
   width: 10%;
-  background: #FFD700;
+  background: #e0e0e0;
 }
 
 .code-intro,
@@ -54,7 +54,7 @@
   content: "✔";
   position: absolute;
   left: 0;
-  color: #ffd700;
+  color: #e0e0e0;
 }
 .code-credit {
   font-size: 1.3rem;
@@ -64,41 +64,43 @@
 }
 
 .code-credit strong {
-  color: #ffd700;
+  color: #e0e0e0;
 }
 
 /* GitHub Button */
 .github-link-button {
   display: inline-block;
   margin: 1.5rem 0;
-  background-color: #ffd700;
-  color: #111;
+  background: transparent;
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.20);
   padding: 0.7rem 1.5rem;
   border-radius: 8px;
-  font-weight: bold;
+  font-weight: 600;
   text-decoration: none;
   align-content: center;
-  transition: transform 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .github-link-button:hover {
   transform: scale(1.05);
-  background-color: #e6c200;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 /* Tree Structure from GitHub */
 .repo-tree-preview {
-  background-color: #1a1a1a;
+  background-color: #1e1e1e;
   margin-top: 2rem;
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 0 12px #ffd70055;
-  color: #fff8dc;
+  box-shadow: 0 0 12px rgba(255,255,255,0.06);
+  color: #d4d4d4;
   overflow-x: auto;
 }
 
 .tree-heading {
-  color: #ffd700;
+  color: #e0e0e0;
   margin-bottom: 1rem;
   font-size: 1.3rem;
 }

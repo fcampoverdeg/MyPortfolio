@@ -1,0 +1,154 @@
+.autocar-page {
+  min-height: 100vh;
+  width: 100%;
+  font-family: 'Playfair Display', cursive;
+  color: #e0e0e0;
+  background: linear-gradient(to bottom, #0e0e0e, #161616);
+  padding: 1rem 5rem;
+}
+
+.autocar-hero {
+  text-align: center;
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid #2e2e2e;
+  margin-bottom: 3rem;
+}
+
+.autocar-title {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.autocar-subtitle {
+  font-size: 1.3rem;
+  font-family: 'Ubuntu', sans-serif;
+  color: #999;
+}
+
+.autocar-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}
+
+.autocar-section {
+  background-color: #161616;
+  border-radius: 16px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.autocar-section h2 {
+  font-family: 'Playfair Display', cursive;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.autocar-image-wrapper {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.autocar-image {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.autocar-text p {
+  color: #b8b8b8;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.autocar-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.autocar-tag {
+  background: transparent;
+  color: #d4d4d4;
+  border: 1px solid #444;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+.autocar-list {
+  list-style: none;
+  padding: 0;
+}
+
+.autocar-list li {
+  color: #b8b8b8;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.autocar-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #e0e0e0;
+}
+
+.autocar-links {
+  display: flex;
+  gap: 1rem;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+.autocar-button {
+  display: inline-block;
+  background: transparent;
+  color: #e0e0e0;
+  border: 1px solid rgba(255,255,255,0.20);
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  font-family: 'Ubuntu', sans-serif;
+  transition: all 0.2s ease;
+}
+
+.autocar-button:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.35);
+}
+
+@media (max-width: 768px) {
+  .autocar-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .autocar-title {
+    font-size: 2.2rem;
+  }
+
+  .autocar-section {
+    padding: 1.5rem;
+  }
+
+  .autocar-links {
+    flex-direction: column;
+  }
+
+  .autocar-button {
+    text-align: center;
+  }
+}

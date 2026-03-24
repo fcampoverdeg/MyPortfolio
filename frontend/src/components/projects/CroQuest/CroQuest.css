@@ -1,407 +1,480 @@
+/* CroQuest Page — Premium Project Showcase */
+
 /* #################################################################################################### */
-/* CroQuest Page Design */
+/* Page Base */
 /* #################################################################################################### */
 
-.croquest-page {
-  height: 100%;
+.cq-page {
   width: 100%;
-  font-family: 'Playfair Display', cursive;
-  color: #FFD700;
-  background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
-  padding: 1rem 5rem;
-}
-
-/* ---------- Hero Section ---------- */
-.hero {
-  text-align: center;
-  margin-bottom: 3rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid #333;
-}
-
-.title {
-  font-size: 3rem;
-}
-
-.subtitle {
-  font-size: 1.3rem;
+  min-height: 100vh;
   font-family: 'Ubuntu', sans-serif;
-  color: #ccc;
+  color: #e0e0e0;
+  background: #0a0a0a;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Background orbs */
+.cq-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cq-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.04;
+}
+
+.cq-orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #fff, transparent 70%);
+  top: -5%;
+  right: -10%;
+  animation: cqOrbFloat 25s ease-in-out infinite;
+}
+
+.cq-orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #ccc, transparent 70%);
+  bottom: 10%;
+  left: -10%;
+  animation: cqOrbFloat 20s ease-in-out infinite reverse;
+}
+
+@keyframes cqOrbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, -40px) scale(1.1); }
+}
 
 /* #################################################################################################### */
-/* Overview Split Layout */
+/* Reveal Animations */
 /* #################################################################################################### */
-.overview-container {
+
+.cq-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cq-reveal.cq-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* #################################################################################################### */
+/* Hero */
+/* #################################################################################################### */
+
+.cq-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 6rem 3rem 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.cq-hero-content {
+  flex: 1;
+  max-width: 550px;
+}
+
+.cq-hero-label {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.cq-hero-title {
+  font-family: 'Playfair Display', cursive;
+  font-size: 4.5rem;
+  color: #f0f0f0;
+  letter-spacing: -2px;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.cq-hero-subtitle {
+  font-size: 1.1rem;
+  color: #888;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.cq-hero-buttons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.cq-btn {
+  padding: 0.6rem 1.3rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.cq-btn-primary {
+  background: rgba(255,255,255,0.08);
+  color: #e0e0e0;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.cq-btn-primary:hover {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.25);
+}
+
+.cq-btn-ghost {
+  background: transparent;
+  color: #888;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.cq-btn-ghost:hover {
+  color: #e0e0e0;
+  border-color: rgba(255,255,255,0.15);
+}
+
+.cq-hero-image {
+  flex-shrink: 0;
+  width: 380px;
+}
+
+.cq-hero-image img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cq-hero-image:hover img {
+  transform: scale(1.03) translateY(-4px);
+}
+
+/* #################################################################################################### */
+/* Stats Bar */
+/* #################################################################################################### */
+
+.cq-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  position: relative;
+  z-index: 1;
+}
+
+.cq-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.5s ease;
+  transition-delay: calc(var(--stat-i) * 0.1s);
+}
+
+.cq-reveal.cq-visible .cq-stat {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cq-stat-value {
+  font-family: 'Playfair Display', cursive;
+  font-size: 2rem;
+  color: #f0f0f0;
+  font-weight: 700;
+}
+
+.cq-stat-label {
+  font-size: 0.75rem;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* #################################################################################################### */
+/* Sections */
+/* #################################################################################################### */
+
+.cq-section {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  padding: 0 2rem;
+}
+
+.cq-section-wide {
+  max-width: 1100px;
+}
+
+.cq-section-inner {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 20px;
+  padding: 2.5rem;
+  transition: border-color 0.3s ease;
+}
+
+.cq-section-inner:hover {
+  border-color: rgba(255,255,255,0.08);
+}
+
+.cq-section-title {
+  font-family: 'Playfair Display', cursive;
+  font-size: 2rem;
+  color: #f0f0f0;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.cq-section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(to right, #555, transparent);
+}
+
+.cq-section-desc {
+  color: #888;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.cq-section-inner p {
+  color: #888;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 0.8rem;
+}
+
+.cq-section-inner strong {
+  color: #e0e0e0;
+}
+
+/* #################################################################################################### */
+/* Split Layout (Overview) */
+/* #################################################################################################### */
+
+.cq-split {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+.cq-split-text {
+  flex: 1;
+}
+
+.cq-split-media {
+  flex: 1;
+  max-width: 450px;
+}
+
+.cq-video-embed {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+  aspect-ratio: 16/9;
+}
+
+.cq-video-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* #################################################################################################### */
+/* Role Cards */
+/* #################################################################################################### */
+
+.cq-role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cq-role-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 14px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.cq-role-card:hover {
+  border-color: rgba(255,255,255,0.10);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+.cq-role-card h3 {
+  font-size: 1rem;
+  color: #e0e0e0;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.cq-role-card p {
+  font-size: 0.9rem !important;
+  color: #777 !important;
+  line-height: 1.6;
+}
+
+/* #################################################################################################### */
+/* Tech Tags */
+/* #################################################################################################### */
+
+.cq-tech-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 5rem;
-  align-items: flex-start;
-  justify-content: center;
-  max-width: 70vw;
-  margin: 3rem auto;
-  padding: 0 1rem;
-}
-
-.overview-left {
-  flex: 1 1 400px;
-  text-align: center;
-}
-
-.overview-image {
-  height: 85vh;
-  max-width: 579px;
-  border-radius: 16px;
-  margin-top: 8rem;
-  margin-left: 2rem;
-  box-shadow: 0 0 15px #ffd70055;
-}
-
-.overview-right {
-  flex: 1 1 530px;
-}
-
-.overview-title {
-  font-size: 2.3rem;
-  margin-bottom: 1rem;
-  color: #ffd700;
-  font-family: 'Playfair Display', cursive;
-}
-
-.overview-description {
-  margin-bottom: 1rem;
-  line-height: 1.6;
-  color: #ccc;
-  font-size: 1.3rem;
-  font-family: 'Ubuntu', sans-serif;
-}
-
-.overview-role {
+  gap: 0.5rem;
   margin-top: 1rem;
-  line-height: 1.6;
-  color: #ccc;
-  font-size: 1.3rem;
-  font-family: 'Ubuntu', sans-serif;
 }
 
-.overview-role strong {
-  color: #ffd700;
-}
-.overview-role role {
-  color: #ccc;
-  font-weight: 1000;
-}
-
-
-.overview-credit {
-  color: #ccc;
-  font-size: 1.3rem;
-  font-family: 'Ubuntu', sans-serif;
-  line-height: 1.6;
-  max-width: 73vw;
+.cq-tech-tag {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #aaa;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
-.overview-credit strong {
-  color: #ffd700;
+.cq-tech-tag:hover {
+  border-color: rgba(255,255,255,0.15);
+  color: #e0e0e0;
+  background: rgba(255,255,255,0.06);
 }
 
-.overview-video iframe {
-  width: 67vh;
-  height: 40vh;
+/* #################################################################################################### */
+/* Lessons Grid */
+/* #################################################################################################### */
+
+.cq-lessons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
   margin-top: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 0 12px #ffd70033;
 }
 
-/* Lesson Learned Section */
-.lessons-side h2 {
-  font-size: 2.3rem;
-  color: #ffd700;
-  font-family: 'Playfair Display', cursive;
+.cq-lesson-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 14px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
 }
 
-.lessons-side {
-  width: 77vw;
-  height: 25vh;
-  color: #fff8dc;
-  background-color: #111;
-  border-radius: 16px;
-  box-shadow: 0 0 25px #ffd70033;
-  font-size: 1.3rem;
-  font-family: 'Ubuntu', sans-serif;
+.cq-lesson-card:hover {
+  border-color: rgba(255,255,255,0.10);
+  transform: translateY(-2px);
+}
+
+.cq-lesson-card h3 {
+  font-size: 1rem;
+  color: #e0e0e0;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.cq-lesson-card p {
+  font-size: 0.9rem !important;
+  color: #777 !important;
   line-height: 1.6;
-  padding: 2rem 2rem 2rem 2rem;
-  margin: 5rem 15rem;
 }
-
-/* #################################################################################################### */
-/* Gallery Section */
-/* #################################################################################################### */
-
-.gallery-section {
-  width: 80vw;
-  height: 105vh;
-  background-color: #111;
-  border-radius: 16px;
-  box-shadow: 0 0 25px #ffd70033;
-  color: #fff8dc;
-  font-family: 'Ubuntu', sans-serif;
-  margin: 5rem 15rem;
-}
-
-.gallery-main-title {
-  font-size: 3rem;
-  font-family: 'Playfair Display', cursive;
-  color: #FFD700;
-  text-align: left;
-  margin-top: 3rem;
-  margin-left: 2rem;
-  margin-bottom: 4rem;
-  animation: fadeInTitle 1s ease;
-  position: relative;
-  display: inline-block; 
-}
-
-.gallery-main-title::after {
-  content: "";
-  position: absolute;
-  left: 0%;
-  bottom: -8px;
-  height: 3px;
-  width: 60%;
-  background: #FFD700;
-}
-
-.gallery-description {
-  color: #ccc;
-  font-size: 1.3rem;
-  font-family: 'Ubuntu', sans-serif;
-  line-height: 1.6;
-  max-width: 73vw;
-  margin: 0 3rem 3rem;
-}
-
-
-
-/* #################################################################################################### */
-/* 3D Model Section */
-/* #################################################################################################### */
-
-.model-title  {
-  font-size: 3rem;
-  font-family: 'Playfair Display', cursive;
-  color: #FFD700;
-  text-align: left;
-  margin-top: 3rem;
-  margin-left: 2rem;
-  margin-bottom: 4rem;
-  animation: fadeInTitle 1s ease;
-  position: relative;
-  display: inline-block; 
-}
-
-.model-title::after {
-  content: "";
-  position: absolute;
-  left: 0%;
-  bottom: -8px;
-  height: 3px;
-  width: 60%;
-  background: #FFD700;
-}
-
-.model-section {
-  width: 80vw;
-  height: 118vh;
-  background-color: #111;
-  border-radius: 16px;
-  box-shadow: 0 0 25px #ffd70033;
-  color: #fff8dc;
-  font-family: 'Ubuntu', sans-serif;
-  margin: 2rem 15rem;
-}
-
-.model-description,
-.model-credit {
-  color: #ccc;
-  font-size: 1.3rem;
-  font-family: 'Ubuntu', sans-serif;
-  line-height: 1.6;
-  max-width: 73vw;
-  margin: 0 3rem 3rem;
-}
-
-.model-credit strong {
-  color: #ffd700;
-}
-
-/* #################################################################################################### */
-/* Transitions */
-/* #################################################################################################### */
-
-/* === Reveal Base === */
-.reveal {
-  opacity: 0;
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* === Directions === */
-.reveal {
-  transform: translateY(30px); /* default slide up */
-}
-
-.reveal-left {
-  transform: translate(-60px, 30px);
-}
-
-.reveal-right {
-  transform: translate(60px, 30px);
-}
-
-.reveal-fade {
-  transform: scale(0.95);
-}
-
-/* Reset when visible */
-.reveal.visible.reveal-left,
-.reveal.visible.reveal-right,
-.reveal.visible.reveal-fade {
-  transform: none;
-}
-
 
 /* #################################################################################################### */
 /* Phone Setup */
 /* #################################################################################################### */
 
 @media screen and (max-width: 768px) {
- .croquest-page {
-    padding: 1.5rem 0rem;
-  }
-
-  /* ---------- Hero ---------- */
-  .hero {
-    padding-bottom: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .title {
-    font-size: 2.1rem;
-  }
-
-  .subtitle {
-    font-size: 1rem;
-    padding: 0 0.5rem;
-  }
-
-  /* ---------- Overview ---------- */
-  .overview-container {
+  .cq-hero {
     flex-direction: column;
-    align-items: center;
-    max-width: 100%;
+    padding: 3rem 1.5rem 2rem;
     gap: 2rem;
-    margin: 2rem 0;
-    padding: 0 1rem;
-  }
-
-  .overview-image {
-    width: 100%;
-    height: auto;
-    margin: 1rem 0;
-  }
-
-  .overview-title {
-    font-size: 1.8rem;
     text-align: center;
   }
 
-  .overview-description,
-  .overview-role,
-  .overview-credit {
-    font-size: 1.1rem;
-    max-width: 100%;
-    text-align: left;
+  .cq-hero-title {
+    font-size: 3rem;
+  }
+
+  .cq-hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .cq-hero-buttons {
+    justify-content: center;
+  }
+
+  .cq-hero-image {
+    width: 80%;
+    max-width: 300px;
+  }
+
+  .cq-stats {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .cq-section {
     padding: 0 1rem;
+    margin-bottom: 1.5rem;
   }
 
-  .overview-video iframe {
-    width: 100%;
-    height: 200px;
-    margin: 1rem 0;
-  }
-
-  /* ---------- Lessons Section ---------- */
-  .lessons-side {
-    width: 100%;
-    height: auto;
-    font-size: 1.1rem;
-    margin: 2rem 0;
+  .cq-section-inner {
     padding: 1.5rem;
+    border-radius: 16px;
   }
 
-  .lessons-side h2 {
-    font-size: 1.8rem;
-    text-align: center;
+  .cq-split {
+    flex-direction: column;
   }
 
-  /* ---------- Gallery Section ---------- */
-  .gallery-section {
-    width: 85%;
-    height: auto;
-    margin: 2rem 1rem;
-    padding: 1rem;
-  }
-
-  .gallery-main-title {
-    font-size: 2rem;
-    margin-left: 0;
-    text-align: center;
-  }
-
-  .gallery-main-title::after {
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40%;
-  }
-
-  .gallery-description {
-    font-size: 1.1rem;
-    margin: 1rem;
+  .cq-split-media {
     max-width: 100%;
   }
 
-  /* ---------- 3D Model Section ---------- */
-  .model-section {
-    width: 85%;
-    height: auto;
-    margin: 2rem 1rem;
-    padding: 1rem;
+  .cq-role-grid,
+  .cq-lessons-grid {
+    grid-template-columns: 1fr;
   }
 
-  .model-title {
-    font-size: 2rem;
-    margin-left: 0.5rem;
-    text-align: center;
+  .cq-section-title {
+    font-size: 1.6rem;
   }
 
-  .model-description,
-  .model-credit {
-    font-size: 1.1rem;
-    margin: 1rem;
-    max-width: 100%;
-    text-align: left;
-  }
-
-    /* ---------- Lessons Section ---------- */
-  .lessons-side {
-    width: 85%;
-    margin: 2rem 1rem;
-    padding: 1rem;
-  }
+  .cq-orb-1 { width: 300px; height: 300px; }
+  .cq-orb-2 { width: 250px; height: 250px; }
 }
