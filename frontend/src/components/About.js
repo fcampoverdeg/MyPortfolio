@@ -17,12 +17,14 @@ const About = () => {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     const currentRef = sectionRef.current;
     if (currentRef) observer.observe(currentRef);
-    return () => { if (currentRef) observer.unobserve(currentRef); };
+    return () => {
+      if (currentRef) observer.unobserve(currentRef);
+    };
   }, []);
 
   return (
@@ -32,23 +34,24 @@ const About = () => {
           <img src={profileImg} alt="Felipe S. Campoverde" />
         </div>
         <div className="about-text">
-          <h2 className="about-title" style={{ "--reveal-delay": "0.15s" }}>About</h2>
+          <h2 className="about-title" style={{ "--reveal-delay": "0.15s" }}>
+            About
+          </h2>
           <div className="about-description">
             <p style={{ "--reveal-delay": "0.25s" }}>
-              CS student at Virginia Tech and Robotics Lead Software Engineer
-              at Dailys. I build things that bridge hardware and software —
-              from robotic systems and ESP32 game consoles to autonomous
-              vehicles and full-stack web apps. Also Co-Founder & CTO of
-              CroQuest LLC.
+              Robotics Lead Software Engineer and CS student at Virginia Tech at
+              Dailys. I build things that bridge hardware and software — from
+              robotic systems and ESP32 game consoles to autonomous vehicles and
+              full-stack web apps.
             </p>
             <p style={{ "--reveal-delay": "0.35s" }}>
-              Arch Linux daily driver since 2019. When I'm not coding,
-              I'm on long drives, playing guitar, or debugging why my
-              plant Benny won't grow.
+              Arch Linux daily driver since 2019. When I'm not coding, I'm on
+              long drives, playing guitar, or debugging why my plant Benny won't
+              grow.
             </p>
           </div>
           <p className="impact-line" style={{ "--reveal-delay": "0.45s" }}>
-            Currently leading robotics at Dailys and building CroQuest LLC.
+            Currently leading robotics at Dailys.
           </p>
         </div>
       </div>

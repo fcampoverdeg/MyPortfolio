@@ -39,6 +39,9 @@ const App = () => {
       <Preloader onComplete={handlePreloaderComplete} />
       <CustomCursor />
       <div className={`app-container ${loaded ? "app-loaded" : ""}`}>
+        {/* Global animated background */}
+        <div className="global-bg-grid" />
+
         {/* Noise overlay */}
         <div className="global-grain" />
 

@@ -10,7 +10,7 @@
   scroll-snap-align: start;
   scroll-margin-top: 80px;
   padding: 2rem 4rem 2rem 4rem;
-  background: #0a0a0a;
+  background: transparent;
   color: #e0e0e0;
   font-family: 'Playfair Display', cursive;
   text-align: center;
@@ -40,21 +40,512 @@
   }
 }
 
-.vanta-container {
+.contact-section {
   position: relative;
-  width: 100%;
-  min-height: 100%;
-  height: auto;
+  overflow: hidden;
 }
 
-.vanta-bg {
+.vanta-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+/* ════════════════════════════════════════════════════════════ */
+/* CYBERPUNK SCENE — layered parallax masterpiece               */
+/* ════════════════════════════════════════════════════════════ */
+.cyber-bg {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  perspective: 700px;
+  perspective-origin: 50% 0%;
+  background:
+    radial-gradient(ellipse at 50% 60%, rgba(255,255,255,0.04), transparent 60%),
+    linear-gradient(to bottom, #050505 0%, #070707 50%, #030303 100%);
+  /* Fade the whole cyber scene in from the top so the global grid bleeds through and blends */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,0.15) 8%,
+    rgba(0,0,0,0.45) 18%,
+    rgba(0,0,0,0.75) 28%,
+    #000 40%,
+    #000 100%
+  );
+          mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,0.15) 8%,
+    rgba(0,0,0,0.45) 18%,
+    rgba(0,0,0,0.75) 28%,
+    #000 40%,
+    #000 100%
+  );
 }
+
+/* ─── Stars (two layers, twinkling) ─── */
+.cyber-stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 5% 8%,   rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,0.55), transparent 60%),
+    radial-gradient(2px 2px at 22% 6%,  rgba(255,255,255,0.95), transparent 60%),
+    radial-gradient(1px 1px at 30% 22%, rgba(255,255,255,0.5),  transparent 60%),
+    radial-gradient(1px 1px at 38% 12%, rgba(255,255,255,0.75), transparent 60%),
+    radial-gradient(1.5px 1.5px at 47% 5%, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(1px 1px at 55% 25%, rgba(255,255,255,0.6),  transparent 60%),
+    radial-gradient(1px 1px at 63% 14%, rgba(255,255,255,0.8),  transparent 60%),
+    radial-gradient(2px 2px at 72% 8%,  rgba(255,255,255,0.95), transparent 60%),
+    radial-gradient(1px 1px at 80% 20%, rgba(255,255,255,0.55), transparent 60%),
+    radial-gradient(1px 1px at 88% 11%, rgba(255,255,255,0.7),  transparent 60%),
+    radial-gradient(1.5px 1.5px at 95% 24%, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(1px 1px at 8% 32%,  rgba(255,255,255,0.6),  transparent 60%),
+    radial-gradient(1px 1px at 18% 38%, rgba(255,255,255,0.45), transparent 60%),
+    radial-gradient(1.5px 1.5px at 28% 35%, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(1px 1px at 42% 30%, rgba(255,255,255,0.5),  transparent 60%),
+    radial-gradient(1px 1px at 58% 36%, rgba(255,255,255,0.65), transparent 60%),
+    radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,0.5),  transparent 60%),
+    radial-gradient(2px 2px at 84% 38%, rgba(255,255,255,0.9),  transparent 60%),
+    radial-gradient(1px 1px at 93% 32%, rgba(255,255,255,0.6),  transparent 60%);
+  background-repeat: no-repeat;
+  animation: cyberTwinkle 5s ease-in-out infinite;
+  z-index: 1;
+  /* Stars only in the upper half */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 60%);
+          mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 60%);
+}
+
+.cyber-stars-2 {
+  background-position: 30px 10px;
+  animation-duration: 7s;
+  animation-delay: 1.5s;
+  opacity: 0.6;
+}
+
+@keyframes cyberTwinkle {
+  0%, 100% { opacity: 0.85; }
+  50%      { opacity: 0.45; }
+}
+
+/* ─── Distant planet / moon ─── */
+.cyber-planet {
+  position: absolute;
+  top: 8%;
+  right: 12%;
+  width: 180px;
+  height: 180px;
+  z-index: 2;
+  filter:
+    drop-shadow(0 0 30px rgba(255,255,255,0.18))
+    drop-shadow(0 0 80px rgba(255,255,255,0.08));
+  animation: cyberPlanetFloat 30s ease-in-out infinite;
+}
+
+.cyber-planet svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes cyberPlanetFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+/* ─── Atmospheric haze ─── */
+.cyber-haze {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 35%;
+  height: 25%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255,255,255,0.03) 50%,
+    transparent 100%
+  );
+  z-index: 2;
+}
+
+/* ─── Drifting fog clouds ─── */
+.cyber-cloud {
+  position: absolute;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255,255,255,0.06) 0%,
+    rgba(255,255,255,0.02) 40%,
+    transparent 70%
+  );
+  filter: blur(20px);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.cyber-cloud-1 {
+  top: 18%;
+  left: -10%;
+  width: 400px;
+  animation: cloudDrift1 60s linear infinite;
+}
+.cyber-cloud-2 {
+  top: 28%;
+  left: -10%;
+  width: 500px;
+  height: 60px;
+  animation: cloudDrift1 90s linear infinite;
+  animation-delay: -30s;
+  opacity: 0.7;
+}
+.cyber-cloud-3 {
+  top: 12%;
+  left: -10%;
+  width: 350px;
+  animation: cloudDrift1 75s linear infinite;
+  animation-delay: -50s;
+}
+
+@keyframes cloudDrift1 {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(120vw); }
+}
+
+/* ─── City layers ─── */
+.cyber-city {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  display: block;
+}
+
+.cyber-city-far {
+  bottom: 52%;
+  height: 18%;
+  opacity: 0.55;
+  filter: blur(0.5px);
+  animation: cityDrift 160s linear infinite;
+  z-index: 4;
+}
+
+.cyber-city-mid {
+  bottom: 48%;
+  height: 22%;
+  opacity: 0.85;
+  animation: cityDrift 100s linear infinite;
+  z-index: 5;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.05));
+}
+
+.cyber-city-near {
+  bottom: 38%;
+  height: 28%;
+  animation: cityDrift 60s linear infinite;
+  z-index: 7;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.08));
+}
+
+@keyframes cityDrift {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ─── Horizon glow line ─── */
+.cyber-horizon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255,255,255,0.4) 25%,
+    rgba(255,255,255,0.85) 50%,
+    rgba(255,255,255,0.4) 75%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 6px rgba(255,255,255,0.4),
+    0 0 16px rgba(255,255,255,0.2),
+    0 0 30px rgba(255,255,255,0.1);
+  z-index: 6;
+}
+
+.cyber-horizon-glow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 30%;
+  height: 80px;
+  background: radial-gradient(
+    ellipse at 50% 100%,
+    rgba(255,255,255,0.18) 0%,
+    rgba(255,255,255,0.05) 40%,
+    transparent 70%
+  );
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ─── Vertical light beams from buildings ─── */
+.cyber-beam {
+  position: absolute;
+  bottom: 38%;
+  width: 2px;
+  height: 50%;
+  background: linear-gradient(
+    to top,
+    rgba(255,255,255,0.5) 0%,
+    rgba(255,255,255,0.15) 30%,
+    rgba(255,255,255,0.05) 60%,
+    transparent 100%
+  );
+  filter: blur(0.5px);
+  z-index: 6;
+  animation: beamPulse 4s ease-in-out infinite;
+}
+
+.cyber-beam::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  filter: blur(6px);
+  opacity: 0.7;
+}
+
+.cyber-beam-1 { left: 18%; animation-delay: 0s;   }
+.cyber-beam-2 { left: 38%; animation-delay: 1.2s; height: 45%; }
+.cyber-beam-3 { left: 62%; animation-delay: 2.4s; height: 55%; }
+.cyber-beam-4 { left: 82%; animation-delay: 0.8s; height: 48%; }
+
+@keyframes beamPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(0.95); }
+  50%      { opacity: 0.9; transform: scaleY(1.05); }
+}
+
+/* ─── Blinking antenna lights ─── */
+.cyber-blink {
+  animation: cyberBlink 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.9));
+}
+.cyber-blink.delay-1 { animation-delay: 0.4s; }
+.cyber-blink.delay-2 { animation-delay: 0.8s; }
+.cyber-blink.delay-3 { animation-delay: 1.2s; }
+.cyber-blink.delay-4 { animation-delay: 1.6s; }
+.cyber-blink.delay-5 { animation-delay: 2.0s; }
+
+@keyframes cyberBlink {
+  0%, 100% { opacity: 0.15; }
+  50%      { opacity: 1;    }
+}
+
+/* ─── Tron perspective floor ─── */
+.cyber-floor {
+  position: absolute;
+  left: -50%;
+  right: -50%;
+  bottom: 0;
+  height: 38%;
+  transform-style: preserve-3d;
+  z-index: 8;
+}
+
+.cyber-floor-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right,  rgba(220,220,220,0.22) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(220,220,220,0.22) 1px, transparent 1px);
+  background-size: 70px 70px;
+  transform: rotateX(70deg);
+  transform-origin: 50% 0%;
+  animation: cyberGridScroll 5s linear infinite;
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0%, #000 18%, #000 100%),
+    linear-gradient(to right,  transparent 0%, #000 15%, #000 85%, transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-image:
+    linear-gradient(to bottom, transparent 0%, #000 18%, #000 100%),
+    linear-gradient(to right,  transparent 0%, #000 15%, #000 85%, transparent 100%);
+          mask-composite: intersect;
+}
+
+.cyber-floor::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(255,255,255,0.15) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+@keyframes cyberGridScroll {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 70px; }
+}
+
+/* ─── Floating particles ─── */
+.cyber-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  pointer-events: none;
+}
+
+.cyber-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  filter: blur(0.3px);
+  box-shadow: 0 0 4px rgba(255,255,255,0.5);
+  animation: particleFloat 12s linear infinite;
+}
+
+.cyber-particle.p-0  { left: 5%;  bottom: 10%; animation-delay: 0s;    animation-duration: 14s; }
+.cyber-particle.p-1  { left: 12%; bottom: 25%; animation-delay: -2s;   animation-duration: 11s; }
+.cyber-particle.p-2  { left: 18%; bottom: 5%;  animation-delay: -4s;   animation-duration: 16s; }
+.cyber-particle.p-3  { left: 24%; bottom: 30%; animation-delay: -1s;   animation-duration: 13s; }
+.cyber-particle.p-4  { left: 31%; bottom: 15%; animation-delay: -6s;   animation-duration: 12s; }
+.cyber-particle.p-5  { left: 37%; bottom: 22%; animation-delay: -3s;   animation-duration: 15s; }
+.cyber-particle.p-6  { left: 43%; bottom: 8%;  animation-delay: -8s;   animation-duration: 11s; }
+.cyber-particle.p-7  { left: 49%; bottom: 28%; animation-delay: -5s;   animation-duration: 17s; }
+.cyber-particle.p-8  { left: 55%; bottom: 12%; animation-delay: -2.5s; animation-duration: 13s; }
+.cyber-particle.p-9  { left: 61%; bottom: 20%; animation-delay: -7s;   animation-duration: 14s; }
+.cyber-particle.p-10 { left: 67%; bottom: 6%;  animation-delay: -1.5s; animation-duration: 16s; }
+.cyber-particle.p-11 { left: 73%; bottom: 26%; animation-delay: -4.5s; animation-duration: 12s; }
+.cyber-particle.p-12 { left: 79%; bottom: 14%; animation-delay: -9s;   animation-duration: 15s; }
+.cyber-particle.p-13 { left: 85%; bottom: 9%;  animation-delay: -6.5s; animation-duration: 13s; }
+.cyber-particle.p-14 { left: 91%; bottom: 24%; animation-delay: -3.5s; animation-duration: 14s; }
+.cyber-particle.p-15 { left: 96%; bottom: 18%; animation-delay: -8.5s; animation-duration: 11s; }
+.cyber-particle.p-16 { left: 8%;  bottom: 35%; animation-delay: -2s;   animation-duration: 16s; }
+.cyber-particle.p-17 { left: 88%; bottom: 32%; animation-delay: -5.5s; animation-duration: 13s; }
+
+@keyframes particleFloat {
+  0%   { transform: translateY(0)    translateX(0);  opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-200px) translateX(20px); opacity: 0; }
+}
+
+/* ─── Radar sweep ─── */
+.cyber-radar {
+  position: absolute;
+  bottom: 8%;
+  right: 6%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.18);
+  background:
+    radial-gradient(circle, transparent 60%, rgba(255,255,255,0.02) 100%);
+  z-index: 11;
+  overflow: hidden;
+}
+
+.cyber-radar::before,
+.cyber-radar::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.cyber-radar::before { inset: 15%; }
+.cyber-radar::after  { inset: 35%; }
+
+.cyber-radar-sweep {
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(
+    from 0deg,
+    rgba(255,255,255,0.35) 0deg,
+    rgba(255,255,255,0.05) 30deg,
+    transparent 60deg,
+    transparent 360deg
+  );
+  border-radius: 50%;
+  animation: radarSpin 4s linear infinite;
+}
+
+@keyframes radarSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── HUD overlays ─── */
+.cyber-hud {
+  position: absolute;
+  inset: 24px;
+  z-index: 12;
+  pointer-events: none;
+  font-family: 'Ubuntu Mono', 'Courier New', monospace;
+}
+
+.cyber-hud-corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(255,255,255,0.45);
+}
+.cyber-hud-corner.tl { top: 0;    left: 0;    border-right: none;  border-bottom: none; }
+.cyber-hud-corner.tr { top: 0;    right: 0;   border-left: none;   border-bottom: none; }
+.cyber-hud-corner.bl { bottom: 0; left: 0;    border-right: none;  border-top: none;    }
+.cyber-hud-corner.br { bottom: 0; right: 0;   border-left: none;   border-top: none;    }
+
+.cyber-hud-text {
+  position: absolute;
+  font-size: 0.62rem;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  font-family: 'Ubuntu Mono', 'Courier New', monospace;
+}
+
+.cyber-hud-text.tl-text { top: 8px;    left: 38px;  }
+.cyber-hud-text.tr-text { top: 8px;    right: 38px; }
+.cyber-hud-text.bl-text { bottom: 8px; left: 38px;  }
+.cyber-hud-text.br-text { bottom: 8px; right: 38px; }
+
+/* ─── CRT scanlines ─── */
+.cyber-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(255,255,255,0.025) 3px,
+    transparent 4px
+  );
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 13;
+}
+
+/* ─── Vignette ─── */
+.cyber-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(0,0,0,0.5) 100%
+  );
+  pointer-events: none;
+  z-index: 14;
+}
+
 
 .contact-inner {
   position: relative;
