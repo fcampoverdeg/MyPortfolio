@@ -39,8 +39,8 @@ const About = () => {
           </h2>
           <div className="about-description">
             <p style={{ "--reveal-delay": "0.25s" }}>
-              Robotics Lead Software Engineer and CS student at Virginia Tech at
-              Dailys. I build things that bridge hardware and software — from
+              Robotics Lead Software Engineer at Daily's and CS student at
+              Virginia Tech. I build things that bridge hardware and software — from
               robotic systems and ESP32 game consoles to autonomous vehicles and
               full-stack web apps.
             </p>
