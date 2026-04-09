@@ -76,7 +76,7 @@ const experience = [
   {
     role: "Co-Founder & CTO",
     company: "CroQuest LLC",
-    period: "June 2025 — Present",
+    period: "June 2025 — December 2025",
     summary:
       "Co-founded an ed-tech company delivering hands-on STEM programs to K-12 students through electronics and embedded programming.",
     bullets: [
@@ -242,17 +242,6 @@ const Resume = () => {
       <div className="resume-layout">
         {/* ─── Sidebar ─── */}
         <aside className="resume-sidebar">
-          <div className="status-card">
-            <div className="status-pulse">
-              <span className="status-pulse-dot" />
-              <span className="status-pulse-ring" />
-            </div>
-            <div>
-              <p className="status-label">Available for work</p>
-              <p className="status-meta">Open to new opportunities</p>
-            </div>
-          </div>
-
           <section className="sidebar-block">
             <h2 className="sidebar-heading">
               <span className="sidebar-heading-bar" />
