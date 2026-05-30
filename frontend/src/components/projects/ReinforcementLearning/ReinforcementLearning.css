@@ -1,0 +1,425 @@
+/* ═══════════════════════════════════════════════════ */
+/* Reinforcement Learning Page                         */
+/* ═══════════════════════════════════════════════════ */
+
+.rl-page {
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Ubuntu', sans-serif;
+  color: #e0e0e0;
+  background: #0a0a0a;
+  position: relative;
+  overflow: hidden;
+  padding-left: 90px;
+}
+
+/* ── Reveal animation ── */
+.rl-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.rl-reveal.rl-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Back button ── */
+.rl-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  color: #e0e0e0;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.rl-back-btn:hover {
+  color: #ffffff;
+  border-color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.08);
+}
+
+/* ═══════════════════════════════════════════════════ */
+/* Hero                                                */
+/* ═══════════════════════════════════════════════════ */
+
+.rl-hero {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 6rem 3rem 4rem;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.rl-hero-content {
+  max-width: 700px;
+}
+
+.rl-hero-label {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.rl-hero-title {
+  font-family: 'Playfair Display', cursive;
+  font-size: 4rem;
+  color: #f0f0f0;
+  letter-spacing: -2px;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.rl-hero-subtitle {
+  font-size: 1.1rem;
+  color: #888;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.rl-hero-image {
+  flex-shrink: 0;
+  width: 380px;
+}
+
+.rl-hero-image img {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+
+.rl-hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.rl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: 8px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.rl-btn-primary {
+  background: rgba(255,255,255,0.06);
+  color: #e0e0e0;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.rl-btn-primary:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.25);
+}
+
+/* ═══════════════════════════════════════════════════ */
+/* Sections (matching CroQuest style)                  */
+/* ═══════════════════════════════════════════════════ */
+
+.rl-section {
+  padding: 0 3rem;
+  margin-bottom: 4rem;
+}
+
+.rl-section-wide {
+  padding: 0 2rem;
+}
+
+.rl-section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.rl-section-title {
+  font-family: 'Playfair Display', cursive;
+  font-size: 2rem;
+  color: #e0e0e0;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.rl-section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 40px;
+  background: rgba(255,255,255,0.3);
+}
+
+.rl-section-text {
+  font-size: 1rem;
+  color: #888;
+  line-height: 1.75;
+  max-width: 750px;
+  margin-bottom: 1.5rem;
+}
+
+.rl-subsection-title {
+  font-family: 'Playfair Display', cursive;
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+/* ── Research Questions ── */
+.rl-research-questions {
+  margin-top: 2rem;
+}
+
+.rl-question-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rl-question-list li {
+  padding: 0.7rem 1rem 0.7rem 2rem;
+  position: relative;
+  font-size: 0.9rem;
+  color: #aaa;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-left: 3px solid rgba(255,255,255,0.15);
+  border-radius: 0 8px 8px 0;
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════ */
+/* Algorithm Cards                                     */
+/* ═══════════════════════════════════════════════════ */
+
+.rl-algo-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.rl-algo-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.rl-algo-card:hover {
+  border-color: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.035);
+}
+
+.rl-algo-type {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #555;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.rl-algo-name {
+  font-family: 'Playfair Display', cursive;
+  font-size: 1.5rem;
+  color: #e0e0e0;
+  margin-bottom: 0.8rem;
+}
+
+.rl-algo-desc {
+  font-size: 0.95rem;
+  color: #888;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+
+.rl-algo-figures {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.rl-algo-figures img {
+  flex: 1;
+  min-width: 200px;
+  max-width: 48%;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(0,0,0,0.3);
+}
+
+/* ═══════════════════════════════════════════════════ */
+/* Results Figures                                     */
+/* ═══════════════════════════════════════════════════ */
+
+.rl-results-figures {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.rl-results-figures img {
+  flex: 1;
+  min-width: 250px;
+  max-width: 48%;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(0,0,0,0.3);
+}
+
+.rl-results-3 img {
+  max-width: 32%;
+  min-width: 200px;
+}
+
+/* ── Robustness ── */
+.rl-robustness-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+}
+
+.rl-robustness-group {
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.015);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 14px;
+}
+
+/* ═══════════════════════════════════════════════════ */
+/* Tech Stack                                          */
+/* ═══════════════════════════════════════════════════ */
+
+/* Tech strip — horizontal row of prominent chips */
+.rl-tech-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+.rl-tech-chip {
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #e0e0e0;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  font-family: 'Ubuntu', sans-serif;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.rl-tech-chip:hover {
+  border-color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+
+/* ═══════════════════════════════════════════════════ */
+/* Project Structure Tree                              */
+/* ═══════════════════════════════════════════════════ */
+
+.rl-tree {
+  margin-top: 1rem;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+.rl-tree-code {
+  font-family: 'Ubuntu Mono', 'Courier New', monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #888;
+  white-space: pre;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════ */
+/* Mobile                                              */
+/* ═══════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .rl-page {
+    padding-left: 0;
+  }
+
+  .rl-hero {
+    padding: 4rem 1.5rem 3rem;
+    flex-direction: column;
+  }
+
+  .rl-hero-image {
+    width: 80%;
+    max-width: 300px;
+  }
+
+  .rl-hero-title {
+    font-size: 2.5rem;
+  }
+
+  .rl-hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .rl-section {
+    padding: 0 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .rl-section-wide {
+    padding: 0 1rem;
+  }
+
+  .rl-section-title {
+    font-size: 1.6rem;
+  }
+
+  .rl-algo-figures img,
+  .rl-results-figures img {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .rl-results-3 img {
+    max-width: 100%;
+  }
+
+  .rl-robustness-group {
+    padding: 1rem;
+  }
+}

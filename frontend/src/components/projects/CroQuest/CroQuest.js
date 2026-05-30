@@ -75,6 +75,7 @@ const CroQuestPage = () => {
             <div className="cq-hero-buttons">
               <a href="https://github.com/VT-CRO/CroQuest" target="_blank" rel="noopener noreferrer" className="cq-btn cq-btn-primary"><FontAwesomeIcon icon={faGithub} /> View on GitHub</a>
               <a href="https://www.youtube.com/watch?v=Fxc-An2Zm-w" target="_blank" rel="noopener noreferrer" className="cq-btn cq-btn-youtube"><FontAwesomeIcon icon={faYoutube} /> Watch Demo</a>
+              <a href="https://www.vtcro.org/" target="_blank" rel="noopener noreferrer" className="cq-btn cq-btn-ghost"><img src="/images/general/vtcro_bird.jpg" alt="VT CRO" className="cq-vtcro-icon" /> VT CRO</a>
             </div>
           </div>
           <div className="cq-hero-image">

@@ -1,0 +1,564 @@
+/* ═══════════════════════════════════════════════════ */
+/* Concurrency Web Server Page                         */
+/* ═══════════════════════════════════════════════════ */
+
+.cw-page {
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Ubuntu', sans-serif;
+  color: #e0e0e0;
+  background: #0a0a0a;
+  position: relative;
+  overflow: hidden;
+  padding-left: 90px;
+}
+
+.cw-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.cw-reveal.cw-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Back button ── */
+.cw-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cw-back-btn:hover {
+  color: #fff;
+  border-color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.08);
+}
+
+/* ═══════════════════════════════════════════════════ */
+/* Hero                                                */
+/* ═══════════════════════════════════════════════════ */
+
+.cw-hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 3rem 4rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.cw-hero-content {
+  flex: 1;
+  max-width: 550px;
+}
+
+.cw-hero-label {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.cw-hero-title {
+  font-family: 'Playfair Display', cursive;
+  font-size: 3.5rem;
+  color: #f0f0f0;
+  letter-spacing: -2px;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.cw-hero-subtitle {
+  font-size: 1rem;
+  color: #888;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.cw-hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.cw-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cw-btn-primary {
+  background: rgba(255,255,255,0.06);
+  color: #e0e0e0;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.cw-btn-primary:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.25);
+}
+
+/* ═══════════════════════════════════════════════════ */
+/* Architecture Diagram (hero visual)                  */
+/* ═══════════════════════════════════════════════════ */
+
+.cw-hero-diagram {
+  flex-shrink: 0;
+  width: 480px;
+}
+
+.cw-arch {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+}
+
+.cw-arch-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cw-arch-label {
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 0.3rem;
+}
+
+/* Clients */
+.cw-client {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.04);
+  animation: clientPulse 2s ease-in-out infinite;
+}
+
+.cw-client-1 { animation-delay: 0s; }
+.cw-client-2 { animation-delay: 0.5s; }
+.cw-client-3 { animation-delay: 1s; }
+.cw-client-4 { animation-delay: 1.5s; }
+
+@keyframes clientPulse {
+  0%, 100% { border-color: rgba(255,255,255,0.15); }
+  50%      { border-color: rgba(255,255,255,0.4); }
+}
+
+/* Arrows */
+.cw-arch-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.cw-arrow-line {
+  width: 30px;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+  position: relative;
+}
+
+.cw-arrow-line::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid rgba(255,255,255,0.3);
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+}
+
+.cw-arrow-label {
+  font-size: 0.55rem;
+  color: #555;
+  letter-spacing: 0.5px;
+}
+
+/* Server box */
+.cw-server-box {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.03);
+}
+
+.cw-server-text {
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 0.7rem;
+  color: #aaa;
+}
+
+/* Queue */
+.cw-queue-box {
+  display: flex;
+  gap: 3px;
+}
+
+.cw-queue-slot {
+  width: 22px;
+  height: 30px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.02);
+}
+
+.cw-slot-fill {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.cw-slot-1 { animation: slotPulse 3s ease-in-out infinite; }
+.cw-slot-2 { animation: slotPulse 3s ease-in-out infinite; animation-delay: 0.6s; }
+.cw-slot-3 { animation: slotPulse 3s ease-in-out infinite; animation-delay: 1.2s; }
+
+@keyframes slotPulse {
+  0%, 100% { background: rgba(255,255,255,0.06); }
+  50%      { background: rgba(255,255,255,0.15); }
+}
+
+.cw-queue-label {
+  font-size: 0.55rem;
+  color: #555;
+  margin-top: 0.2rem;
+  letter-spacing: 0.5px;
+}
+
+/* Thread pool */
+.cw-thread {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.cw-thread-active {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #e0e0e0;
+  animation: threadWork 2s ease-in-out infinite;
+}
+
+.cw-thread-idle {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #555;
+}
+
+@keyframes threadWork {
+  0%, 100% { border-color: rgba(255,255,255,0.15); }
+  50%      { border-color: rgba(255,255,255,0.4); }
+}
+
+/* ═══════════════════════════════════════════════════ */
+/* Sections                                            */
+/* ═══════════════════════════════════════════════════ */
+
+.cw-section {
+  padding: 0 3rem;
+  margin-bottom: 4rem;
+}
+
+.cw-section-wide { padding: 0 2rem; }
+
+.cw-section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.cw-section-title {
+  font-family: 'Playfair Display', cursive;
+  font-size: 2rem;
+  color: #e0e0e0;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.cw-section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 40px;
+  background: rgba(255,255,255,0.3);
+}
+
+.cw-section-text {
+  font-size: 1rem;
+  color: #888;
+  line-height: 1.75;
+  max-width: 750px;
+  margin-bottom: 1rem;
+}
+
+/* ── Tech strip ── */
+.cw-tech-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cw-tech-chip {
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #e0e0e0;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.cw-tech-chip:hover {
+  border-color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+
+/* ═══════════════════════════════════════════════════ */
+/* How it Works — Flow steps                           */
+/* ═══════════════════════════════════════════════════ */
+
+.cw-flow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+}
+
+.cw-flow-step {
+  flex: 1;
+  min-width: 150px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.cw-flow-step:hover {
+  border-color: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.04);
+}
+
+.cw-flow-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.8rem;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #e0e0e0;
+}
+
+.cw-flow-step h3 {
+  font-family: 'Playfair Display', cursive;
+  font-size: 1rem;
+  color: #e0e0e0;
+  margin-bottom: 0.5rem;
+}
+
+.cw-flow-step p {
+  font-size: 0.82rem;
+  color: #888;
+  line-height: 1.5;
+}
+
+.cw-flow-arrow {
+  flex-shrink: 0;
+  width: 24px;
+  height: 2px;
+  background: linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.25));
+  margin-top: 3.5rem;
+  position: relative;
+}
+
+.cw-flow-arrow::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: -4px;
+  border-left: 6px solid rgba(255,255,255,0.25);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+
+/* ═══════════════════════════════════════════════════ */
+/* Components grid                                     */
+/* ═══════════════════════════════════════════════════ */
+
+.cw-comp-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cw-comp-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-left: 3px solid rgba(255,255,255,0.15);
+  border-radius: 0 14px 14px 0;
+  padding: 1.5rem 2rem;
+  transition: all 0.3s ease;
+}
+
+.cw-comp-card:hover {
+  border-left-color: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.035);
+  transform: translateX(4px);
+}
+
+.cw-comp-file {
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 0.8rem;
+  color: #888;
+  background: rgba(255,255,255,0.04);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.cw-comp-role {
+  font-family: 'Playfair Display', cursive;
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  margin: 0.6rem 0 0.4rem;
+}
+
+.cw-comp-desc {
+  font-size: 0.9rem;
+  color: #888;
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════════════ */
+/* Code blocks                                         */
+/* ═══════════════════════════════════════════════════ */
+
+.cw-code-block {
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 1rem;
+  background: rgba(0,0,0,0.3);
+}
+
+.cw-code-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.6rem 1rem;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.cw-code-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.cw-dot-red    { background: #ff5f57; }
+.cw-dot-yellow { background: #febc2e; }
+.cw-dot-green  { background: #28c840; }
+
+.cw-code-filename {
+  margin-left: 0.6rem;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.35);
+}
+
+.cw-code {
+  margin: 0;
+  padding: 1.2rem 1.5rem;
+  font-family: 'Ubuntu Mono', 'Courier New', monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #aaa;
+  overflow-x: auto;
+}
+
+/* ═══════════════════════════════════════════════════ */
+/* Mobile                                              */
+/* ═══════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .cw-page { padding-left: 0; }
+
+  .cw-hero {
+    flex-direction: column;
+    padding: 4rem 1.5rem 3rem;
+  }
+
+  .cw-hero-title { font-size: 2.5rem; }
+  .cw-hero-diagram { width: 100%; }
+  .cw-arch { flex-wrap: wrap; justify-content: center; }
+
+  .cw-section { padding: 0 1.5rem; margin-bottom: 3rem; }
+  .cw-section-wide { padding: 0 1rem; }
+  .cw-section-title { font-size: 1.6rem; }
+
+  .cw-flow { flex-direction: column; }
+  .cw-flow-arrow {
+    width: 2px;
+    height: 20px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.25));
+  }
+  .cw-flow-arrow::after {
+    right: auto;
+    top: auto;
+    bottom: -4px;
+    left: -4px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 6px solid rgba(255,255,255,0.25);
+  }
+}

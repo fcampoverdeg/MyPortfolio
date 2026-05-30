@@ -11,6 +11,11 @@ const CATEGORIES = [
   { label: "Systems", value: "systems" },
   { label: "Web", value: "web" },
   { label: "ML", value: "ml" },
+  { label: "C/C++", value: "c" },
+  { label: "Python", value: "python" },
+  { label: "Embedded", value: "embedded" },
+  { label: "Linux", value: "linux" },
+  { label: "ROS", value: "ros" },
 ];
 
 // Define your project data array
@@ -20,102 +25,69 @@ const projects = [
     image: "/images/CroQuest/CroQuest_Cover.png",
     description:
       "A fully custom ESP32-based handheld console featuring a full UI system, TFT graphics pipeline, JPEG rendering, SD-based assets, and 8+ original games with Bluetooth multiplayer support.",
-    tags: [
-      "C",
-      "C++",
-      "PlatformIO",
-      "ESP32",
-      "Bluetooth (BLE)",
-      "TFT Graphics",
-      "SD Card",
-    ],
+    tags: ["C", "C++", "PlatformIO", "ESP32", "Bluetooth (BLE)", "TFT Graphics", "SD Card", "Arduino", "Embedded"],
     github: "https://github.com/VT-CRO/CroQuest",
     website: "https://morganw040.wixsite.com/croquest",
     video: "https://www.youtube.com/watch?v=Fxc-An2Zm-w",
+    organization: "https://www.vtcro.org/",
     path: "/projects/CroQuest",
-    category: "robotics",
+    category: ["robotics", "c", "embedded"],
     reverse: true,
   },
   {
     title: "Reinforcement Learning in GridWorld",
-    image: "/images/general/Logo.png",
+    image: "/images/RL/gridworld_path.png",
     description:
       "A comparative study of Q-Learning, SARSA, and Dyna-Q algorithms in a custom stochastic GridWorld environment with walls, pits, and wind effects. Includes full test suite and Jupyter notebook analysis pipeline.",
-    tags: [
-      "Python",
-      "NumPy",
-      "Matplotlib",
-      "Jupyter",
-      "Machine Learning",
-      "RL",
-    ],
+    tags: ["Python", "NumPy", "Matplotlib", "Jupyter", "Machine Learning", "RL", "SciPy"],
     github: "https://github.com/fcampoverdeg/reinforcement_learning",
     path: "/projects/reinforcement-learning",
-    category: "ml",
-    reverse: true,
-  },
-  {
-    title: "Concurrency Web Server",
-    image: "/images/general/Logo.png",
-    description:
-      "A multi-threaded HTTP/1.0 web server in C featuring a configurable thread pool, bounded scheduler queue with Smallest-File-First scheduling, and secure filesystem sandboxing.",
-    tags: [
-      "C",
-      "POSIX Threads",
-      "TCP/IP",
-      "Concurrency",
-      "Linux",
-    ],
-    github: "https://github.com/fcampoverdeg/Concurrency_Webserver",
-    path: "/projects/concurrency-webserver",
-    category: "systems",
-    reverse: true,
-  },
-  {
-    title: "Virtual Memory Page Table Walker",
-    image: "/images/general/Logo.png",
-    description:
-      "User-space and kernel-space page table walkers in C that visualize Linux virtual-to-physical address translation, comparing vmalloc vs kmalloc allocation strategies.",
-    tags: [
-      "C",
-      "Linux Kernel",
-      "Virtual Memory",
-      "Kernel Modules",
-      "Systems",
-    ],
-    github: "https://github.com/fcampoverdeg/virtual_memory",
-    path: "/projects/virtual-memory",
-    category: "systems",
+    category: ["ml", "python"],
     reverse: true,
   },
   {
     title: "Autonomous Car",
-    image: "/images/car/NCB.jpg",
+    image: "/images/car/car_front.jpg",
     description:
       "Engineered a fully autonomous vehicle using ROS 2 and Gazebo to navigate obstacle courses for the National Robotics Challenge, including real-time SLAM mapping, path planning, and sensor fusion.",
-    tags: ["C++", "ROS 2", "Gazebo", "RViz", "Nav2", "Linux"],
+    tags: ["C++", "Python", "ROS 2", "Gazebo", "RViz", "Nav2", "SLAM", "LiDAR", "Linux"],
     github: "https://github.com/VT-CRO/NationalRoboticsChallengeCode",
-    organization: "https://www.vtcro.org/design-teams/dog",
+    organization: "https://www.vtcro.org/",
     path: "/projects/AutonomousCar",
-    category: "robotics",
+    category: ["robotics", "c", "python", "linux", "ros"],
     reverse: true,
   },
   {
     title: "My Portfolio (This Website)",
     image: "/images/general/Logo.png",
     description:
-      "A full-stack portfolio built with React, Express, and MongoDB, featuring 3D model rendering with Three.js, animated backgrounds, glass-morphism UI, custom cursor, and preloader animations.",
-    tags: [
-      "React",
-      "JavaScript",
-      "Three.js",
-      "MongoDB",
-      "Express",
-      "CSS",
-    ],
+      "A full-stack portfolio built from scratch with React, Three.js, and Express. Features custom scroll snapping, ROS computation graph background, 3D model viewer, embedded Jupyter notebooks, and a monochrome design system.",
+    tags: ["React", "JavaScript", "Three.js", "Node.js", "Express", "MongoDB", "CSS", "Netlify"],
     github: "https://github.com/fcampoverdeg/MyPortfolio",
     path: "/projects/MyPortfolio",
-    category: "web",
+    category: ["web"],
+    reverse: true,
+  },
+  {
+    title: "Concurrency Web Server",
+    image: "/images/general/concurrency_arch.svg",
+    description:
+      "A multi-threaded HTTP/1.0 web server in C featuring a configurable thread pool, bounded scheduler queue with Smallest-File-First scheduling, and secure filesystem sandboxing.",
+    tags: ["C", "POSIX Threads", "TCP/IP", "HTTP", "Concurrency", "Sockets", "Linux", "Makefile"],
+    github: "https://github.com/fcampoverdeg/Concurrency_Webserver",
+    path: "/projects/concurrency-webserver",
+    category: ["systems", "c", "linux"],
+    reverse: true,
+  },
+  {
+    title: "Virtual Memory Page Table Walker",
+    image: "/images/general/virtual_memory_arch.svg",
+    description:
+      "User-space and kernel-space page table walkers in C that visualize Linux virtual-to-physical address translation, comparing vmalloc vs kmalloc allocation strategies.",
+    tags: ["C", "Linux Kernel", "Virtual Memory", "Kernel Modules", "POSIX", "Makefile", "Systems"],
+    github: "https://github.com/fcampoverdeg/virtual_memory",
+    path: "/projects/virtual-memory",
+    category: ["systems", "c", "linux"],
     reverse: true,
   },
 ];
@@ -129,7 +101,7 @@ const Portfolio = () => {
   const filteredProjects = useMemo(() =>
     activeFilter === "all"
       ? projects
-      : projects.filter((p) => p.category === activeFilter),
+      : projects.filter((p) => p.category.includes(activeFilter)),
   [activeFilter]);
 
   useEffect(() => {

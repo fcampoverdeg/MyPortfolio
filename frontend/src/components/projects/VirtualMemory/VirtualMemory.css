@@ -1,0 +1,127 @@
+/* ═══════════════════════════════════════════════════ */
+/* Virtual Memory Page Table Walker                    */
+/* ═══════════════════════════════════════════════════ */
+
+.vm-page {
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Ubuntu', sans-serif;
+  color: #e0e0e0;
+  background: #0a0a0a;
+  position: relative;
+  overflow: hidden;
+  padding-left: 90px;
+}
+
+.vm-reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.vm-reveal.vm-visible { opacity: 1; transform: translateY(0); }
+
+.vm-back-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 1.5rem;
+  padding: 0.5rem 1rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; color: #e0e0e0; font-size: 0.9rem; text-decoration: none; transition: all 0.3s ease;
+}
+.vm-back-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.08); }
+
+/* Hero */
+.vm-hero {
+  max-width: 1200px; margin: 0 auto; padding: 6rem 3rem 4rem;
+  display: flex; align-items: center; gap: 3rem;
+}
+.vm-hero-content { flex: 1; max-width: 550px; }
+.vm-hero-label { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: #555; margin-bottom: 1rem; }
+.vm-hero-title { font-family: 'Playfair Display', cursive; font-size: 3.2rem; color: #f0f0f0; letter-spacing: -2px; margin-bottom: 1rem; line-height: 1.1; }
+.vm-hero-subtitle { font-size: 1rem; color: #888; line-height: 1.7; margin-bottom: 2rem; }
+.vm-hero-buttons { display: flex; gap: 1rem; }
+.vm-hero-image { flex-shrink: 0; width: 420px; }
+.vm-hero-image img { width: 100%; border-radius: 14px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
+
+.vm-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.4rem; border-radius: 8px; font-size: 0.95rem; font-weight: 500; text-decoration: none; transition: all 0.3s ease; }
+.vm-btn-primary { background: rgba(255,255,255,0.06); color: #e0e0e0; border: 1px solid rgba(255,255,255,0.12); }
+.vm-btn-primary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.25); }
+
+/* Sections */
+.vm-section { padding: 0 3rem; margin-bottom: 4rem; }
+.vm-section-wide { padding: 0 2rem; }
+.vm-section-inner { max-width: 1100px; margin: 0 auto; }
+.vm-section-title {
+  font-family: 'Playfair Display', cursive; font-size: 2rem; color: #e0e0e0;
+  margin-bottom: 1rem; position: relative; display: inline-block;
+}
+.vm-section-title::after { content: ""; position: absolute; left: 0; bottom: -6px; height: 2px; width: 40px; background: rgba(255,255,255,0.3); }
+.vm-section-text { font-size: 1rem; color: #888; line-height: 1.75; max-width: 750px; margin-bottom: 1rem; }
+
+/* Tech strip */
+.vm-tech-strip { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+.vm-tech-chip {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: #e0e0e0;
+  padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 1.05rem; font-weight: 600; letter-spacing: 0.5px; transition: all 0.3s ease;
+}
+.vm-tech-chip:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.08); color: #fff; }
+
+/* Walker cards */
+.vm-walkers { display: flex; gap: 1.5rem; margin-top: 1.5rem; }
+.vm-walker-card {
+  flex: 1; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+  border-left: 3px solid rgba(255,255,255,0.15); border-radius: 0 14px 14px 0;
+  padding: 2rem; transition: all 0.3s ease;
+}
+.vm-walker-card:hover { border-left-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.035); }
+.vm-walker-label { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #555; }
+.vm-walker-name { font-family: 'Ubuntu Mono', monospace; font-size: 1.4rem; color: #e0e0e0; margin: 0.5rem 0; }
+.vm-walker-desc { font-size: 0.9rem; color: #888; line-height: 1.7; margin-bottom: 1rem; }
+.vm-walker-output {
+  background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 0.6rem 1rem;
+}
+.vm-walker-output code { font-family: 'Ubuntu Mono', monospace; font-size: 0.8rem; color: #aaa; }
+
+/* Compare section */
+.vm-compare {
+  display: flex; gap: 0; margin-top: 1.5rem;
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden;
+}
+.vm-compare-col { flex: 1; padding: 2rem; }
+.vm-compare-col h3 { font-family: 'Ubuntu Mono', monospace; font-size: 1.3rem; color: #e0e0e0; margin-bottom: 1rem; }
+.vm-compare-col ul { list-style: none; padding: 0; }
+.vm-compare-col li { padding: 0.4rem 0; font-size: 0.9rem; color: #888; line-height: 1.6; }
+.vm-compare-col li::before { content: "›"; margin-right: 0.6rem; color: rgba(255,255,255,0.3); font-weight: 700; }
+.vm-compare-col li strong { color: #ccc; }
+.vm-compare-divider { width: 1px; background: rgba(255,255,255,0.06); }
+
+/* Frame visualization */
+.vm-frames { display: flex; align-items: center; gap: 0.4rem; margin-top: 1.2rem; flex-wrap: wrap; }
+.vm-frame {
+  width: 40px; height: 32px; display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; background: rgba(255,255,255,0.04);
+  font-family: 'Ubuntu Mono', monospace; font-size: 0.75rem; color: #aaa;
+}
+.vm-frame-seq { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.08); color: #ccc; }
+.vm-frame-label { font-size: 0.7rem; color: #555; margin-left: 0.5rem; letter-spacing: 0.5px; }
+
+/* Code blocks */
+.vm-code-block {
+  border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; margin-top: 1rem; background: rgba(0,0,0,0.3);
+}
+.vm-code-header {
+  display: flex; align-items: center; gap: 6px; padding: 0.6rem 1rem;
+  background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.vm-code-dot { width: 10px; height: 10px; border-radius: 50%; }
+.vm-dot-red { background: #ff5f57; }
+.vm-dot-yellow { background: #febc2e; }
+.vm-dot-green { background: #28c840; }
+.vm-code-filename { margin-left: 0.6rem; font-family: 'Ubuntu Mono', monospace; font-size: 0.7rem; color: rgba(255,255,255,0.35); }
+.vm-code { margin: 0; padding: 1.2rem 1.5rem; font-family: 'Ubuntu Mono', 'Courier New', monospace; font-size: 0.85rem; line-height: 1.6; color: #aaa; overflow-x: auto; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .vm-page { padding-left: 0; }
+  .vm-hero { flex-direction: column; padding: 4rem 1.5rem 3rem; }
+  .vm-hero-title { font-size: 2.2rem; }
+  .vm-hero-image { width: 90%; max-width: 350px; }
+  .vm-section { padding: 0 1.5rem; margin-bottom: 3rem; }
+  .vm-section-wide { padding: 0 1rem; }
+  .vm-walkers { flex-direction: column; }
+  .vm-compare { flex-direction: column; }
+  .vm-compare-divider { width: 100%; height: 1px; }
+}

@@ -197,6 +197,27 @@
   border-color: rgba(255, 0, 0, 0.35);
 }
 
+.cq-btn-ghost {
+  background: transparent;
+  color: #888;
+  border: 1px solid rgba(255,255,255,0.06);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cq-btn-ghost:hover {
+  color: #e0e0e0;
+  border-color: rgba(255,255,255,0.15);
+}
+
+.cq-vtcro-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
 .cq-hero-image {
   flex-shrink: 0;
   width: 380px;

@@ -16,6 +16,9 @@ import Portfolio from "./components/Portfolio";
 import CroQuestPage from "./components/projects/CroQuest/CroQuest";
 import MyPortfolioPage from "./components/projects/MyPortfolio/MyPortfolio";
 import AutonomousCarPage from "./components/projects/AutonomousCar/AutonomousCar";
+import ReinforcementLearningPage from "./components/projects/ReinforcementLearning/ReinforcementLearning";
+import ConcurrencyWebserverPage from "./components/projects/ConcurrencyWebserver/ConcurrencyWebserver";
+import VirtualMemoryPage from "./components/projects/VirtualMemory/VirtualMemory";
 
 import "./App.css";
 
@@ -215,9 +218,9 @@ const App = () => {
             />
 
             {/* Placeholder routes for new projects — to be expanded */}
-            <Route path="/projects/reinforcement-learning" element={<ProjectPlaceholder title="Reinforcement Learning in GridWorld" github="https://github.com/fcampoverdeg/reinforcement_learning" />} />
-            <Route path="/projects/concurrency-webserver" element={<ProjectPlaceholder title="Concurrency Web Server" github="https://github.com/fcampoverdeg/Concurrency_Webserver" />} />
-            <Route path="/projects/virtual-memory" element={<ProjectPlaceholder title="Virtual Memory Page Table Walker" github="https://github.com/fcampoverdeg/virtual_memory" />} />
+            <Route path="/projects/reinforcement-learning" element={<ReinforcementLearningPage />} />
+            <Route path="/projects/concurrency-webserver" element={<ConcurrencyWebserverPage />} />
+            <Route path="/projects/virtual-memory" element={<VirtualMemoryPage />} />
             <Route path="/projects/paws-pebbles" element={<ProjectPlaceholder title="Paws & Pebbles" github="https://github.com/fcampoverdeg/Paws-Pebbles" />} />
 
             <Route

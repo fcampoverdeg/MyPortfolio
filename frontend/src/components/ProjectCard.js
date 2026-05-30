@@ -104,10 +104,10 @@ const ProjectCard = ({
                       className="vtcro-button"
                     >
                       <img
-                        src="/images/general/VTCRO.png"
-                        alt="VT Cro"
+                        src="/images/general/vtcro_bird.jpg"
+                        alt="VT CRO"
                         className="vtcro-icon"
-                      />
+                      /> VT CRO
                     </a>
                   )}
                   {video && (
