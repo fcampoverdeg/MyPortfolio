@@ -71,35 +71,36 @@ const Navbar = () => {
 
   // Highlight the section where the user is at
   useEffect(() => {
-    const sections = document.querySelectorAll("section[id]");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
+    if (location.pathname !== "/") return;
 
-    if (location.pathname === "/") {
-      sections.forEach((section) => observer.observe(section));
+    const sections = document.querySelectorAll("[id='home'], [id='about'], [id='resume'], [id='contact']");
 
-      // Immediately check which section is already visible
+    // Use scroll-based detection instead of IntersectionObserver
+    // because Resume is too tall for a threshold-based approach
+    const handleScroll = () => {
+      const vh = window.innerHeight;
+      const sy = window.pageYOffset;
+      let current = "";
+
       sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        const inView = rect.top >= 0 && rect.top < window.innerHeight * 0.6;
-        if (inView) {
-          setActiveSection(section.id);
+        let top = 0;
+        let node = section;
+        while (node) { top += node.offsetTop; node = node.offsetParent; }
+        const bottom = top + section.offsetHeight;
+
+        // Section is active if the viewport center is inside it
+        if (sy + vh / 2 >= top && sy + vh / 2 < bottom) {
+          current = section.id;
         }
       });
-    }
 
-    return () => {
-      sections.forEach((section) => observer.unobserve(section));
+      if (current) setActiveSection(current);
     };
-  }, [location.pathname]); // Re-run on route change
+
+    handleScroll(); // Check immediately
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [location.pathname]);
 
   return (
     <>

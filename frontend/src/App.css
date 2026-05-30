@@ -16,17 +16,16 @@ html {
 html, body {
     margin: 0;
     padding: 0;
-    height:100%;
-    width:100%;
+    min-height: 100%;
+    width: 100%;
     font-family:'Courier New', Courier, monospace;
     background-color: #050505;
     overflow-x: hidden;
-    overflow-y: auto;
 }
 
 /* Main app layout */
 .app-container {
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     visibility: hidden;
 }
@@ -47,7 +46,6 @@ html, body {
 }
 
 main {
-  scroll-snap-type: y proximity;
   overflow-y: visible;
   flex-grow: 1;
   margin: 0;

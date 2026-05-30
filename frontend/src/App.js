@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect, useRef } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 
 /* Components */
@@ -30,9 +30,152 @@ const ProjectPlaceholder = ({ title, github }) => (
   </div>
 );
 
+const SNAP_IDS = ["home", "about", "resume", "contact"];
+
 const App = () => {
   const [loaded, setLoaded] = useState(false);
   const handlePreloaderComplete = useCallback(() => setLoaded(true), []);
+  const lastSnap = useRef(0);
+  const animating = useRef(false);
+
+  useEffect(() => {
+    const COOLDOWN = 2200; // long enough to outlast trackpad momentum
+    const DURATION = 900; // ms for the scroll animation
+
+    const getTargets = () => {
+      const vh = window.innerHeight;
+      return SNAP_IDS.map((id) => {
+        const el = document.getElementById(id);
+        if (!el) return null;
+        let top = 0;
+        let node = el;
+        while (node) { top += node.offsetTop; node = node.offsetParent; }
+        const h = el.offsetHeight;
+        let snap;
+        if (id === "about") {
+          snap = Math.max(0, top - Math.max(0, (vh - h) / 2));
+        } else if (id === "contact") {
+          // Offset down so the background mask fade is above the viewport
+          snap = top + Math.round(vh * 0.16);
+        } else {
+          snap = top;
+        }
+        return { id, snap };
+      }).filter(Boolean);
+    };
+
+    // Custom smooth scroll with easing
+    const smoothScrollTo = (target) => {
+      const start = window.pageYOffset;
+      const distance = target - start;
+      const startTime = performance.now();
+      animating.current = true;
+
+      const ease = (t) => t < 0.5
+        ? 4 * t * t * t
+        : 1 - Math.pow(-2 * t + 2, 3) / 2; // easeInOutCubic
+
+      const step = (now) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / DURATION, 1);
+        window.scrollTo(0, start + distance * ease(progress));
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          animating.current = false;
+        }
+      };
+      requestAnimationFrame(step);
+    };
+
+    // Cache the Contact scroll target so we know when we're in it
+    let contactTop = 0;
+
+    const onWheel = (e) => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+
+      const dir = e.deltaY > 0 ? 1 : -1;
+      const vh = window.innerHeight;
+      const sy = window.pageYOffset;
+
+      // Recalculate contact position
+      const contactEl = document.getElementById("contact");
+      if (contactEl) {
+        let t = 0; let n = contactEl;
+        while (n) { t += n.offsetTop; n = n.offsetParent; }
+        contactTop = t;
+      }
+
+      // If we're near/in Contact and scrolling up, block native scroll IMMEDIATELY
+      if (sy >= contactTop - 50 && dir === -1) {
+        e.preventDefault();
+        if (animating.current) return;
+        const now = Date.now();
+        if (now - lastSnap.current < COOLDOWN) return;
+        lastSnap.current = now;
+        const resumeEl = document.getElementById("resume");
+        if (resumeEl) {
+          let t = 0; let n = resumeEl;
+          while (n) { t += n.offsetTop; n = n.offsetParent; }
+          const resumeBottom = t + resumeEl.offsetHeight - vh;
+          smoothScrollTo(Math.max(0, resumeBottom));
+        }
+        return;
+      }
+
+      // Block during animation
+      if (animating.current) { e.preventDefault(); return; }
+
+      const now = Date.now();
+      const inCooldown = now - lastSnap.current < COOLDOWN;
+
+      const targets = getTargets();
+      if (targets.length === 0) return;
+
+      // Find which section the viewport is actually inside
+      let closestIdx = 0;
+      for (let i = 0; i < SNAP_IDS.length; i++) {
+        const el = document.getElementById(SNAP_IDS[i]);
+        if (!el) continue;
+        let top = 0;
+        let node = el;
+        while (node) { top += node.offsetTop; node = node.offsetParent; }
+        const bottom = top + el.offsetHeight;
+        if (sy + vh / 2 >= top && sy + vh / 2 < bottom) {
+          closestIdx = i;
+          break;
+        }
+      }
+
+      // Resume is long — allow free scroll within it, only hijack at edges
+      if (closestIdx === 2) {
+        const resumeEl = document.getElementById("resume");
+        if (resumeEl) {
+          const rect = resumeEl.getBoundingClientRect();
+          const atTop = rect.top >= -50;
+          const atBottom = rect.bottom <= vh + 150;
+          if (dir === -1 && !atTop) return;
+          if (dir === 1 && !atBottom) return;
+        }
+      }
+
+      // Contact scrolling down → free scroll (footer, etc.)
+      if (closestIdx === 3 && dir === 1) return;
+
+      // During cooldown, block snaps but allow free scroll
+      if (inCooldown) { e.preventDefault(); return; }
+
+      const nextIdx = Math.max(0, Math.min(targets.length - 1, closestIdx + dir));
+      if (nextIdx === closestIdx) return;
+
+      e.preventDefault();
+      lastSnap.current = now;
+      smoothScrollTo(targets[nextIdx].snap);
+    };
+
+    window.addEventListener("wheel", onWheel, { passive: false });
+    return () => window.removeEventListener("wheel", onWheel);
+  }, []);
 
   return (
     <>
@@ -52,25 +195,11 @@ const App = () => {
               path="/"
               element={
                 <>
-                  <section id="home" style={{ minHeight: "100vh" }}>
-                    <Home loaded={loaded} />
-                  </section>
-
-                  <section id="about" className="about-section">
-                    <About />
-                  </section>
-
-                  <section id="resume" className="resume-section">
-                    <Resume />
-                  </section>
-
-                  <section id="contact" className="contact-section">
-                    <Contact />
-                  </section>
-
-                  <section id="footer" className="footer-section">
-                    <Footer />
-                  </section>
+                  <Home loaded={loaded} />
+                  <About />
+                  <Resume />
+                  <Contact />
+                  <Footer />
                 </>
               }
             />

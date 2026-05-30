@@ -20,6 +20,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-left: 90px;
   position: relative;
   overflow: hidden;
 }
@@ -169,11 +170,43 @@
   width: 50px;
 }
 
+.about-description p,
+.impact-line {
+  position: relative;
+}
+
 .about-description p {
   font-size: 1.05rem;
   line-height: 1.8;
   margin-bottom: 0.6rem;
   color: #888;
+}
+
+/* Invisible text that reserves the full space */
+.typed-sizer {
+  visibility: hidden;
+  display: block;
+}
+
+/* Visible typed text overlaid on top */
+.typed-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Typewriter cursor */
+.typed-cursor {
+  display: inline;
+  color: rgba(255,255,255,0.6);
+  font-weight: 300;
+  animation: cursorBlink 0.7s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
 }
 
 .highlight {
@@ -191,7 +224,12 @@
   text-align: left;
   letter-spacing: 0.5px;
   padding-left: 0.8rem;
-  border-left: 1px solid #333;
+  border-left: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.impact-line.impact-active {
+  border-left-color: #333;
 }
 
 

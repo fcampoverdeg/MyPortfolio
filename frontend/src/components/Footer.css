@@ -2,9 +2,9 @@
 
 .footer-container {
   width: 100%;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.4);
   color: #e0e0e0;
-  padding: 3rem 2rem;
+  padding: 1rem 2rem 1rem calc(2rem + 45px);
   font-family: 'Ubuntu', sans-serif;
   position: relative;
 }

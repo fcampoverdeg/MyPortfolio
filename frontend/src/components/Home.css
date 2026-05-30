@@ -225,26 +225,59 @@
   backdrop-filter: blur(12px);
   letter-spacing: 0.5px;
   overflow: hidden;
+  min-width: 170px;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Animated gradient border */
+/* (gradient border replaced by metallic shine ::before) */
+
+/* Persistent top-left corner light on border only */
+.home-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 1.5px;
+  background: radial-gradient(
+    ellipse at 0% 0%,
+    rgba(255,255,255,0.6) 0%,
+    rgba(255,255,255,0.2) 15%,
+    transparent 30%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Diagonal edge sweep — uses background-position for cross-browser support */
 .home-button::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 8px;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02), rgba(255,255,255,0.12));
-  background-size: 200% 200%;
-  animation: gradientBorder 5s ease infinite;
+  background: linear-gradient(
+    135deg,
+    transparent 30%,
+    rgba(255,255,255,0.4) 42%,
+    rgba(255,255,255,0.8) 50%,
+    rgba(255,255,255,0.4) 58%,
+    transparent 70%
+  );
+  background-size: 300% 300%;
+  background-position: 100% 100%;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
+  pointer-events: none;
+  animation: cardShine 5s linear infinite;
 }
 
-@keyframes gradientBorder {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+@keyframes cardShine {
+  0%           { background-position: 100% 100%; }
+  30%          { background-position: 0% 0%; }
+  30.01%, 100% { background-position: 100% 100%; }
 }
 
 .home-button:hover {

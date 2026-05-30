@@ -5,16 +5,13 @@
 /* #################################################################################################### */
 
 .contact-section {
-  min-height: 100vh;
+  min-height: 103vh;
   width: 100%;
-  scroll-snap-align: start;
-  scroll-margin-top: 80px;
-  padding: 2rem 4rem 2rem 4rem;
+  padding: 2rem 4rem 2rem calc(4rem + 45px);
   background: transparent;
   color: #e0e0e0;
   font-family: 'Playfair Display', cursive;
   text-align: center;
-  scroll-snap-align: start;
   transition: all 0.6s ease;
   display: flex;
   align-items: center;
@@ -55,9 +52,9 @@
 }
 
 /* ════════════════════════════════════════════════════════════ */
-/* CYBERPUNK SCENE — layered parallax masterpiece               */
+/* ROS GRAPH v2 — dense, animated computation graph              */
 /* ════════════════════════════════════════════════════════════ */
-.cyber-bg {
+.ros-bg {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -65,488 +62,292 @@
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  perspective: 700px;
-  perspective-origin: 50% 0%;
-  background:
-    radial-gradient(ellipse at 50% 60%, rgba(255,255,255,0.04), transparent 60%),
-    linear-gradient(to bottom, #050505 0%, #070707 50%, #030303 100%);
-  /* Fade the whole cyber scene in from the top so the global grid bleeds through and blends */
+  background: linear-gradient(to bottom, #050505 0%, #060606 50%, #040404 100%);
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 0%,
     rgba(0,0,0,0.15) 8%,
-    rgba(0,0,0,0.45) 18%,
-    rgba(0,0,0,0.75) 28%,
-    #000 40%,
+    rgba(0,0,0,0.5) 18%,
+    rgba(0,0,0,0.8) 28%,
+    #000 38%,
     #000 100%
   );
           mask-image: linear-gradient(
     to bottom,
     transparent 0%,
     rgba(0,0,0,0.15) 8%,
-    rgba(0,0,0,0.45) 18%,
-    rgba(0,0,0,0.75) 28%,
-    #000 40%,
+    rgba(0,0,0,0.5) 18%,
+    rgba(0,0,0,0.8) 28%,
+    #000 38%,
     #000 100%
   );
 }
 
-/* ─── Stars (two layers, twinkling) ─── */
-.cyber-stars {
+/* ─── Carousel container (two copies side-by-side, scrolling left) ─── */
+.ros-graph-carousel {
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(1px 1px at 5% 8%,   rgba(255,255,255,0.85), transparent 60%),
-    radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,0.55), transparent 60%),
-    radial-gradient(2px 2px at 22% 6%,  rgba(255,255,255,0.95), transparent 60%),
-    radial-gradient(1px 1px at 30% 22%, rgba(255,255,255,0.5),  transparent 60%),
-    radial-gradient(1px 1px at 38% 12%, rgba(255,255,255,0.75), transparent 60%),
-    radial-gradient(1.5px 1.5px at 47% 5%, rgba(255,255,255,0.9), transparent 60%),
-    radial-gradient(1px 1px at 55% 25%, rgba(255,255,255,0.6),  transparent 60%),
-    radial-gradient(1px 1px at 63% 14%, rgba(255,255,255,0.8),  transparent 60%),
-    radial-gradient(2px 2px at 72% 8%,  rgba(255,255,255,0.95), transparent 60%),
-    radial-gradient(1px 1px at 80% 20%, rgba(255,255,255,0.55), transparent 60%),
-    radial-gradient(1px 1px at 88% 11%, rgba(255,255,255,0.7),  transparent 60%),
-    radial-gradient(1.5px 1.5px at 95% 24%, rgba(255,255,255,0.85), transparent 60%),
-    radial-gradient(1px 1px at 8% 32%,  rgba(255,255,255,0.6),  transparent 60%),
-    radial-gradient(1px 1px at 18% 38%, rgba(255,255,255,0.45), transparent 60%),
-    radial-gradient(1.5px 1.5px at 28% 35%, rgba(255,255,255,0.8), transparent 60%),
-    radial-gradient(1px 1px at 42% 30%, rgba(255,255,255,0.5),  transparent 60%),
-    radial-gradient(1px 1px at 58% 36%, rgba(255,255,255,0.65), transparent 60%),
-    radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,0.5),  transparent 60%),
-    radial-gradient(2px 2px at 84% 38%, rgba(255,255,255,0.9),  transparent 60%),
-    radial-gradient(1px 1px at 93% 32%, rgba(255,255,255,0.6),  transparent 60%);
-  background-repeat: no-repeat;
-  animation: cyberTwinkle 5s ease-in-out infinite;
-  z-index: 1;
-  /* Stars only in the upper half */
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 60%);
-          mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 60%);
-}
-
-.cyber-stars-2 {
-  background-position: 30px 10px;
-  animation-duration: 7s;
-  animation-delay: 1.5s;
-  opacity: 0.6;
-}
-
-@keyframes cyberTwinkle {
-  0%, 100% { opacity: 0.85; }
-  50%      { opacity: 0.45; }
-}
-
-/* ─── Distant planet / moon ─── */
-.cyber-planet {
-  position: absolute;
-  top: 8%;
-  right: 12%;
-  width: 180px;
-  height: 180px;
-  z-index: 2;
-  filter:
-    drop-shadow(0 0 30px rgba(255,255,255,0.18))
-    drop-shadow(0 0 80px rgba(255,255,255,0.08));
-  animation: cyberPlanetFloat 30s ease-in-out infinite;
-}
-
-.cyber-planet svg {
-  width: 100%;
-  height: 100%;
-}
-
-@keyframes cyberPlanetFloat {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-10px); }
-}
-
-/* ─── Atmospheric haze ─── */
-.cyber-haze {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 35%;
-  height: 25%;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(255,255,255,0.03) 50%,
-    transparent 100%
-  );
-  z-index: 2;
-}
-
-/* ─── Drifting fog clouds ─── */
-.cyber-cloud {
-  position: absolute;
-  height: 80px;
-  border-radius: 50%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255,255,255,0.06) 0%,
-    rgba(255,255,255,0.02) 40%,
-    transparent 70%
-  );
-  filter: blur(20px);
-  z-index: 3;
-  pointer-events: none;
-}
-
-.cyber-cloud-1 {
-  top: 18%;
-  left: -10%;
-  width: 400px;
-  animation: cloudDrift1 60s linear infinite;
-}
-.cyber-cloud-2 {
-  top: 28%;
-  left: -10%;
-  width: 500px;
-  height: 60px;
-  animation: cloudDrift1 90s linear infinite;
-  animation-delay: -30s;
-  opacity: 0.7;
-}
-.cyber-cloud-3 {
-  top: 12%;
-  left: -10%;
-  width: 350px;
-  animation: cloudDrift1 75s linear infinite;
-  animation-delay: -50s;
-}
-
-@keyframes cloudDrift1 {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(120vw); }
-}
-
-/* ─── City layers ─── */
-.cyber-city {
-  position: absolute;
-  left: 0;
+  display: flex;
   width: 200%;
-  display: block;
-}
-
-.cyber-city-far {
-  bottom: 52%;
-  height: 18%;
-  opacity: 0.55;
-  filter: blur(0.5px);
-  animation: cityDrift 160s linear infinite;
-  z-index: 4;
-}
-
-.cyber-city-mid {
-  bottom: 48%;
-  height: 22%;
-  opacity: 0.85;
-  animation: cityDrift 100s linear infinite;
   z-index: 5;
-  filter: drop-shadow(0 0 4px rgba(255,255,255,0.05));
+  animation: carouselDrift 60s linear infinite;
+  will-change: transform;
 }
 
-.cyber-city-near {
-  bottom: 38%;
-  height: 28%;
-  animation: cityDrift 60s linear infinite;
-  z-index: 7;
-  filter: drop-shadow(0 0 8px rgba(255,255,255,0.08));
+.ros-graph-copy {
+  width: 50%;
+  height: 100%;
+  flex-shrink: 0;
+  animation: graphBreathe 14s ease-in-out infinite;
+  will-change: transform;
 }
 
-@keyframes cityDrift {
+/* Stagger the two copies so they breathe slightly out of phase */
+.ros-graph-copy:nth-child(2) {
+  animation-delay: -7s;
+}
+
+@keyframes graphBreathe {
+  0%, 100% {
+    transform: scale(1, 1);
+  }
+  30% {
+    transform: scale(1.12, 1.04);
+  }
+  60% {
+    transform: scale(0.94, 1.06);
+  }
+  80% {
+    transform: scale(1.06, 0.97);
+  }
+}
+
+@keyframes carouselDrift {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
-/* ─── Horizon glow line ─── */
-.cyber-horizon {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 6%;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(255,255,255,0.4) 25%,
-    rgba(255,255,255,0.85) 50%,
-    rgba(255,255,255,0.4) 75%,
-    transparent 100%
-  );
-  box-shadow:
-    0 0 6px rgba(255,255,255,0.4),
-    0 0 16px rgba(255,255,255,0.2),
-    0 0 30px rgba(255,255,255,0.1);
-  z-index: 6;
+/* ── Edge lines (animated flowing dashes) ── */
+.ros-edge-flow {
+  stroke: rgba(255,255,255,0.1);
+  stroke-width: 1;
+  stroke-dasharray: 6 8;
+  fill: none;
+  animation: edgeFlow 3s linear infinite;
 }
 
-.cyber-horizon-glow {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 30%;
-  height: 80px;
-  background: radial-gradient(
-    ellipse at 50% 100%,
-    rgba(255,255,255,0.18) 0%,
-    rgba(255,255,255,0.05) 40%,
-    transparent 70%
-  );
-  z-index: 5;
-  pointer-events: none;
+.rf-1 { animation-duration: 2.5s; }
+.rf-2 { animation-duration: 3s; animation-delay: -0.5s; }
+.rf-3 { animation-duration: 3.5s; animation-delay: -1s; }
+.rf-4 { animation-duration: 2.8s; animation-delay: -0.3s; }
+.rf-5 { animation-duration: 4s;   animation-delay: -1.5s; }
+.rf-6 { animation-duration: 3s;   animation-delay: -0.8s; }
+.rf-7 { animation-duration: 3.2s; animation-delay: -2s; }
+.rf-8 { animation-duration: 2.5s; animation-delay: -1.2s; }
+.rf-9 { animation-duration: 3s;   animation-delay: -0.6s; }
+
+@keyframes edgeFlow {
+  to { stroke-dashoffset: -28; }
 }
 
-/* ─── Vertical light beams from buildings ─── */
-.cyber-beam {
-  position: absolute;
-  bottom: 38%;
-  width: 2px;
-  height: 50%;
-  background: linear-gradient(
-    to top,
-    rgba(255,255,255,0.5) 0%,
-    rgba(255,255,255,0.15) 30%,
-    rgba(255,255,255,0.05) 60%,
-    transparent 100%
-  );
-  filter: blur(0.5px);
-  z-index: 6;
-  animation: beamPulse 4s ease-in-out infinite;
+/* ── Data pulses (dots traveling along edges) ── */
+.ros-pulse {
+  fill: rgba(255,255,255,0.7);
+  will-change: cx, cy, opacity;
 }
 
-.cyber-beam::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: inherit;
-  filter: blur(6px);
-  opacity: 0.7;
+/* lidar → slam (3 staggered pulses) */
+.rp-a1 { animation: pA 2.8s linear infinite; }
+.rp-a2 { animation: pA 2.8s linear infinite; animation-delay: -0.9s; }
+.rp-a3 { animation: pA 2.8s linear infinite; animation-delay: -1.8s; }
+@keyframes pA {
+  0%   { cx: 180; cy: 200; opacity: 0; } 5% { opacity: 0.9; }
+  90%  { opacity: 0.5; } 100% { cx: 440; cy: 280; opacity: 0; }
 }
 
-.cyber-beam-1 { left: 18%; animation-delay: 0s;   }
-.cyber-beam-2 { left: 38%; animation-delay: 1.2s; height: 45%; }
-.cyber-beam-3 { left: 62%; animation-delay: 2.4s; height: 55%; }
-.cyber-beam-4 { left: 82%; animation-delay: 0.8s; height: 48%; }
-
-@keyframes beamPulse {
-  0%, 100% { opacity: 0.4; transform: scaleY(0.95); }
-  50%      { opacity: 0.9; transform: scaleY(1.05); }
+/* camera → slam */
+.rp-b1 { animation: pB 3.2s linear infinite; }
+.rp-b2 { animation: pB 3.2s linear infinite; animation-delay: -1.6s; }
+@keyframes pB {
+  0%   { cx: 150; cy: 420; opacity: 0; } 5% { opacity: 0.9; }
+  90%  { opacity: 0.5; } 100% { cx: 440; cy: 310; opacity: 0; }
 }
 
-/* ─── Blinking antenna lights ─── */
-.cyber-blink {
-  animation: cyberBlink 2.4s ease-in-out infinite;
-  filter: drop-shadow(0 0 4px rgba(255,255,255,0.9));
-}
-.cyber-blink.delay-1 { animation-delay: 0.4s; }
-.cyber-blink.delay-2 { animation-delay: 0.8s; }
-.cyber-blink.delay-3 { animation-delay: 1.2s; }
-.cyber-blink.delay-4 { animation-delay: 1.6s; }
-.cyber-blink.delay-5 { animation-delay: 2.0s; }
-
-@keyframes cyberBlink {
-  0%, 100% { opacity: 0.15; }
-  50%      { opacity: 1;    }
+/* imu → ekf */
+.rp-c1 { animation: pC 3.5s linear infinite; }
+.rp-c2 { animation: pC 3.5s linear infinite; animation-delay: -1.7s; }
+@keyframes pC {
+  0%   { cx: 200; cy: 580; opacity: 0; } 5% { opacity: 0.8; }
+  90%  { opacity: 0.4; } 100% { cx: 480; cy: 510; opacity: 0; }
 }
 
-/* ─── Tron perspective floor ─── */
-.cyber-floor {
-  position: absolute;
-  left: -50%;
-  right: -50%;
-  bottom: 0;
-  height: 38%;
-  transform-style: preserve-3d;
-  z-index: 8;
+/* slam → costmap */
+.rp-d1 { animation: pD 2.6s linear infinite; }
+.rp-d2 { animation: pD 2.6s linear infinite; animation-delay: -1.3s; }
+@keyframes pD {
+  0%   { cx: 520; cy: 290; opacity: 0; } 5% { opacity: 0.9; }
+  90%  { opacity: 0.5; } 100% { cx: 700; cy: 200; opacity: 0; }
 }
 
-.cyber-floor-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right,  rgba(220,220,220,0.22) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(220,220,220,0.22) 1px, transparent 1px);
-  background-size: 70px 70px;
-  transform: rotateX(70deg);
-  transform-origin: 50% 0%;
-  animation: cyberGridScroll 5s linear infinite;
-  -webkit-mask-image:
-    linear-gradient(to bottom, transparent 0%, #000 18%, #000 100%),
-    linear-gradient(to right,  transparent 0%, #000 15%, #000 85%, transparent 100%);
-  -webkit-mask-composite: source-in;
-          mask-image:
-    linear-gradient(to bottom, transparent 0%, #000 18%, #000 100%),
-    linear-gradient(to right,  transparent 0%, #000 15%, #000 85%, transparent 100%);
-          mask-composite: intersect;
+/* costmap → nav2 */
+.rp-e1 { animation: pE 3s linear infinite; }
+.rp-e2 { animation: pE 3s linear infinite; animation-delay: -1.5s; }
+@keyframes pE {
+  0%   { cx: 780; cy: 200; opacity: 0; } 5% { opacity: 0.9; }
+  90%  { opacity: 0.5; } 100% { cx: 950; cy: 300; opacity: 0; }
 }
 
-.cyber-floor::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at 50% 0%,
-    rgba(255,255,255,0.15) 0%,
-    transparent 50%
-  );
-  pointer-events: none;
+/* nav2 → controller */
+.rp-f1 { animation: pF 2.4s linear infinite; }
+.rp-f2 { animation: pF 2.4s linear infinite; animation-delay: -1.2s; }
+@keyframes pF {
+  0%   { cx: 1010; cy: 340; opacity: 0; } 5% { opacity: 0.9; }
+  90%  { opacity: 0.5; } 100% { cx: 1050; cy: 500; opacity: 0; }
 }
 
-@keyframes cyberGridScroll {
-  0%   { background-position: 0 0; }
-  100% { background-position: 0 70px; }
+/* controller → motor */
+.rp-g1 { animation: pG 2.8s linear infinite; }
+.rp-g2 { animation: pG 2.8s linear infinite; animation-delay: -1.4s; }
+@keyframes pG {
+  0%   { cx: 1050; cy: 540; opacity: 0; } 5% { opacity: 0.8; }
+  90%  { opacity: 0.4; } 100% { cx: 880; cy: 600; opacity: 0; }
 }
 
-/* ─── Floating particles ─── */
-.cyber-particles {
-  position: absolute;
-  inset: 0;
-  z-index: 9;
-  pointer-events: none;
+/* ekf → nav2 */
+.rp-h1 { animation: pH 3.5s linear infinite; }
+@keyframes pH {
+  0%   { cx: 560; cy: 510; opacity: 0; } 5% { opacity: 0.7; }
+  90%  { opacity: 0.4; } 100% { cx: 930; cy: 330; opacity: 0; }
 }
 
-.cyber-particle {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: rgba(255,255,255,0.7);
-  border-radius: 50%;
-  filter: blur(0.3px);
-  box-shadow: 0 0 4px rgba(255,255,255,0.5);
-  animation: particleFloat 12s linear infinite;
+/* ── Topic labels ── */
+.ros-topic-label {
+  fill: rgba(255,255,255,0.2);
+  font-family: 'Ubuntu Mono', 'Courier New', monospace;
+  font-size: 9px;
+  letter-spacing: 0.3px;
 }
 
-.cyber-particle.p-0  { left: 5%;  bottom: 10%; animation-delay: 0s;    animation-duration: 14s; }
-.cyber-particle.p-1  { left: 12%; bottom: 25%; animation-delay: -2s;   animation-duration: 11s; }
-.cyber-particle.p-2  { left: 18%; bottom: 5%;  animation-delay: -4s;   animation-duration: 16s; }
-.cyber-particle.p-3  { left: 24%; bottom: 30%; animation-delay: -1s;   animation-duration: 13s; }
-.cyber-particle.p-4  { left: 31%; bottom: 15%; animation-delay: -6s;   animation-duration: 12s; }
-.cyber-particle.p-5  { left: 37%; bottom: 22%; animation-delay: -3s;   animation-duration: 15s; }
-.cyber-particle.p-6  { left: 43%; bottom: 8%;  animation-delay: -8s;   animation-duration: 11s; }
-.cyber-particle.p-7  { left: 49%; bottom: 28%; animation-delay: -5s;   animation-duration: 17s; }
-.cyber-particle.p-8  { left: 55%; bottom: 12%; animation-delay: -2.5s; animation-duration: 13s; }
-.cyber-particle.p-9  { left: 61%; bottom: 20%; animation-delay: -7s;   animation-duration: 14s; }
-.cyber-particle.p-10 { left: 67%; bottom: 6%;  animation-delay: -1.5s; animation-duration: 16s; }
-.cyber-particle.p-11 { left: 73%; bottom: 26%; animation-delay: -4.5s; animation-duration: 12s; }
-.cyber-particle.p-12 { left: 79%; bottom: 14%; animation-delay: -9s;   animation-duration: 15s; }
-.cyber-particle.p-13 { left: 85%; bottom: 9%;  animation-delay: -6.5s; animation-duration: 13s; }
-.cyber-particle.p-14 { left: 91%; bottom: 24%; animation-delay: -3.5s; animation-duration: 14s; }
-.cyber-particle.p-15 { left: 96%; bottom: 18%; animation-delay: -8.5s; animation-duration: 11s; }
-.cyber-particle.p-16 { left: 8%;  bottom: 35%; animation-delay: -2s;   animation-duration: 16s; }
-.cyber-particle.p-17 { left: 88%; bottom: 32%; animation-delay: -5.5s; animation-duration: 13s; }
-
-@keyframes particleFloat {
-  0%   { transform: translateY(0)    translateX(0);  opacity: 0; }
-  10%  { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { transform: translateY(-200px) translateX(20px); opacity: 0; }
+/* ── Node circles ── */
+.ros-node {
+  fill: rgba(255,255,255,0.025);
+  stroke: rgba(255,255,255,0.15);
+  stroke-width: 1;
 }
 
-/* ─── Radar sweep ─── */
-.cyber-radar {
-  position: absolute;
-  bottom: 8%;
-  right: 6%;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.18);
-  background:
-    radial-gradient(circle, transparent 60%, rgba(255,255,255,0.02) 100%);
-  z-index: 11;
-  overflow: hidden;
+.ros-node-main {
+  stroke: rgba(255,255,255,0.25);
+  stroke-width: 1.2;
+  fill: rgba(255,255,255,0.035);
 }
 
-.cyber-radar::before,
-.cyber-radar::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.12);
-}
-.cyber-radar::before { inset: 15%; }
-.cyber-radar::after  { inset: 35%; }
+/* Node groups float independently */
+.ros-node-group { will-change: transform; }
+.rng-1 { animation: nodeFloat 12s ease-in-out infinite; }
+.rng-2 { animation: nodeFloat 14s ease-in-out infinite; animation-delay: -3s; }
+.rng-3 { animation: nodeFloat 16s ease-in-out infinite; animation-delay: -7s; }
+.rng-4 { animation: nodeFloat 10s ease-in-out infinite; animation-delay: -1s; }
+.rng-5 { animation: nodeFloat 13s ease-in-out infinite; animation-delay: -5s; }
+.rng-6 { animation: nodeFloat 15s ease-in-out infinite; animation-delay: -9s; }
+.rng-7 { animation: nodeFloat 11s ease-in-out infinite; animation-delay: -2s; }
+.rng-8 { animation: nodeFloat 14s ease-in-out infinite; animation-delay: -6s; }
+.rng-9 { animation: nodeFloat 13s ease-in-out infinite; animation-delay: -4s; }
 
-.cyber-radar-sweep {
-  position: absolute;
-  inset: 0;
-  background: conic-gradient(
-    from 0deg,
-    rgba(255,255,255,0.35) 0deg,
-    rgba(255,255,255,0.05) 30deg,
-    transparent 60deg,
-    transparent 360deg
-  );
-  border-radius: 50%;
-  animation: radarSpin 4s linear infinite;
+@keyframes nodeFloat {
+  0%, 100% { transform: translate(0, 0); }
+  20%      { transform: translate(8px, -10px); }
+  40%      { transform: translate(-6px, 5px); }
+  60%      { transform: translate(10px, 8px); }
+  80%      { transform: translate(-4px, -6px); }
 }
 
-@keyframes radarSpin {
+/* Pulsing ring around each node */
+.ros-node-ring {
+  fill: none;
+  stroke: rgba(255,255,255,0.1);
+  stroke-width: 1;
+}
+
+.rn-1 { animation: ringPulse 3s ease-in-out infinite; }
+.rn-2 { animation: ringPulse 3s ease-in-out infinite; animation-delay: -0.8s; }
+.rn-3 { animation: ringPulse 3s ease-in-out infinite; animation-delay: -1.6s; }
+.rn-4 { animation: ringPulse 2.5s ease-in-out infinite; animation-delay: -0.3s; }
+.rn-5 { animation: ringPulse 3s ease-in-out infinite; animation-delay: -2s; }
+.rn-6 { animation: ringPulse 3s ease-in-out infinite; animation-delay: -1.2s; }
+.rn-7 { animation: ringPulse 2.5s ease-in-out infinite; animation-delay: -1.8s; }
+.rn-8 { animation: ringPulse 3s ease-in-out infinite; animation-delay: -2.4s; }
+.rn-9 { animation: ringPulse 3s ease-in-out infinite; animation-delay: -0.5s; }
+
+@keyframes ringPulse {
+  0%, 100% { opacity: 0.15; stroke-width: 1; }
+  50%      { opacity: 0.6;  stroke-width: 2.5; }
+}
+
+/* Second outer ring on main nodes (slam, nav2) */
+.ros-node-ring-outer {
+  fill: none;
+  stroke: rgba(255,255,255,0.05);
+  stroke-width: 0.8;
+  stroke-dasharray: 4 6;
+  animation: outerSpin 12s linear infinite;
+  transform-origin: center;
+}
+
+.rno-4 { transform-origin: 480px 300px; }
+.rno-7 { transform-origin: 970px 320px; }
+
+@keyframes outerSpin {
   to { transform: rotate(360deg); }
 }
 
-/* ─── HUD overlays ─── */
-.cyber-hud {
-  position: absolute;
-  inset: 24px;
-  z-index: 12;
-  pointer-events: none;
+/* Node labels */
+.ros-node-name {
+  fill: rgba(255,255,255,0.5);
   font-family: 'Ubuntu Mono', 'Courier New', monospace;
+  font-size: 11px;
+  text-anchor: middle;
+  letter-spacing: 0.5px;
 }
 
-.cyber-hud-corner {
-  position: absolute;
-  width: 28px;
-  height: 28px;
-  border: 1px solid rgba(255,255,255,0.45);
+.ros-name-lg {
+  font-size: 14px;
+  fill: rgba(255,255,255,0.6);
 }
-.cyber-hud-corner.tl { top: 0;    left: 0;    border-right: none;  border-bottom: none; }
-.cyber-hud-corner.tr { top: 0;    right: 0;   border-left: none;   border-bottom: none; }
-.cyber-hud-corner.bl { bottom: 0; left: 0;    border-right: none;  border-top: none;    }
-.cyber-hud-corner.br { bottom: 0; right: 0;   border-left: none;   border-top: none;    }
 
-.cyber-hud-text {
-  position: absolute;
-  font-size: 0.62rem;
-  letter-spacing: 1.5px;
-  color: rgba(255,255,255,0.55);
-  text-transform: uppercase;
+.ros-node-sub {
+  fill: rgba(255,255,255,0.25);
   font-family: 'Ubuntu Mono', 'Courier New', monospace;
-}
-
-.cyber-hud-text.tl-text { top: 8px;    left: 38px;  }
-.cyber-hud-text.tr-text { top: 8px;    right: 38px; }
-.cyber-hud-text.bl-text { bottom: 8px; left: 38px;  }
-.cyber-hud-text.br-text { bottom: 8px; right: 38px; }
-
-/* ─── CRT scanlines ─── */
-.cyber-scanlines {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 2px,
-    rgba(255,255,255,0.025) 3px,
-    transparent 4px
-  );
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  z-index: 13;
+  font-size: 9px;
+  text-anchor: middle;
 }
 
 /* ─── Vignette ─── */
-.cyber-vignette {
+.ros-vignette {
   position: absolute;
   inset: 0;
   background: radial-gradient(
     ellipse at center,
-    transparent 40%,
-    rgba(0,0,0,0.5) 100%
+    transparent 30%,
+    rgba(5,5,5,0.4) 70%,
+    rgba(3,3,3,0.7) 100%
   );
   pointer-events: none;
-  z-index: 14;
+  z-index: 8;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 768px) {
+  .ros-topic-label,
+  .ros-node-sub { display: none; }
+
+  .ros-node-name { font-size: 8px; }
+  .ros-name-lg { font-size: 10px; }
+
+  .ros-node-ring-outer { display: none; }
+
+  .ros-graph-carousel {
+    animation-duration: 40s;
+  }
 }
 
 
@@ -555,9 +356,11 @@
   z-index: 1;
   color: #e0e0e0;
   width: 100%;
-  max-width: 1100px;
+  max-width: 900px;
   margin: 0 auto;
-  padding-left: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media (max-width: 768px) {
@@ -569,7 +372,8 @@
 .contact-title {
   position: relative;
   font-size: 2.8rem;
-  margin-bottom: 3rem;
+  margin-bottom: 6rem;
+  margin-top: 7rem;
   letter-spacing: 1px;
   text-shadow: 0 0 10px rgba(255,255,255,0.06);
 }
@@ -587,15 +391,13 @@
 
 
 .contact-wrapper {
-  padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: stretch;
   flex-wrap: wrap;
   gap: 2rem;
-  max-width: 850px;
-  margin: 0 auto 0 auto;
-  padding-right: 100px;
+  width: 100%;
+  max-width: 900px;
 }
 
 /* === Glass Card Style === */
@@ -607,7 +409,32 @@
   backdrop-filter: blur(10px);
   flex: 1 1 340px;
   max-width: 420px;
-  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform 0.3s ease;
+}
+
+.contact-section.animate .contact-card {
+  animation: cardReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.contact-section.animate .contact-card:nth-child(1) {
+  animation-delay: 1s;
+}
+
+.contact-section.animate .contact-card:nth-child(2) {
+  animation-delay: 1.3s;
+}
+
+@keyframes cardReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .contact-card:hover {

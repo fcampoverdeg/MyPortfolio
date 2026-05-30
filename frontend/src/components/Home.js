@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import TypewriterEffect from "./TypewriterEffect";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -54,6 +54,20 @@ const Home = ({ loaded }) => {
     return () => { if (target) observer.unobserve(target); };
   }, [isHome]);
 
+  // Generate star positions once so they don't change on re-render
+  const stars = useMemo(() =>
+    [...Array(80)].map(() => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      width: `${Math.random() * 2 + 1}px`,
+      height: `${Math.random() * 2 + 1}px`,
+      animationDelay: `${Math.random() * 5}s`,
+      animationDuration: `${Math.random() * 3 + 2}s`,
+      "--drift-x": `${(Math.random() - 0.5) * 30}px`,
+      "--drift-y": `${(Math.random() - 0.5) * 30}px`,
+    })),
+  []);
+
   // Split title into characters for staggered animation
   const titleChars = "Felipe S. Campoverde".split("").map((char, i) => (
     <span
@@ -104,21 +118,8 @@ const Home = ({ loaded }) => {
 
       {/* Starfield background */}
       <div className="starfield">
-        {[...Array(80)].map((_, i) => (
-          <div
-            key={i}
-            className="star"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              width: `${Math.random() * 2 + 1}px`,
-              height: `${Math.random() * 2 + 1}px`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${Math.random() * 3 + 2}s`,
-              "--drift-x": `${(Math.random() - 0.5) * 30}px`,
-              "--drift-y": `${(Math.random() - 0.5) * 30}px`,
-            }}
-          />
+        {stars.map((s, i) => (
+          <div key={i} className="star" style={s} />
         ))}
       </div>
 
