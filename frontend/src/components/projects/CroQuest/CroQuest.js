@@ -1,4 +1,8 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faYoutube, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import CroQuestGallery from "./CroQuestGallery";
 import CroQuestModelViewer from "./CroQuestModel";
 import CroQuestCode from "./CroQuestCode";
@@ -9,7 +13,7 @@ import "./CroQuest.css";
 
 const stats = [
   { value: "5,000+", label: "Lines of Code" },
-  { value: "8+", label: "Original Games" },
+  { value: "8", label: "Classic Games" },
   { value: "BLE", label: "Multiplayer" },
   { value: "ESP32", label: "Powered" },
 ];
@@ -17,6 +21,7 @@ const stats = [
 const techStack = [
   "C/C++", "ESP32-WROOM", "PlatformIO", "TFT_eSPI",
   "NimBLE-Arduino", "SD Library", "Bluetooth (BLE)", "8-bit Parallel TFT",
+  "JPEG Decoder", "Audio DAC", "Custom Game Engine", "State Sync Protocol",
 ];
 
 const CroQuestPage = () => {
@@ -58,15 +63,18 @@ const CroQuestPage = () => {
         {/* ========== HERO ========== */}
         <div className="cq-hero">
           <div className="cq-hero-content">
+            <Link to="/portfolio" className="cq-back-btn">
+              <FontAwesomeIcon icon={faArrowLeft} /> Back to Portfolio
+            </Link>
             <p className="cq-hero-label">VT CRO &middot; Featured in VT NEWS</p>
-            <h1 className="cq-hero-title">CroQuest</h1>
+            <h1 className="cq-hero-title"><span className="cq-brand">CroQuest</span></h1>
             <p className="cq-hero-subtitle">
               A custom-built ESP32 handheld gaming console with Bluetooth
-              multiplayer, retro graphics, and 8+ original games
+              multiplayer, retro graphics, and 8 classic games
             </p>
             <div className="cq-hero-buttons">
-              <a href="https://github.com/VT-CRO/CroQuest" target="_blank" rel="noopener noreferrer" className="cq-btn cq-btn-primary">View on GitHub</a>
-              <a href="https://www.youtube.com/watch?v=Fxc-An2Zm-w" target="_blank" rel="noopener noreferrer" className="cq-btn cq-btn-ghost">Watch Demo</a>
+              <a href="https://github.com/VT-CRO/CroQuest" target="_blank" rel="noopener noreferrer" className="cq-btn cq-btn-primary"><FontAwesomeIcon icon={faGithub} /> View on GitHub</a>
+              <a href="https://www.youtube.com/watch?v=Fxc-An2Zm-w" target="_blank" rel="noopener noreferrer" className="cq-btn cq-btn-youtube"><FontAwesomeIcon icon={faYoutube} /> Watch Demo</a>
             </div>
           </div>
           <div className="cq-hero-image">
@@ -88,17 +96,18 @@ const CroQuestPage = () => {
         <div className="cq-section cq-reveal">
           <div className="cq-section-inner cq-split">
             <div className="cq-split-text">
-              <h2 className="cq-section-title">What is CroQuest?</h2>
+              <h2 className="cq-section-title">What is <span className="cq-brand">CroQuest</span>?</h2>
               <p>
-                CroQuest is a custom-built handheld console powered by an ESP32,
+                <span className="cq-brand">CroQuest</span> is a custom-built handheld console powered by an ESP32,
                 featuring an 8-bit parallel TFT screen, SD card storage, audio
-                output, and Bluetooth multiplayer. The entire system — hardware,
-                firmware, and enclosure — was developed from scratch.
+                output, and Bluetooth multiplayer. The entire system, hardware,
+                firmware, and enclosure, was developed from scratch.
               </p>
               <p>
                 It includes a modular game engine, custom UI, badge unlock system,
-                and a library of games like Snake, Tic Tac Toe, Simon, Pong, and
-                Tetris — all with built-in BLE multiplayer support.
+                and 8 preloaded games: Pong, Snake, Tic Tac Toe, Simon,
+                Connect 4, Memory, Tetris, and Breakout, all with built-in BLE
+                multiplayer support.
               </p>
             </div>
             <div className="cq-split-media">
@@ -126,11 +135,11 @@ const CroQuestPage = () => {
               </div>
               <div className="cq-role-card">
                 <h3>Team Collaboration</h3>
-                <p>Project concept and visual design led by <strong>Marco Gonzalez Hauger</strong>. Shell design by <strong>Steve Kitomary</strong>. PCB by <strong>Andrew Viola</strong> and <strong>Jonas von Stein</strong>.</p>
+                <p>Project concept and visual design led by <strong>Marco Gonzalez Hauger</strong>. Shell design by <strong>Steve Kitomary</strong>. PCB by <strong>Andrew Viola</strong> and <strong>Jonas von Stein</strong>. Code contributions by <strong>Lucas Shadoyan</strong> and <strong>Connor McCue</strong>. Design by <strong>Morgan Weidling</strong> and <strong>Ayra Nirar</strong>. Logistics by <strong>Heesang Han</strong>.</p>
               </div>
               <div className="cq-role-card">
                 <h3>Impact</h3>
-                <p>Featured in VT NEWS. Led to co-founding CroQuest LLC, an ed-tech startup teaching 100+ students embedded programming through hands-on workshops.</p>
+                <p>Featured in VT NEWS. Led to co-founding <span className="cq-brand">CroQuest</span> LLC, an ed-tech startup teaching 100+ students embedded programming through hands-on workshops.</p>
               </div>
             </div>
           </div>
@@ -153,8 +162,8 @@ const CroQuestPage = () => {
           <div className="cq-section-inner">
             <h2 className="cq-section-title">Development Gallery</h2>
             <p className="cq-section-desc">
-              From early breadboard prototypes to the final polished console — explore
-              the journey of building CroQuest step by step.
+              From early breadboard prototypes to the final polished console, explore
+              the journey of building <span className="cq-brand">CroQuest</span> step by step.
             </p>
             <CroQuestGallery />
           </div>
@@ -165,7 +174,7 @@ const CroQuestPage = () => {
           <div className="cq-section-inner">
             <h2 className="cq-section-title">3D Model</h2>
             <p className="cq-section-desc">
-              Explore the physical shell of the CroQuest console. Rotate, zoom,
+              Explore the physical shell of the <span className="cq-brand">CroQuest</span> console. Rotate, zoom,
               and disassemble to inspect every detail.
             </p>
             <CroQuestModelViewer />

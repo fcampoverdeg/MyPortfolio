@@ -7,7 +7,7 @@ const CroQuestCode = () => {
       <h2 className="section-title">Explore the Code</h2>
 
       <p className="code-intro">
-        The <strong>CroQuest</strong> codebase brings together low-level
+        The <strong className="cq-brand">CroQuest</strong> codebase brings together low-level
         embedded programming with a rich gameplay experience designed for a
         custom-built handheld console. More than just a collection of games,
         it’s a full-stack embedded system built from scratch to teach,

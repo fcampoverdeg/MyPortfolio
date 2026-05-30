@@ -1,265 +1,277 @@
+/* ═══════════════════════════════════════════════════ */
+/* CroQuest Gallery — Cinematic Showcase               */
+/* ═══════════════════════════════════════════════════ */
 
-
-/* === Container for hover-based carousel === */
-.carousel-container {
-  max-width: 1400px; /* slightly wider */
+.cqg {
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 2rem 2rem; /* more vertical breathing room */
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  position: relative;
 }
 
-/* === Vertical tabs for hover === */
-.step-list {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  z-index: 10;
-}
-
-.step-tab {
-  width: 12px;
-  height: 50px;
-  border-radius: 10px;
-  margin-left: 3rem;
-  background-color: #555;
-  position: relative;
-  transition: background-color 0.3s, transform 0.3s;
-  cursor: pointer;
-}
-
-.step-tab:hover,
-.step-tab.active {
-  background-color: #e0e0e0;
-  transform: scale(1.1);
-  box-shadow: 0 0 10px rgba(255,255,255,0.10);
-}
-
-/* === Main gallery section === */
-.gallery-row {
-  height: 350px;
-  margin-left: 80px; /* room for the hover tabs */
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 4rem;
-  background: linear-gradient(135deg, #1e1e1e, #262626);
-  padding: 5rem 3rem; /* bigger padding inside the box */
-  border-radius: 24px;
-  box-shadow: 0 0 30px rgba(255,255,255,0.04);
-  align-items: start;
-  position: relative; 
-   animation: fadeIn 0.6s ease-in-out;
-}
-
-/* === Text area === */
-.gallery-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  animation: fadeInText 1s ease forwards;
-}
-
-.step-title {
-  font-size: 1.8rem;
-  color: #e0e0e0;
-  margin-bottom: 1rem;
-}
-
-.step-description {
-  font-size: 1.2rem;
-  font-family: 'Ubuntu', sans-serif;
-  color: #ccc;
-  max-width: 600px;
-  line-height: 1.6;
-}
-
-.step-description strong {
-  color: #e0e0e0;
-}
-
-/* === Grid of thumbnails === */
-.gallery-media-grid {
-  direction: rtl;
-  display: grid;
-  margin-top: -4rem;
-  grid-template-columns: repeat(3, 180px);
-  gap: 25px;
-  align-content: start;
-  max-height: 650px;
-  overflow: visible;
-  position: relative;
-  isolation: isolate;
-}
-
-/* Isolate hover scaling */
-.media-thumb-wrapper {
+/* ── Hero showcase ── */
+.cqg-hero {
   position: relative;
   width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-/* Inner image/video container */
-.media-thumb {
-  direction: ltr;
-  position: relative;
+  aspect-ratio: 16/9;
+  border-radius: 18px;
   overflow: hidden;
-  border-radius: 8px;
-  transition: transform 0.3s ease, z-index 0.3s ease;
-  cursor: pointer;
-  transform-origin: center;
-  z-index: 1;
+  background: #0a0a0a;
+  animation: cqgSlideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Fancy hover effect without affecting layout */
-.media-thumb:hover {
-  transform: scale(1.8);
-  z-index: 10;
-  box-shadow: 0 0 20px rgba(255,255,255,0.12);
+@keyframes cqgSlideIn {
+  from { opacity: 0; transform: scale(0.98) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-/* Placeholder appearance */
-.media-thumb-wrapper.placeholder {
-  background: transparent;
+@keyframes cqgTextIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Big step number watermark */
+.cqg-watermark {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 6rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.04);
+  line-height: 1;
+  z-index: 2;
   pointer-events: none;
+  letter-spacing: -4px;
 }
 
+/* Featured image/video fills the hero */
+.cqg-featured {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  animation: cqgMediaFade 0.5s ease;
+}
 
-/* Reset image/video style */
-.media-thumb img,
-.media-thumb video {
+@keyframes cqgMediaFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.cqg-featured img,
+.cqg-featured video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #0a0a0a;
+}
+
+/* Gradient overlay for text readability (animates on step change only) */
+.cqg-overlay {
+  animation: cqgTextIn 0.6s ease;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 3rem 2.5rem 2rem;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.95) 0%,
+    rgba(0,0,0,0.75) 40%,
+    rgba(0,0,0,0.3) 70%,
+    transparent 100%
+  );
+  z-index: 3;
+}
+
+.cqg-title {
+  font-family: 'Playfair Display', cursive;
+  font-size: 1.6rem;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.3px;
+}
+
+.cqg-desc {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.65;
+  max-width: 600px;
+}
+
+.cqg-desc strong {
+  color: #ffffff;
+}
+
+/* ── Filmstrip thumbnails ── */
+.cqg-filmstrip {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  overflow-x: auto;
+  padding: 0.3rem 0;
+}
+
+.cqg-thumb {
+  position: relative;
+  flex-shrink: 0;
+  width: 110px;
+  height: 75px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+}
+
+.cqg-thumb:hover {
+  opacity: 0.8;
+  border-color: rgba(255,255,255,0.15);
+}
+
+.cqg-thumb.active {
+  opacity: 1;
+  border-color: rgba(255,255,255,0.4);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+.cqg-thumb img,
+.cqg-thumb video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
+  display: block;
   pointer-events: none;
 }
 
-@keyframes fadeInTitle {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ── Step navigation ── */
+.cqg-steps {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.cqg-step-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 8px;
+  background: transparent;
+  color: #555;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
-@keyframes fadeInText {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.cqg-step-btn:hover {
+  border-color: rgba(255,255,255,0.12);
+  color: #999;
 }
 
-@keyframes fadeInGrid {
-  from {
-    opacity: 0;
-    transform: scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.cqg-step-btn.active {
+  border-color: rgba(255,255,255,0.18);
+  color: #e0e0e0;
+  background: rgba(255,255,255,0.04);
 }
 
+.cqg-step-num {
+  font-family: 'Ubuntu Mono', monospace;
+  font-weight: 700;
+  font-size: 0.7rem;
+  opacity: 0.5;
+}
 
-/* #################################################################################################### */
-/* Phone Setup */
-/* #################################################################################################### */
+.cqg-step-btn.active .cqg-step-num {
+  opacity: 0.8;
+}
 
+.cqg-step-label {
+  font-weight: 500;
+}
+
+/* Auto-advance progress bar inside active step */
+.cqg-step-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: rgba(255,255,255,0.3);
+  animation: cqgProgress 12s linear;
+  width: 100%;
+  transform-origin: left;
+}
+
+@keyframes cqgProgress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Filmstrip active thumb progress */
+.cqg-thumb.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: rgba(255,255,255,0.5);
+  animation: cqgThumbProgress 4s linear;
+  width: 100%;
+  transform-origin: left;
+}
+
+@keyframes cqgThumbProgress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ═══════════════════════════════════════════════════ */
+/* Mobile                                              */
+/* ═══════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  .carousel-container {
-    padding: 1.5rem 1rem;
-    gap: 2rem;
+  .cqg-hero {
+    aspect-ratio: 4/3;
+    border-radius: 14px;
   }
 
-  .step-list {
-    flex-direction: row;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 1rem;
-    position: static;
-    transform: none;
+  .cqg-watermark {
+    font-size: 3.5rem;
+    top: 0.8rem;
+    right: 1rem;
   }
 
-  .step-tab {
-    width: 10px;
-    height: 35px;
-    margin-left: 0;
+  .cqg-overlay {
+    padding: 2rem 1.5rem 1.5rem;
   }
 
-  .gallery-row {
-    grid-template-columns: 1fr;
-    margin-left: 0;
-    padding: 2rem 1.2rem;
-    gap: 2rem;
-    border-radius: 16px;
-    height: auto;
+  .cqg-title {
+    font-size: 1.2rem;
   }
 
-  .gallery-text {
-    text-align: center;
+  .cqg-desc {
+    font-size: 0.82rem;
   }
 
-  .step-title {
-    font-size: 1.5rem;
+  .cqg-filmstrip {
+    gap: 0.4rem;
   }
 
-  .step-description {
-    font-size: 1rem;
-    padding: 0 0.5rem;
-    max-width: 100%;
+  .cqg-thumb {
+    width: 80px;
+    height: 55px;
   }
 
-  .gallery-media-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-top: 0;
-    padding: 0 0.5rem;
-    justify-content: center;
+  .cqg-step-label {
+    display: none;
   }
 
-  .media-thumb-wrapper {
-    width: 100%;
-    height: auto;
-  }
-
-  .media-thumb {
-    transform: none !important; /* Disable hover scaling on touch */
-    box-shadow: none !important;
-  }
-
-  .media-thumb:hover {
-    transform: none;
-    box-shadow: none;
-  }
-
-  .media-thumb img,
-  .media-thumb video {
-    height: auto;
-    aspect-ratio: 1 / 1;
+  .cqg-step-btn {
+    padding: 0.4rem 0.7rem;
   }
 }

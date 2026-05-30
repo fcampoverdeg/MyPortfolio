@@ -1,187 +1,176 @@
-/* #################################################################################################### */
-/* Code + Lessons Section */
-/* #################################################################################################### */
+/* ═══════════════════════════════════════════════════ */
+/* Explore the Code — Clean Layout                     */
+/* ═══════════════════════════════════════════════════ */
 
 .code-section {
-  width: 77vw;
-  padding: 2rem;
-  background-color: #161616;
-  border-radius: 16px;
-  box-shadow: 0 0 25px rgba(255,255,255,0.04);
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 18px;
   color: #d4d4d4;
   font-family: 'Ubuntu', sans-serif;
-  margin: 2rem 15rem 5rem;
 }
 
-.section-title {
-  font-size: 2.5rem;
+.code-section .section-title {
+  font-family: 'Playfair Display', cursive;
+  font-size: 2rem;
   color: #e0e0e0;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   position: relative;
   display: inline-block;
 }
 
-.section-title::after {
+.code-section .section-title::after {
   content: "";
   position: absolute;
-  left: 0%;
-  bottom: -8px;
-  height: 3px;
-  width: 10%;
-  background: #e0e0e0;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 40px;
+  background: rgba(255,255,255,0.3);
 }
 
+/* ── Text blocks ── */
 .code-intro,
 .code-usecase,
 .code-tech-stack {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
   margin-bottom: 1rem;
+  color: #999;
 }
 
+.code-intro strong,
+.code-usecase strong,
+.code-tech-stack strong {
+  color: #ccc;
+}
+
+/* ── Feature list ── */
 .code-features {
   list-style: none;
-  padding-left: 0;
-  margin-bottom: 1rem;
+  padding: 0;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
 .code-features li {
-  margin: 0.5rem 0;
-  padding-left: 1.5rem;
+  padding: 0.6rem 1rem 0.6rem 2rem;
   position: relative;
+  font-size: 0.9rem;
+  color: #aaa;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 8px;
+  line-height: 1.6;
 }
 
 .code-features li::before {
-  content: "✔";
+  content: "›";
   position: absolute;
-  left: 0;
-  color: #e0e0e0;
+  left: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  font-size: 1.1rem;
+  font-weight: 700;
 }
+
+.code-features li strong {
+  color: #ccc;
+}
+
+/* ── Credit ── */
 .code-credit {
-  font-size: 1.3rem;
-  font-family: 'Ubuntu', sans-serif;
+  font-size: 0.9rem;
+  color: #777;
   line-height: 1.6;
-  max-width: 73vw;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 .code-credit strong {
-  color: #e0e0e0;
+  color: #bbb;
 }
 
-/* GitHub Button */
+/* ── GitHub button ── */
 .github-link-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   margin: 1.5rem 0;
-  background: transparent;
+  padding: 0.6rem 1.3rem;
+  background: rgba(255,255,255,0.04);
   color: #e0e0e0;
-  border: 1px solid rgba(255, 255, 255, 0.20);
-  padding: 0.7rem 1.5rem;
+  border: 1px solid rgba(255,255,255,0.12);
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 0.9rem;
   text-decoration: none;
-  align-content: center;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .github-link-button:hover {
-  transform: scale(1.05);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.25);
 }
 
-/* Tree Structure from GitHub */
+/* ── Repo tree ── */
 .repo-tree-preview {
-  background-color: #1e1e1e;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.05);
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 0 12px rgba(255,255,255,0.06);
-  color: #d4d4d4;
   overflow-x: auto;
 }
 
 .tree-heading {
-  color: #e0e0e0;
+  font-family: 'Ubuntu', sans-serif;
+  color: #ccc;
+  font-size: 1rem;
   margin-bottom: 1rem;
-  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .tree-code {
-  font-family: 'Courier New', monospace;
-  font-size: 1rem;
-  line-height: 1.5;
-  white-space: pre-wrap;
+  font-family: 'Ubuntu Mono', 'Courier New', monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #888;
+  white-space: pre;
+  margin: 0;
 }
 
-/* #################################################################################################### */
-/* Phone Setup */
-/* #################################################################################################### */
-
+/* ═══════════════════════════════════════════════════ */
+/* Mobile                                              */
+/* ═══════════════════════════════════════════════════ */
 @media (max-width: 768px) {
   .code-section {
-    width: 85%;
-    margin: 2rem 1rem;
-    padding: 1rem;
-    border-radius: 12px;
+    padding: 1.5rem;
+    border-radius: 14px;
   }
 
-  .section-title {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  .section-title::after {
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30%;
-  }
-
-  .code-intro,
-  .code-usecase,
-  .code-tech-stack,
-  .code-credit {
-    font-size: 1rem;
-    text-align: left;
-    padding: 0 0.5rem;
-  }
-
-  .code-credit {
-    max-width: 100%;
-  }
-
-  .code-features {
-    padding-left: 1rem;
-    margin-bottom: 1.5rem;
+  .code-section .section-title {
+    font-size: 1.5rem;
   }
 
   .code-features li {
-    padding-left: 1.2rem;
-    font-size: 1rem;
+    font-size: 0.85rem;
+    padding: 0.5rem 0.8rem 0.5rem 1.8rem;
   }
 
   .github-link-button {
-    font-size: 1rem;
-    padding: 0.6rem 1.2rem;
-    margin: 1rem auto;
-    display: block;
-    text-align: center;
-  }
-
-  .repo-tree-preview {
-    padding: 1rem;
-    margin-top: 1.5rem;
-    font-size: 0.95rem;
-  }
-
-  .tree-heading {
-    font-size: 1.1rem;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-size: 0.85rem;
   }
 
   .tree-code {
-    font-size: 0.9rem;
-    word-break: break-word;
+    font-size: 0.75rem;
   }
 }
-
-

@@ -8,29 +8,36 @@ import { useSprings, animated } from "@react-spring/three";
 import "./CroQuestModel.css";
 
 // Animated STL mesh component
-const Model = ({ url, color, springPos }) => {
+const Model = ({ url, color, springPos, highlighted, dimmed }) => {
   const geometry = useLoader(STLLoader, url);
   return (
     <animated.mesh geometry={geometry} scale={0.01} position={springPos}>
-      <meshStandardMaterial color={color} metalness={0.3} roughness={0.2} />
+      <meshStandardMaterial
+        color={highlighted ? "#aaaaff" : color}
+        metalness={highlighted ? 0.5 : 0.3}
+        roughness={highlighted ? 0.15 : 0.2}
+        opacity={dimmed ? 0.2 : 1}
+        transparent={dimmed}
+      />
     </animated.mesh>
   );
 };
 
 const CroQuestModelViewer = () => {
   const [disassembled, setDisassembled] = useState(false);
+  const [selectedPart, setSelectedPart] = useState(null);
 
   const parts = useMemo(
     () => [
       {
-        name: "Top",
+        name: "Front",
         url: "/images/CroQuest/3Dmodel/CROQUEST-TOP 1.stl",
         color: "#ffffff",
         assembled: [0, 0, 0],
         disassembled: [0, 0.5, 0],
       },
       {
-        name: "Bottom",
+        name: "Back",
         url: "/images/CroQuest/3Dmodel/CROQUEST-BOTTOM1.stl",
         color: "#000000",
         assembled: [0, 0, 0],
@@ -77,30 +84,50 @@ const CroQuestModelViewer = () => {
 
   return (
     <div className="model-viewer-container">
-      <button
-        className="disassemble-button"
-        onClick={() => setDisassembled(!disassembled)}
-      >
-        {disassembled ? "Reassemble" : "Disassemble"}
-      </button>
+      <div className="model-canvas-wrap">
+        <Canvas camera={{ position: [3, 3, 3], fov: 60 }}>
+          <ambientLight intensity={0.5} />
+          <pointLight position={[10, 10, 10]} />
+          <Suspense fallback={null}>
+            <Stage environment="city" intensity={0.6}>
+              {springs.map((spring, i) => (
+                <Model
+                  key={i}
+                  url={parts[i].url}
+                  color={parts[i].color}
+                  springPos={spring.position}
+                  highlighted={selectedPart === i}
+                  dimmed={selectedPart !== null && selectedPart !== i}
+                />
+              ))}
+            </Stage>
+          </Suspense>
+          <OrbitControls />
+        </Canvas>
+      </div>
 
-      <Canvas camera={{ position: [3, 3, 3], fov: 60 }}>
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} />
-        <Suspense fallback={null}>
-          <Stage environment="city" intensity={0.6}>
-            {springs.map((spring, i) => (
-              <Model
-                key={i}
-                url={parts[i].url}
-                color={parts[i].color}
-                springPos={spring.position}
-              />
-            ))}
-          </Stage>
-        </Suspense>
-        <OrbitControls />
-      </Canvas>
+      <div className="model-controls">
+        <div className="model-controls-left">
+          <button
+            className={`disassemble-button ${disassembled ? "active" : ""}`}
+            onClick={() => setDisassembled(!disassembled)}
+          >
+            {disassembled ? "Reassemble" : "Disassemble"}
+          </button>
+          <span className="model-hint">Drag to rotate, scroll to zoom</span>
+        </div>
+        <div className="model-parts-legend">
+          {parts.map((p, i) => (
+            <button
+              key={i}
+              className={`model-part-btn ${selectedPart === i ? "active" : ""}`}
+              onClick={() => setSelectedPart(selectedPart === i ? null : i)}
+            >
+              {p.name}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

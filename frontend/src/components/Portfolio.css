@@ -10,7 +10,7 @@
   overflow: hidden;
 }
 
-/* === Animated Gradient Orbs Background === */
+/* === Drifting Grid Background === */
 .portfolio-bg {
   position: fixed;
   top: 0;
@@ -20,80 +20,24 @@
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridDrift 30s linear infinite;
 }
 
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.07;
-  will-change: transform;
+@keyframes gridDrift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 50px 50px; }
 }
 
-.orb-1 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, #ffffff, transparent 70%);
-  top: -10%;
-  right: -5%;
-  animation: floatOrb1 20s ease-in-out infinite;
-}
-
-.orb-2 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, #cccccc, transparent 70%);
-  bottom: -15%;
-  left: -10%;
-  animation: floatOrb2 25s ease-in-out infinite;
-}
-
-.orb-3 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, #e0e0e0, transparent 70%);
-  top: 40%;
-  left: 50%;
-  animation: floatOrb3 18s ease-in-out infinite;
-}
-
-@keyframes floatOrb1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(-80px, 60px) scale(1.1); }
-  66% { transform: translate(40px, -40px) scale(0.95); }
-}
-
-@keyframes floatOrb2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(60px, -50px) scale(1.05); }
-  66% { transform: translate(-30px, 70px) scale(0.9); }
-}
-
-@keyframes floatOrb3 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-60px, -40px) scale(1.15); }
-}
-
-/* === Noise/Grain Overlay === */
-.portfolio-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.035;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-}
-
-/* === Subtle Grid Pattern === */
+/* Subtle center glow */
 .portfolio-bg::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 60px 60px;
+  background: radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.03), transparent 60%);
   pointer-events: none;
 }
 
@@ -107,7 +51,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 3rem 6rem;
+  padding: 4rem 3rem 6rem calc(3rem + 190px);
   transition: opacity 1s ease, transform 1s ease;
   opacity: 0;
   transform: translateY(30px);
@@ -149,6 +93,39 @@
   margin-top: 1rem;
 }
 
+/* === Category Filter Chips === */
+.portfolio-filters {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 0.85rem;
+  padding: 0.4rem 1.1rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.03);
+  color: #777;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+}
+
+.filter-chip:hover {
+  border-color: rgba(255,255,255,0.2);
+  color: #bbb;
+}
+
+.filter-chip.active {
+  border-color: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.08);
+  color: #e0e0e0;
+}
+
 /* === Grid === */
 .portfolio-grid {
   display: flex;
@@ -176,17 +153,23 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  transition: all 0.8s ease-out;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.project-card-wrapper.reveal {
+/* Staggered alternating entrance */
+.project-card-wrapper.reveal.from-left {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateX(-60px) translateY(20px);
+}
+
+.project-card-wrapper.reveal.from-right {
+  opacity: 0;
+  transform: translateX(60px) translateY(20px);
 }
 
 .project-card-wrapper.reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0) translateY(0);
 }
 
 
@@ -226,15 +209,6 @@
   .portfolio-grid {
     gap: 2rem;
   }
-
-  .orb {
-    filter: blur(80px);
-    opacity: 0.05;
-  }
-
-  .orb-1 { width: 300px; height: 300px; }
-  .orb-2 { width: 250px; height: 250px; }
-  .orb-3 { width: 200px; height: 200px; }
 
   .flip-card-wrapper {
     width: 100%;

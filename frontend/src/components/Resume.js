@@ -62,7 +62,7 @@ const experience = [
     role: "Lead Robotics Engineer",
     company: "Daily's",
     companyUrl: "https://dailys.inc",
-    period: "2025 — Present",
+    period: "2025 - Present",
     summary:
       "Building the full robotics software stack for an autonomous, AI-driven food-prep machine. Lead the end-to-end pipeline from low-level motor control to learned manipulation policies.",
     bullets: [
@@ -76,7 +76,7 @@ const experience = [
   {
     role: "Co-Founder & CTO",
     company: "CroQuest LLC",
-    period: "June 2025 — December 2025",
+    period: "June 2025 - December 2025",
     summary:
       "Co-founded an ed-tech company delivering hands-on STEM programs to K-12 students through electronics and embedded programming.",
     bullets: [
@@ -88,7 +88,7 @@ const experience = [
   {
     role: "Chief Software Engineer",
     company: "CroQuest · VT CRO",
-    period: "March 2025 — June 2025",
+    period: "March 2025 - June 2025",
     summary:
       "Designed and built an ESP32-based handheld game console from the ground up, used as a teaching platform for embedded systems.",
     bullets: [
@@ -101,7 +101,7 @@ const experience = [
   {
     role: "Cybersecurity Instructor",
     company: "Virginia Tech",
-    period: "May 2024 — August 2024",
+    period: "May 2024 - August 2024",
     summary:
       "Taught encryption, network security, and ethical hacking to high school students through a summer outreach program.",
     tags: ["Security", "Teaching"],
@@ -109,7 +109,7 @@ const experience = [
   {
     role: "Student Assistant Manager",
     company: "VT Dining",
-    period: "January 2024 — Present",
+    period: "January 2024 - Present",
     summary:
       "Supervise 10+ staff in a fast-paced service environment; provide bilingual (EN/ES) support across the team.",
     tags: ["Leadership", "Bilingual"],
@@ -143,19 +143,19 @@ const extras = [
   {
     role: "Software Engineer",
     org: "VT CRO",
-    period: "Sep 2024 — Jun 2025",
+    period: "Sep 2024 - Jun 2025",
     description: "Autonomous navigation with SLAM, ROS 2, LiDAR, and RealSense.",
   },
   {
     role: "Peer Mentor",
     org: "Ceed · Virginia Tech",
-    period: "Sep 2024 — Dec 2024",
+    period: "Sep 2024 - Dec 2024",
     description: "Mentored first-year engineering students through workshops.",
   },
   {
     role: "Linux Systems",
     org: "Personal",
-    period: "2019 — Present",
+    period: "2019 - Present",
     description: "Arch daily driver; Hyperland WM, Lua/Haskell/Bash configs, kernel debugging.",
   },
 ];

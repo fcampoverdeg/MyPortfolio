@@ -1,14 +1,22 @@
 // src/components/Portfolio.js
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
 import Footer from "./Footer";
 import "./Portfolio.css";
 
+const CATEGORIES = [
+  { label: "All", value: "all" },
+  { label: "Robotics", value: "robotics" },
+  { label: "Systems", value: "systems" },
+  { label: "Web", value: "web" },
+  { label: "ML", value: "ml" },
+];
+
 // Define your project data array
 const projects = [
   {
-    title: "CroQuest (Game Console)",
+    title: '<span class="cq-brand">CroQuest</span> (Game Console)',
     image: "/images/CroQuest/CroQuest_Cover.png",
     description:
       "A fully custom ESP32-based handheld console featuring a full UI system, TFT graphics pipeline, JPEG rendering, SD-based assets, and 8+ original games with Bluetooth multiplayer support.",
@@ -24,8 +32,8 @@ const projects = [
     github: "https://github.com/VT-CRO/CroQuest",
     website: "https://morganw040.wixsite.com/croquest",
     video: "https://www.youtube.com/watch?v=Fxc-An2Zm-w",
-    organization: "https://www.vtcro.org/design-teams/qst",
     path: "/projects/CroQuest",
+    category: "robotics",
     reverse: true,
   },
   {
@@ -43,6 +51,7 @@ const projects = [
     ],
     github: "https://github.com/fcampoverdeg/reinforcement_learning",
     path: "/projects/reinforcement-learning",
+    category: "ml",
     reverse: true,
   },
   {
@@ -59,6 +68,7 @@ const projects = [
     ],
     github: "https://github.com/fcampoverdeg/Concurrency_Webserver",
     path: "/projects/concurrency-webserver",
+    category: "systems",
     reverse: true,
   },
   {
@@ -75,6 +85,7 @@ const projects = [
     ],
     github: "https://github.com/fcampoverdeg/virtual_memory",
     path: "/projects/virtual-memory",
+    category: "systems",
     reverse: true,
   },
   {
@@ -86,6 +97,7 @@ const projects = [
     github: "https://github.com/VT-CRO/NationalRoboticsChallengeCode",
     organization: "https://www.vtcro.org/design-teams/dog",
     path: "/projects/AutonomousCar",
+    category: "robotics",
     reverse: true,
   },
   {
@@ -103,6 +115,7 @@ const projects = [
     ],
     github: "https://github.com/fcampoverdeg/MyPortfolio",
     path: "/projects/MyPortfolio",
+    category: "web",
     reverse: true,
   },
 ];
@@ -110,7 +123,14 @@ const projects = [
 const Portfolio = () => {
   const containerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [activeFilter, setActiveFilter] = useState("all");
   const location = useLocation();
+
+  const filteredProjects = useMemo(() =>
+    activeFilter === "all"
+      ? projects
+      : projects.filter((p) => p.category === activeFilter),
+  [activeFilter]);
 
   useEffect(() => {
     const hash = location.hash;
@@ -147,25 +167,36 @@ const Portfolio = () => {
 
   // Transitions for Project Cards
   useEffect(() => {
-    const reveals = document.querySelectorAll(".reveal");
+    const timer = setTimeout(() => {
+      const reveals = document.querySelectorAll(".reveal");
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+      // Immediately reveal cards already in viewport
+      reveals.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add("visible");
+        }
+      });
 
-    reveals.forEach((el) => observer.observe(el));
+      // Observe the rest for scroll
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
 
-    return () => {
-      reveals.forEach((el) => observer.unobserve(el));
-    };
-  }, []);
+      reveals.forEach((el) => observer.observe(el));
+
+      return () => reveals.forEach((el) => observer.unobserve(el));
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [filteredProjects]);
 
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
@@ -173,12 +204,8 @@ const Portfolio = () => {
 
   return (
     <div id="portfolio-top" className="portfolio-page">
-      {/* Animated gradient orbs + grid background */}
-      <div className="portfolio-bg">
-        <div className="orb orb-1" />
-        <div className="orb orb-2" />
-        <div className="orb orb-3" />
-      </div>
+      {/* Drifting grid background */}
+      <div className="portfolio-bg" />
 
       {/* Main Portfolio */}
       <div
@@ -188,12 +215,23 @@ const Portfolio = () => {
         <div className="portfolio-header">
           <h1 className="portfolio-title">Portfolio</h1>
           <p className="portfolio-subtitle">A collection of projects I've built and contributed to</p>
+          <div className="portfolio-filters">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat.value}
+                className={`filter-chip ${activeFilter === cat.value ? "active" : ""}`}
+                onClick={() => setActiveFilter(cat.value)}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
         </div>
         <div className="portfolio-grid">
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <div
-              key={index}
-              className="project-card-wrapper reveal"
+              key={project.title}
+              className={`project-card-wrapper reveal ${index % 2 === 0 ? "from-left" : "from-right"}`}
               style={{ transitionDelay: `${index * 0.15}s` }}
             >
               <ProjectCard {...project} reverse={true} />

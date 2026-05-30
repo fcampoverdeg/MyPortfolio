@@ -92,6 +92,8 @@ const App = () => {
     let contactTop = 0;
 
     const onWheel = (e) => {
+      // Only hijack scroll on the home page
+      if (window.location.pathname !== "/") return;
       if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
 
       const dir = e.deltaY > 0 ? 1 : -1;

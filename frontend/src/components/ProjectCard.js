@@ -1,5 +1,5 @@
 // src/components/ProjectCard.jsx
-import React, { useState } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -23,6 +23,7 @@ const ProjectCard = ({
 }) => {
   const navigate = useNavigate();
   const [flipped, setFlipped] = useState(false);
+  const cardRef = useRef(null);
 
   const handleClick = () => {
     setFlipped(true);
@@ -37,6 +38,14 @@ const ProjectCard = ({
 
   const stopProp = (e) => e.stopPropagation();
 
+  const handleMouseMove = useCallback((e) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+    card.style.setProperty("--my", `${e.clientY - rect.top}px`);
+  }, []);
+
   return (
     <div
       className={`flip-card-container ${reverse ? "reverse" : ""}`}
@@ -46,12 +55,16 @@ const ProjectCard = ({
         <div className={`flip-card ${flipped ? "flipped" : ""}`}>
           {/* Front Face */}
           <div className="flip-card-face flip-card-front">
-            <div className={`project-card ${reverse ? "reverse" : ""}`}>
+            <div
+              className={`project-card ${reverse ? "reverse" : ""}`}
+              ref={cardRef}
+              onMouseMove={handleMouseMove}
+            >
               <div className="project-image">
                 <img src={image} alt={title} />
               </div>
               <div className="project-content">
-                <h2>{title}</h2>
+                <h2 dangerouslySetInnerHTML={{ __html: title }} />
                 <p>{description}</p>
                 <div className="project-tags">
                   {tags.map((tag, idx) => (

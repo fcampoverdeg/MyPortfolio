@@ -24,6 +24,73 @@
   font-family: 'Playfair Display', cursive;
   transition: all 0.4s ease;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Spotlight glow that follows cursor */
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: var(--my, -200px);
+  left: var(--mx, -200px);
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* Metallic diagonal edge sweep */
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    transparent 30%,
+    rgba(255,255,255,0.3) 42%,
+    rgba(255,255,255,0.6) 50%,
+    rgba(255,255,255,0.3) 58%,
+    transparent 70%
+  );
+  background-size: 300% 300%;
+  background-position: 100% 100%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: cardEdgeSweep 5s linear infinite;
+  animation-play-state: paused;
+}
+
+.project-card:hover::after {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+@keyframes cardEdgeSweep {
+  0%           { background-position: 100% 100%; }
+  30%          { background-position: 0% 0%; }
+  30.01%, 100% { background-position: 100% 100%; }
+}
+
+/* Ensure card content sits above the effects */
+.project-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .project-card:hover {
@@ -45,6 +112,7 @@
 
 /* === Image === */
 .project-image {
+  flex-shrink: 0;
   flex-shrink: 0;
 }
 
