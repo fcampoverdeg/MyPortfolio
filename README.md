@@ -1,129 +1,99 @@
-# MyPortfolio – Personal Developer Website
+# MyPortfolio
 
 **Live at:** [fcampoverdeg.dev](https://fcampoverdeg.dev)
 
-This is the source code for my personal portfolio – a fully custom-built React + Node.js application that showcases my work across embedded systems, web development, robotics, and interactive UI/UX design.
-
-The website reflects who I am not only as a developer, but as a designer, engineer, and creator.
+A fully custom-built portfolio showcasing my work across robotics, embedded systems, machine learning, and full-stack web development. Every component, animation, and design decision was built from scratch.
 
 ---
 
-## Overview
+## Projects
 
-This portfolio is:
-
-- A modern **single-page application (SPA)** using React
-- **Fully responsive**, built mobile-first
-- Designed with **clean visuals**, subtle animations, and clear structure
-- A representation of my **design principles** and technical skills
-
-Each project page includes rich interactions, including 3D models, image galleries, and scroll-triggered animations.
-
----
-
-## Goals
-
-- **Professional Presence** – Represent myself online
-- **Visual Showcase** – Highlight projects with elegance
-- **Mobile-First** – Ensure excellent UX on any screen
-- **Modular Architecture** – Scalable React components
-- **Modern Deployment** – Hosted on Netlify with CI/CD
+| Project | Description | Tech |
+|---------|-------------|------|
+| **Daily's** | Founding engineer building the full robotics software and learning stack for an autonomous kitchen cell. Bimanual OpenArm robot (14 DOF) with 500 Hz C++ control, VLA imitation learning, edge deployment on Jetson Thor. | ROS 2, C++, Python, PyTorch, Docker, Jetson |
+| **CroQuest** | Custom ESP32 handheld game console with Bluetooth multiplayer, 8 classic games, and a modular game engine. Featured in VT NEWS. | C/C++, ESP32, PlatformIO, BLE |
+| **Reinforcement Learning** | Comparative study of Q-Learning, SARSA, and Dyna-Q in a custom stochastic GridWorld. Includes embedded Jupyter notebooks. | Python, NumPy, Matplotlib, Jupyter |
+| **Autonomous Car** | Autonomous vehicle for the National Robotics Challenge using ROS 2, SLAM, Nav2, and LiDAR-based navigation. | C++, ROS 2, Gazebo, Nav2 |
+| **Concurrency Web Server** | Multi-threaded HTTP/1.0 server in C with thread pool, bounded buffer queue, and SFF scheduling. | C, POSIX Threads, TCP/IP |
+| **Virtual Memory** | User-space and kernel-space page table walkers comparing vmalloc vs kmalloc allocation strategies. | C, Linux Kernel, Kernel Modules |
 
 ---
 
 ## Tech Stack
 
 ### Frontend
-
-- **React** – Core framework
-- **React Router** – SPA navigation
-- **Zustand** – Global state management
-- **Three.js + Vanta.js** – 3D rendering and animated backgrounds
-- **IntersectionObserver** – Scroll-based reveals
-- **Custom CSS (Grid + Flexbox)** – Responsive layout
-- **FontAwesome** – Icons and social links
-- **Blender** – 3D asset modeling
-- **Framer Motion** – Smooth UI animations
+- **React** + React Router
+- **Three.js** / React Three Fiber (3D model viewer)
+- **Custom CSS** (Grid, Flexbox, animations)
+- Custom scroll snapping (wheel-hijacking with easeInOutCubic)
+- ROS computation graph background (Contact section)
+- Typewriter effect, metallic button shine, cinematic galleries
+- Embedded Jupyter notebook viewer (dark-themed HTML)
 
 ### Backend
-
-- **Node.js + Express** – REST API for dynamic data
-- **MongoDB + Mongoose** – Data storage and schemas
-- **dotenv + CORS** – Environment variables and secure access
+- **Node.js** + Express
+- **MongoDB** + Mongoose
+- CORS, dotenv
 
 ### Deployment
-
-- **Netlify** – HTTPS, SPA routing, continuous deployment
-- **GitHub** – Source control and CI integration
+- **Netlify** (HTTPS, SPA routing, CI/CD)
+- **GitHub** (source control, continuous deployment)
 
 ---
 
-## File Structure
+## Features
 
-### Frontend
+- **Monochrome dark theme** - custom design system (#050505 base)
+- **Scroll snapping** - custom wheel-hijacking between sections
+- **ROS node graph** - animated computation graph with data pulses and carousel drift
+- **3D model viewer** - interactive Three.js viewer with disassemble/reassemble
+- **Jupyter notebooks** - 8 notebooks rendered as dark-themed HTML with tabbed navigation
+- **Cinematic galleries** - auto-advancing slideshows with filmstrip thumbnails
+- **Typewriter effect** - sequential character-by-character text reveal
+- **Metallic button effects** - diagonal sweep + corner glow on borders
+- **Animated stat counters** - numbers count up on scroll
+- **Category filtering** - portfolio cards filterable by tech/domain
 
-```bash
-frontend/
-├── src/
-│   ├── components/       # React components and pages
-│   │   ├── projects/     # Project folders (CroQuest, MyPortfolio, etc.)
-│   ├── images/           # Static assets
-│   ├── App.js            # Main router
-│   └── index.js          # React entry point
+---
+
+## Structure
+
 ```
+frontend/src/
+├── components/
+│   ├── Home.js, About.js, Resume.js, Contact.js
+│   ├── Portfolio.js, ProjectCard.js, Navbar.js, Footer.js
+│   └── projects/
+│       ├── Dailys/
+│       ├── CroQuest/          (3D model, gallery, code)
+│       ├── ReinforcementLearning/  (notebook viewer)
+│       ├── ConcurrencyWebserver/
+│       ├── VirtualMemory/
+│       ├── AutonomousCar/
+│       └── MyPortfolio/
+├── App.js                     (routing, scroll snap)
+└── App.css                    (global styles, fonts)
 
-### Backend
-
-```bash
 backend/
-├── server.js             # Entry point
-├── config/db.js          # MongoDB connection
-├── models/model.js       # Mongoose schema
-├── controllers/          # Logic for API requests
-└── routes/data.js        # API routes
+├── server.js
+├── config/db.js
+├── models/model.js
+├── controllers/controller.js
+└── routes/contact.js
 ```
 
 ---
 
-## Development Insights
-
-- SPA navigation with **React Router**
-- Scroll-triggered animations via **IntersectionObserver**
-- Fully responsive using **CSS Grid** and **Flexbox**
-- Smooth hash-based navigation and scroll restoration
-- Modular component structure
-- `_redirects` file used for SPA routing in Netlify
-
----
-
-## Sample Code Snippet
-
-```jsx
-<Routes>
-  <Route path="/portfolio" element={<Portfolio />} />
-  <Route path="/projects/croquest" element={<CroQuestPage />} />
-  <Route path="/projects/myportfolio" element={<MyPortfolioPage />} />
-  <Route path="/projects/autonomouscar" element={<AutonomousCarPage />} />
-</Routes>
-```
-
----
-
-## Setup & Installation
-
-### Frontend
+## Setup
 
 ```bash
-git clone https://github.com/fcampoverdeg/portfolio.git
-cd portfolio/frontend
+# Frontend
+cd frontend
 npm install
 npm start
-```
 
-### Backend (optional)
-
-```bash
-cd ../backend
+# Backend (optional, for contact form)
+cd backend
 npm install
 node server.js
 ```
@@ -132,23 +102,13 @@ node server.js
 
 ## License
 
-This project is licensed under the [Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/).
-
-> You may use, remix, and build upon this work **for non-commercial purposes only**, with proper credit.
+[Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/)
 
 ---
 
-## Credits
+## Author
 
-- **Felipe Campoverde** – Developer, Designer, and Maintainer
-- Special thanks to open-source contributors and tooling communities
-- Iconography by [FontAwesome](https://fontawesome.com)
-- Background effects by [Vanta.js](https://www.vantajs.com)
-
----
-
-## 📬 Contact
-
-Have questions or want to collaborate?  
-📫 Visit: [fcampoverdeg.dev](https://fcampoverdeg.dev)  
-💼 [LinkedIn Profile](https://www.linkedin.com/in/fcampoverdeg)
+**Felipe Campoverde**
+- Portfolio: [fcampoverdeg.dev](https://fcampoverdeg.dev)
+- LinkedIn: [linkedin.com/in/fcampoverdeg](https://www.linkedin.com/in/fcampoverdeg)
+- Email: fcampoverdeg@gmail.com
