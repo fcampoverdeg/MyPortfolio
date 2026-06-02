@@ -164,14 +164,6 @@ const MyPortfolioPage = () => {
           </div>
         </div>
 
-        {/* ========== TECH STACK ========== */}
-        <div className="mp-section mp-reveal">
-          <div className="mp-section-inner">
-            <h2 className="mp-section-title">Tech Stack</h2>
-            <TechStackIcons />
-          </div>
-        </div>
-
         {/* ========== OVERVIEW ========== */}
         <div className="mp-section mp-reveal">
           <div className="mp-section-inner">
@@ -189,6 +181,14 @@ const MyPortfolioPage = () => {
               Express and MongoDB to handle the contact form. Everything is
               deployed on Netlify with continuous deployment from GitHub.
             </p>
+          </div>
+        </div>
+
+        {/* ========== TECH STACK ========== */}
+        <div className="mp-section mp-reveal">
+          <div className="mp-section-inner">
+            <h2 className="mp-section-title">Tech Stack</h2>
+            <TechStackIcons />
           </div>
         </div>
 

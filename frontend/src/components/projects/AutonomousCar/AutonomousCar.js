@@ -264,18 +264,6 @@ const AutonomousCarPage = () => {
           </div>
         </div>
 
-        {/* ========== TECH STACK ========== */}
-        <div className="ac-section ac-reveal">
-          <div className="ac-section-inner">
-            <h2 className="ac-section-title">Tech Stack</h2>
-            <div className="ac-tech-strip">
-              {techStack.map((t, i) => (
-                <span key={i} className="ac-tech-chip">{t}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-
         {/* ========== OVERVIEW ========== */}
         <div className="ac-section ac-reveal">
           <div className="ac-section-inner">
@@ -294,6 +282,26 @@ const AutonomousCarPage = () => {
               first developed and tested in Gazebo simulation before deploying
               to the physical car.
             </p>
+          </div>
+        </div>
+
+        {/* ========== TECH STACK ========== */}
+        <div className="ac-section ac-reveal">
+          <div className="ac-section-inner">
+            <h2 className="ac-section-title">Tech Stack</h2>
+            <div className="ac-tech-strip">
+              {techStack.map((t, i) => (
+                <span key={i} className="ac-tech-chip">{t}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* ========== GALLERY ========== */}
+        <div className="ac-section ac-section-wide ac-reveal">
+          <div className="ac-section-inner">
+            <h2 className="ac-section-title">Gallery</h2>
+            <CarGallery />
           </div>
         </div>
 
@@ -349,14 +357,6 @@ const AutonomousCarPage = () => {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-
-        {/* ========== GALLERY ========== */}
-        <div className="ac-section ac-section-wide ac-reveal">
-          <div className="ac-section-inner">
-            <h2 className="ac-section-title">Gallery</h2>
-            <CarGallery />
           </div>
         </div>
 

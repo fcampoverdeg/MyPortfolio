@@ -154,18 +154,6 @@ const ConcurrencyWebserverPage = () => {
           </div>
         </div>
 
-        {/* ========== TECH STACK ========== */}
-        <div className="cw-section cw-reveal">
-          <div className="cw-section-inner">
-            <h2 className="cw-section-title">Tech Stack</h2>
-            <div className="cw-tech-strip">
-              {techStack.map((t, i) => (
-                <span key={i} className="cw-tech-chip">{t}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-
         {/* ========== OVERVIEW ========== */}
         <div className="cw-section cw-reveal">
           <div className="cw-section-inner">
@@ -185,6 +173,18 @@ const ConcurrencyWebserverPage = () => {
               queue uses Smallest File First (SFF) scheduling, so small files
               get served quickly even when large downloads are in progress.
             </p>
+          </div>
+        </div>
+
+        {/* ========== TECH STACK ========== */}
+        <div className="cw-section cw-reveal">
+          <div className="cw-section-inner">
+            <h2 className="cw-section-title">Tech Stack</h2>
+            <div className="cw-tech-strip">
+              {techStack.map((t, i) => (
+                <span key={i} className="cw-tech-chip">{t}</span>
+              ))}
+            </div>
           </div>
         </div>
 

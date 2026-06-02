@@ -17,6 +17,7 @@ import CroQuestPage from "./components/projects/CroQuest/CroQuest";
 import MyPortfolioPage from "./components/projects/MyPortfolio/MyPortfolio";
 import AutonomousCarPage from "./components/projects/AutonomousCar/AutonomousCar";
 import ReinforcementLearningPage from "./components/projects/ReinforcementLearning/ReinforcementLearning";
+import DailysPage from "./components/projects/Dailys/Dailys";
 import ConcurrencyWebserverPage from "./components/projects/ConcurrencyWebserver/ConcurrencyWebserver";
 import VirtualMemoryPage from "./components/projects/VirtualMemory/VirtualMemory";
 
@@ -221,6 +222,7 @@ const App = () => {
             <Route path="/projects/reinforcement-learning" element={<ReinforcementLearningPage />} />
             <Route path="/projects/concurrency-webserver" element={<ConcurrencyWebserverPage />} />
             <Route path="/projects/virtual-memory" element={<VirtualMemoryPage />} />
+            <Route path="/projects/dailys" element={<DailysPage />} />
             <Route path="/projects/paws-pebbles" element={<ProjectPlaceholder title="Paws & Pebbles" github="https://github.com/fcampoverdeg/Paws-Pebbles" />} />
 
             <Route

@@ -67,18 +67,6 @@ const VirtualMemoryPage = () => {
           </div>
         </div>
 
-        {/* ========== TECH STACK ========== */}
-        <div className="vm-section vm-reveal">
-          <div className="vm-section-inner">
-            <h2 className="vm-section-title">Tech Stack</h2>
-            <div className="vm-tech-strip">
-              {techStack.map((t, i) => (
-                <span key={i} className="vm-tech-chip">{t}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-
         {/* ========== OVERVIEW ========== */}
         <div className="vm-section vm-reveal">
           <div className="vm-section-inner">
@@ -96,6 +84,18 @@ const VirtualMemoryPage = () => {
               loadable module, directly walking the four-level page table hierarchy
               (PGD, P4D, PUD, PTE) to resolve physical addresses.
             </p>
+          </div>
+        </div>
+
+        {/* ========== TECH STACK ========== */}
+        <div className="vm-section vm-reveal">
+          <div className="vm-section-inner">
+            <h2 className="vm-section-title">Tech Stack</h2>
+            <div className="vm-tech-strip">
+              {techStack.map((t, i) => (
+                <span key={i} className="vm-tech-chip">{t}</span>
+              ))}
+            </div>
           </div>
         </div>
 

@@ -54,12 +54,6 @@ const CroQuestPage = () => {
   return (
     <>
       <div id="croquestgameconsole-top" className="cq-page">
-        {/* Background orbs */}
-        <div className="cq-bg">
-          <div className="cq-orb cq-orb-1" />
-          <div className="cq-orb cq-orb-2" />
-        </div>
-
         {/* ========== HERO ========== */}
         <div className="cq-hero">
           <div className="cq-hero-content">

@@ -16,10 +16,23 @@ const CATEGORIES = [
   { label: "Embedded", value: "embedded" },
   { label: "Linux", value: "linux" },
   { label: "ROS", value: "ros" },
+  { label: "VLA", value: "vla" },
+  { label: "Docker", value: "docker" },
+  { label: "NVIDIA", value: "nvidia" },
 ];
 
 // Define your project data array
 const projects = [
+  {
+    title: '<img src="/images/dailys/dailys_banner.svg" alt="Daily\'s" style="height:55px;vertical-align:middle" />',
+    image: "/images/dailys/openarm_kitchen.jpeg",
+    description:
+      "Founding engineer building the full robotics software and learning stack for an autonomous kitchen cell. Bimanual OpenArm robot (14 DOF) with 500 Hz C++ control, VLA imitation learning pipeline, and edge deployment on Jetson Thor.",
+    tags: ["ROS 2", "C++", "Python", "PyTorch", "Docker", "Jetson", "CAN Bus", "VLA", "OpenArm"],
+    path: "/projects/dailys",
+    category: ["robotics", "c", "python", "ml", "ros", "linux", "embedded", "vla", "docker", "nvidia"],
+    reverse: true,
+  },
   {
     title: '<span class="cq-brand">CroQuest</span> (Game Console)',
     image: "/images/CroQuest/CroQuest_Cover.png",
