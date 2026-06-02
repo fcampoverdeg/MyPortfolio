@@ -17,115 +17,97 @@ const education = [
     school: "Virginia Tech",
     program: "B.S. Computer Science · College of Engineering",
     period: "Expected December 2026",
-    note: "GPA 3.0",
+    note: "GPA 3.09 (Major 3.33)",
   },
 ];
 
 const skillGroups = [
   {
     label: "Languages",
-    tags: ["C", "C++", "Python", "Java", "JavaScript", "Swift", "Haskell", "Lua"],
+    tags: ["C", "C++", "Python", "Java", "JavaScript", "Haskell", "Lua", "HTML/CSS"],
   },
   {
     label: "Robotics & ML",
-    tags: ["ROS 2", "Gazebo", "Nav2", "Isaac Sim", "PyTorch", "CUDA", "LeRobot", "Hugging Face", "Modal", "VLA / Pi0.5", "RL"],
+    tags: ["ROS 2 (ros2_control)", "PyTorch", "VLAs (π0.5 / SmolVLA / ACT)", "LeRobot", "NVIDIA Jetson Thor", "CAN bus", "Damiao motors", "PyBullet (IK)", "Real-Time Chunking", "Modal", "Docker", "VR Teleop (Quest 3)"],
   },
   {
-    label: "Hardware & Embedded",
-    tags: ["ESP32", "RP2350", "Arduino", "PlatformIO", "BLE", "CAN bus", "Jetson", "WebXR / Quest"],
+    label: "Embedded & Systems",
+    tags: ["ESP32", "RP2350 / RP2040 (Pico)", "PlatformIO", "Arduino", "BLE", "LiDAR", "RealSense", "Linux (Arch)", "Git"],
   },
   {
-    label: "Web & Mobile",
-    tags: ["React", "Node.js", "Express", "MongoDB", "Three.js", "WebGL", "iOS / UIKit"],
-  },
-  {
-    label: "Systems & Tools",
-    tags: ["Linux (Arch)", "POSIX Threads", "Kernel Modules", "Git", "Neovim", "Blender", "NumPy", "Jupyter"],
+    label: "Web & Full-Stack",
+    tags: ["React", "Node.js", "Express", "MongoDB", "REST APIs", "WebGL"],
   },
 ];
 
 const spokenLanguages = [
   { name: "English", level: "Fluent" },
-  { name: "Spanish", level: "Native" },
+  { name: "Spanish", level: "Native (Bilingual)" },
 ];
 
 const marqueeTags = [
-  "ROS 2", "PyTorch", "CUDA", "LeRobot", "Pi0.5", "Isaac Sim", "Jetson",
-  "WebXR", "C++", "Python", "Modal", "Hugging Face", "ESP32", "CAN bus",
-  "React", "Three.js", "Linux", "PlatformIO", "Reinforcement Learning",
+  "ROS 2", "PyTorch", "VLAs", "π0.5", "SmolVLA", "ACT", "LeRobot",
+  "Jetson Thor", "CAN bus", "Docker", "C++", "Python", "Modal",
+  "ESP32", "RP2350", "React", "Linux", "PlatformIO", "PyBullet",
 ];
 
 /* ─────────────── Main column data ─────────────── */
 
 const experience = [
   {
-    role: "Lead Robotics Engineer",
+    role: "Founding Engineer",
     company: "Daily's",
     companyUrl: "https://dailys.inc",
-    period: "2025 - Present",
+    period: "Dec 2025 - Present",
     summary:
-      "Building the full robotics software stack for an autonomous, AI-driven food-prep machine. Lead the end-to-end pipeline from low-level motor control to learned manipulation policies.",
+      "Engineered the full robotics software and learning stack of an autonomous kitchen cell built around a bimanual OpenArm robot (dual 7-DOF arms, 14 DOF).",
     bullets: [
-      "Own the real-time ROS 2 / CAN control stack for a 16-DOF bimanual manipulator with safety, homing, and gain-scheduling layers",
-      "Built a WebXR VR teleoperation pipeline (Meta Quest) with inverse kinematics for collecting bimanual demonstrations",
-      "Train Vision-Language-Action policies (Pi0.5) with PyTorch, LeRobot, and Hugging Face on Modal cloud GPUs",
-      "Deploy edge inference and orchestration on NVIDIA Jetson; build simulation workflows in NVIDIA Isaac Sim",
+      "Built an end-to-end imitation-learning pipeline: VR teleoperation (Meta Quest 3 over ADB/TCP) for demonstration capture, LeRobot-format data packaging, and cloud training on Modal B200 GPUs",
+      "Implemented a 500 Hz real-time C++ control loop (ROS 2 ros2_control) driving 14 Damiao motors over CAN bus with gravity compensation, behind a 6-layer safety system",
+      "Trained and benchmarked VLA policies (ACT, SmolVLA, π0, π0-FAST, π0.5 4B) with Real-Time Chunking for ~2x inference speedup, plus DAgger and action-smoothing",
+      "Ran the full edge stack on Jetson Thor: model inference (PyTorch), IK (PyBullet), robot control, RP2350 Picos and Raspberry Pi coordination, all on ROS 2 Jazzy with ZED stereo + multi-camera perception",
+      "Containerized the platform with Docker for one-step deployment, splitting into teleop and deploy images",
+      "Shipped a working end-to-end demo via deterministic trajectory replay after evaluating VLA readiness at current data scale",
     ],
-    tags: ["ROS 2", "PyTorch", "LeRobot", "Pi0.5", "Isaac Sim", "Jetson", "WebXR"],
+    tags: ["ROS 2", "PyTorch", "VLAs", "π0.5", "LeRobot", "Jetson Thor", "Docker", "CAN bus"],
   },
   {
-    role: "Co-Founder & CTO",
-    company: "CroQuest LLC",
-    period: "June 2025 - December 2025",
+    role: "Chief Engineer, CroQuest",
+    company: "VT CRO",
+    period: "Mar 2025 - Jan 2026",
     summary:
-      "Co-founded an ed-tech company delivering hands-on STEM programs to K-12 students through electronics and embedded programming.",
+      "Led embedded software development for a custom educational handheld game console (ESP32-WROOM) built for Virginia Tech summer camps.",
     bullets: [
-      "Taught 100+ students electronics and embedded programming",
-      "Lead the technical roadmap and school partnerships",
+      "Wrote 5,000+ lines of C/C++ shipping 8+ retro-style games including Snake, Tetris, Tic-Tac-Toe, plus 2-player BLE Pong and a Mario-inspired platformer",
+      "Implemented core firmware integrating LCD, SD storage, and input hardware with asset rendering and UI feedback, plus an SD-card level system for student-authored custom levels",
     ],
-    tags: ["Education", "Embedded", "Leadership"],
+    tags: ["C/C++", "ESP32", "BLE", "PlatformIO"],
   },
   {
-    role: "Chief Software Engineer",
-    company: "CroQuest · VT CRO",
-    period: "March 2025 - June 2025",
+    role: "Software Engineer, Autonomous Car",
+    company: "VT CRO",
+    period: "Sep 2024 - May 2025",
     summary:
-      "Designed and built an ESP32-based handheld game console from the ground up, used as a teaching platform for embedded systems.",
+      "Developed ROS 2 nodes for sensor integration, control, and decision-making on an autonomous RC-scale vehicle for the National Robotics Challenge.",
     bullets: [
-      "5,000+ lines of C/C++, 8+ original games",
-      "BLE multiplayer, TFT graphics pipeline, and SD asset loading",
-      "Featured in VT NEWS",
+      "Integrated LiDAR and Intel RealSense D435 for obstacle detection and environment mapping; implemented SLAM-based autonomous navigation",
+      "Used RViz2 and Nav2 for real-time visualization, path planning, and navigation, validated in Gazebo simulation before hardware deployment",
+      "Built the embedded control layer (Arduino + Raspberry Pi) for motor control and steering with teleoperation and autonomous driving modes",
     ],
-    tags: ["ESP32", "C/C++", "BLE", "PlatformIO"],
-  },
-  {
-    role: "Cybersecurity Instructor",
-    company: "Virginia Tech",
-    period: "May 2024 - August 2024",
-    summary:
-      "Taught encryption, network security, and ethical hacking to high school students through a summer outreach program.",
-    tags: ["Security", "Teaching"],
-  },
-  {
-    role: "Student Assistant Manager",
-    company: "VT Dining",
-    period: "January 2024 - Present",
-    summary:
-      "Supervise 10+ staff in a fast-paced service environment; provide bilingual (EN/ES) support across the team.",
-    tags: ["Leadership", "Bilingual"],
+    tags: ["C++", "Python", "ROS 2", "Nav2", "Gazebo", "LiDAR"],
   },
 ];
 
 const projects = [
   {
-    title: "Reinforcement Learning — GridWorld",
+    title: "Reinforcement Learning - GridWorld",
     tech: "Python · NumPy · Jupyter",
     description: "Comparative study of Q-Learning, SARSA, and Dyna-Q with a full test suite.",
   },
   {
-    title: "Fork/Join Threadpool",
-    tech: "C · POSIX Threads",
-    description: "High-performance threadpool with work-stealing and thread-safe queues.",
+    title: "My Portfolio",
+    tech: "React · Three.js · Node.js",
+    description: "Full-stack portfolio with 3D models, scroll snapping, embedded Jupyter notebooks, and custom animations.",
   },
   {
     title: "Concurrency Web Server",
@@ -141,22 +123,16 @@ const projects = [
 
 const extras = [
   {
-    role: "Software Engineer",
-    org: "VT CRO",
-    period: "Sep 2024 - Jun 2025",
-    description: "Autonomous navigation with SLAM, ROS 2, LiDAR, and RealSense.",
+    role: "Student Assistant Manager",
+    org: "Virginia Tech Dining",
+    period: "Jan 2024 - Jan 2026",
+    description: "Supervised 10+ student staff in one of VT's largest dining halls; enforced food-safety and service standards with bilingual (English/Spanish) support.",
   },
   {
-    role: "Peer Mentor",
-    org: "Ceed · Virginia Tech",
-    period: "Sep 2024 - Dec 2024",
-    description: "Mentored first-year engineering students through workshops.",
-  },
-  {
-    role: "Linux Systems",
-    org: "Personal",
-    period: "2019 - Present",
-    description: "Arch daily driver; Hyperland WM, Lua/Haskell/Bash configs, kernel debugging.",
+    role: "Cybersecurity Instructor",
+    org: "VT College of Engineering",
+    period: "Jun - Aug 2024",
+    description: "Designed and taught hands-on cybersecurity lessons (encryption, ethical hacking, CTF challenges) to middle-school summer-camp students.",
   },
 ];
 
@@ -217,7 +193,7 @@ const Resume = () => {
           <span>Section · Resume</span>
         </div>
         <h1 className="resume-title shimmer-text">Resume</h1>
-        <p className="resume-subtitle">Education · Skills · Experience</p>
+        <p className="resume-subtitle">Robotics Software Engineer</p>
 
         <div className="resume-download-icons">
           <a href="/assets/Campoverde_Felipe.pdf" target="_blank" rel="noopener noreferrer" className="download-btn" title="View PDF">
@@ -380,7 +356,7 @@ const Resume = () => {
           <section className="main-block">
             <h2 className="main-heading">
               <span className="main-heading-index">03</span>
-              Extracurriculars
+              Leadership &amp; Teaching
             </h2>
             <ul className="extras-list">
               {extras.map((e, i) => (
