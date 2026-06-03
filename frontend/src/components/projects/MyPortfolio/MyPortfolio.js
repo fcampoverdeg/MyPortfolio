@@ -7,11 +7,6 @@ import TechStackIcons from "./TechStackIcons";
 import Footer from "../../Footer";
 import "./MyPortfolio.css";
 
-const techStack = [
-  "React", "JavaScript", "Three.js", "Node.js", "Express",
-  "MongoDB", "CSS3", "Vite", "Netlify",
-];
-
 const features = [
   {
     title: "Monochrome Dark Theme",
