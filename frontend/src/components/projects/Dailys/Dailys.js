@@ -223,9 +223,9 @@ const DailysPage = () => {
               <FontAwesomeIcon icon={faArrowLeft} /> Back to Portfolio
             </Link>
             <img src="/images/dailys/dailys_banner.svg" alt="Daily's" className="dy-hero-title-banner" />
-            <p className="dy-hero-label">Founding Engineer &middot; Full-time &middot; San Francisco</p>
+            <p className="dy-hero-label">Founding Engineer &middot; Dec 2025 &ndash; June 2026 &middot; San Francisco</p>
             <p className="dy-hero-subtitle">
-              Building the full robotics software and learning stack for an autonomous
+              Built the full robotics software and learning stack for an autonomous
               kitchen cell. A bimanual OpenArm robot (dual 7-DOF arms, 14 DOF total)
               that retrieves, cooks, and assembles food bowls across an integrated
               oven, warmer, and fridge.
@@ -244,7 +244,7 @@ const DailysPage = () => {
               Imagine a kitchen that cooks for you. Not a vending machine, not
               pre-packaged meals, but a real robot with two arms that opens the
               fridge, grabs ingredients, places them in the oven, assembles a bowl,
-              and hands it off for delivery. That's what we're building at Daily's.
+              and hands it off for delivery. That's what we built at Daily's.
             </p>
             <p className="dy-section-text">
               As founding engineer, I built the entire software stack from scratch:

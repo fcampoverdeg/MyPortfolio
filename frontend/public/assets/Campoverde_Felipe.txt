@@ -1,65 +1,49 @@
-﻿Felipe Campoverde
-Software Engineer • (804) 356-5749 • fcampoverdeg@vt.edu • in/fcampoverdeg/ • fcampoverdeg.dev/
+Felipe Campoverde
+Robotics Software Engineer
+San Francisco, CA  •  (804) 356-5749  •  fcampoverdeg@vt.edu  •  in/fcampoverdeg  •  fcampoverdeg.dev
+
 EDUCATION
 ________________
-* Virginia Tech Bachelor of Science in Computer Science  ·  GPA: 3.0  ·  Blacksburg, VA                    Expected May 2026
-
-
+Virginia Tech — B.S. Computer Science  ·  GPA 3.09 (Major 3.33)  ·  Blacksburg, VA          Expected Dec 2026
 
 
 EXPERIENCE
 ________________
-Chief Software Engineer - CroQuest ( C/C++, BLE, Bash, Git, Bluetooth, PlatformIO )         March 2025 - Present
-* Engineered a custom educational handheld game console using ESP32-WROOM, SD card, and BLE 
-* Wrote 5,000+ lines of C/C++ to develop 8+ retro-style games including Snake, Pong, Tetris, and Tic Tac Toe 
-* Designed and implemented Bluetooth multiplayer logic, asset rendering, and UI feedback for each game
+Founding Engineer  ·  Daily's  (Imitation Learning, VLAs, ML for Robotics, ROS 2, PyTorch, Docker)          Dec 2025 - June 2026
+* Engineered the full robotics software and learning stack of an autonomous kitchen cell built around a bimanual OpenArm robot (dual 7-DOF arms, 14 DOF) that retrieves, cooks, and assembles food bowls across an integrated oven, warmer, and fridge for delivery fulfillment.
+* Built an end-to-end imitation-learning pipeline: VR teleoperation (Meta Quest 3 controllers streamed over ADB/TCP to the Jetson) for demonstration capture, LeRobot-format data packaging, and cloud training on Modal B200 GPUs.
+* Implemented a 500 Hz real-time C++ control loop (ROS 2 ros2_control) driving 14 Damiao motors over CAN bus with gravity compensation, behind a 6-layer safety system (e-stop, hardware limits, per-cycle delta guards, collision avoidance, and temperature monitoring).
+* Trained and benchmarked multiple vision-language-action policies including ACT, SmolVLA, π0, π0-FAST, and π0.5 (4B), running parameter sweeps and implementing Real-Time Chunking for ~2x inference speedup, plus DAgger and action-smoothing techniques to improve responsiveness and precision.
+* Ran the full edge stack on the Jetson Thor, covering system services, model inference (PyTorch) with inverse kinematics in PyBullet, robot control, and coordination of the RP2350 Picos and Raspberry Pi, all tied together by ROS 2 (Jazzy) with ZED stereo + multi-camera perception; shipped a working demo via deterministic trajectory replay after evaluating VLA readiness.
+* Containerized the platform with Docker integrated with GitHub for distribution and one-step deployment, splitting the stack into two images: one for teleoperation control and dashboard visualization, one for streamlined deployment to the Jetson.
 
 
-Autonomous Car - VT CRO ( C++, Python, ROS, RVIZ, Linux, XML, Git, SSH )          September 2024 - June 2025
-* Developed autonomous navigation with SLAM using ROS2 and Gazebo
-* Integrated hardware sensors (LiDAR, camera, Arduino) to build a fully autonomous robotics platform
+Chief Engineer, CroQuest  ·  VT CRO  (C/C++, ESP32, BLE, PlatformIO)          Mar 2025 - Jan 2026
+* Led embedded software development for a custom educational handheld game console (ESP32-WROOM, LCD display, SD card, buttons, D-pad) built for Virginia Tech summer camps to teach kids embedded systems and game development.
+* Wrote 5,000+ lines of C/C++ to ship 8+ retro-style games including Snake, Tetris, and Tic-Tac-Toe, plus a 2-player Bluetooth-multiplayer Pong and a Mario-inspired platformer with gravity, momentum, and a scrolling camera.
+* Implemented core firmware integrating the LCD, SD storage, and input hardware with asset rendering and UI feedback, plus an SD-card level system letting students author and load their own custom levels.
 
 
-Linux Systems (Haskell, Lua, C/C++, Nvim, Hyperland, Waybar, VM, File Systems, Terminal)          2019 - Present
-* Configured Arch Linux daily driver;  managed  Hyperland WM, Waybar, extensions, lock screens..
-* Set up and Troubleshot Bluetooth, WiFi, and system services to improve workflow and hardware compatibility
-* Performed system installs, SSD partitioning, data migrations; debugged boot and kernel issues to restore system stability
-* Built automation scripts and custom configs in Lua, Haskell, and Bash, extending functionality and optimizing workflows.
+Software Engineer, Autonomous Car  ·  VT CRO  (C++, Python, ROS 2, Nav2, Gazebo)          Sep 2024 - May 2025
+* Developed ROS 2 nodes in Python and C++ for sensor integration, control, and decision-making on an autonomous RC-scale vehicle, with a focus on real-time communication and perception.
+* Integrated LiDAR and an Intel RealSense D435 for obstacle detection and environment mapping; implemented SLAM-based autonomous navigation.
+* Used RViz2 and Nav2 for real-time visualization, path planning, and navigation, validated in Gazebo simulation before hardware deployment.
+* Built the embedded control layer (Arduino + Raspberry Pi) for motor control and steering, and implemented both teleoperation and autonomous driving modes in a team-based agile workflow.
 
 
-SOFTWARE PROJECTS
+LEADERSHIP & TEACHING
 ________________
-Full-Stack Portfolio Website ( React, JavaScript, HTML/CSS, Node.js, MongoDB, WebGL, Netlify, Blender)
-* Built a dynamic web app to visualize datasets via interactive charts (bar, pie, scatter) and coordinated views
-* Integrated file import/export, axis configuration, and responsive UI for polished user experience
-* Learn more about Felipe Campoverde
+Student Assistant Manager  ·  Virginia Tech Dining          Jan 2024 - Jan 2026
+* Supervised 10+ student staff in one of VT's largest dining halls; enforced food-safety and service standards with bilingual (English/Spanish) support.
 
-
-Multithreaded Fork/Join Threadpool, Concurrency, Work-Stealing, Task Queues ( C )
-* Designed a high-performance threadpool supporting dynamic task distribution and parallel execution
-* Implemented thread-safe queues and synchronization using condition variables and mutexes
-
-
-LEADERSHIP
-________________
-Co-Founder & CTO | CroQuest LLC | Virginia | Blacksburg, VA                                                    June 2025 - Present
-* Co-founded an educational technology company delivering hand-on STEM learning programs.
-* Taught 100+ students electronics, embedded programming, and console assembly through workshops and camps.
-* Guided long-term technical roadmap, product scalability, and partnerships with local schools.
-  
-Student Assistant Manager | Virginia Tech | Blacksburg, VA                                                       January 2024 - Present 
-* Supervise 10+ student staff, ensuring compliance with safety and service standards
-* Provide bilingual (English/Spanish) support to staff and customers in high-paced service environments
-
-
-Peer Mentor, Ceed | Virginia Tech  | Blacksburg, VA                                            September 2024 - December 2024
-* Supported first-year engineering students through workshops, academic mentoring, and study group facilitation
+Cybersecurity Instructor  ·  VT College of Engineering          Jun - Aug 2024
+* Designed and taught hands-on cybersecurity lessons (encryption, ethical hacking, CTF challenges) to middle-school summer-camp students.
 
 
 SKILLS
 ________________
-* Languages C, C++, Python, Java, JavaScript, HTML/CSS, Haskell, Lua
-* Web & Full-Stack Development React.js, Zustand, Node.js, Express, MongoDB, REST APIs
-* Embedded & Robotics ESP32, Arduino, PlatformIO, Bluetooth (BLE), ROS2, URDF, RViz, Gazebo, LiDAR, RealSense
-* Tools & Systems Git, Linux, VSCode, Netlify, Blender, SD Card Interfaces, WebGL, Blender, SD card interfaces
-* Other: Bilingual (English/Spanish)
+* Languages: C, C++, Python, Java, JavaScript, Haskell, Lua, HTML/CSS
+* Robotics & ML: ROS 2 (ros2_control), PyTorch, VLAs (π0.5 / SmolVLA / ACT), LeRobot, NVIDIA Jetson Thor, CAN bus, Damiao motors, PyBullet (inverse kinematics), Real-Time Chunking, Modal, Docker, VR teleoperation (Meta Quest 3)
+* Embedded & Systems: ESP32, RP2350 / RP2040 (Pico), PlatformIO, Arduino, BLE, LiDAR, RealSense, Linux (Arch), Git
+* Web & Full-Stack: React, Node.js, Express, MongoDB, REST APIs, WebGL
+* Languages spoken: Bilingual (English / Spanish)

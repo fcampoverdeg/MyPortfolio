@@ -58,7 +58,7 @@ const experience = [
     role: "Founding Engineer",
     company: "Daily's",
     companyUrl: "https://dailys.inc",
-    period: "Dec 2025 - Present",
+    period: "Dec 2025 - June 2026",
     summary:
       "Engineered the full robotics software and learning stack of an autonomous kitchen cell built around a bimanual OpenArm robot (dual 7-DOF arms, 14 DOF).",
     bullets: [

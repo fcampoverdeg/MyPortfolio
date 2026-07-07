@@ -4,9 +4,9 @@ import "./About.css";
 import profileImg from "../images/profile.png";
 
 const TEXTS = [
-  "Founding Engineer at Daily's and CS student at Virginia Tech. I build things that bridge hardware and software, from robotic manipulation and ESP32 game consoles to autonomous vehicles and full-stack web apps.",
+  "Robotics software engineer and CS student at Virginia Tech. I build things that bridge hardware and software, from robotic manipulation and ESP32 game consoles to autonomous vehicles and full-stack web apps.",
   "Arch Linux daily driver since 2019. When I'm not coding, I'm on long drives, playing guitar, or debugging why my plant Benny won't grow.",
-  "Currently building robotics at Daily's.",
+  "Currently building robots that learn from demonstration.",
 ];
 
 const SPEED = 25; // ms per character

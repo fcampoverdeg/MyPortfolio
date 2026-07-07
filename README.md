@@ -10,7 +10,7 @@ A fully custom-built portfolio showcasing my work across robotics, embedded syst
 
 | Project | Description | Tech |
 |---------|-------------|------|
-| **Daily's** | Founding engineer building the full robotics software and learning stack for an autonomous kitchen cell. Bimanual OpenArm robot (14 DOF) with 500 Hz C++ control, VLA imitation learning, edge deployment on Jetson Thor. | ROS 2, C++, Python, PyTorch, Docker, Jetson |
+| **Daily's** | Founding engineer who built the full robotics software and learning stack for an autonomous kitchen cell. Bimanual OpenArm robot (14 DOF) with 500 Hz C++ control, VLA imitation learning, edge deployment on Jetson Thor. | ROS 2, C++, Python, PyTorch, Docker, Jetson |
 | **CroQuest** | Custom ESP32 handheld game console with Bluetooth multiplayer, 8 classic games, and a modular game engine. Featured in VT NEWS. | C/C++, ESP32, PlatformIO, BLE |
 | **Reinforcement Learning** | Comparative study of Q-Learning, SARSA, and Dyna-Q in a custom stochastic GridWorld. Includes embedded Jupyter notebooks. | Python, NumPy, Matplotlib, Jupyter |
 | **Autonomous Car** | Autonomous vehicle for the National Robotics Challenge using ROS 2, SLAM, Nav2, and LiDAR-based navigation. | C++, ROS 2, Gazebo, Nav2 |
